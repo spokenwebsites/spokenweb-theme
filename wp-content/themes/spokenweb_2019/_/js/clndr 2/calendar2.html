@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>calendar</title>
+    <link rel="stylesheet/less" type="text/css" href="clndr.less" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="underscore-min.js"></script>
+	<script src="clndr.js"></script>
+	<script src="moment.min.js"></script>
+	<script src="less.js"></script>
+</head>
+<body>
+
+        <div id="my-clndr">
+          <script type="text/template" id="my-clndr-template">
+            <div class="month-bar"><span class="clndr-previous-button">&lsaquo;</span> <%= month %><span class="month"> <span class="clndr-next-button">&rsaquo;</span></div>
+
+            <div class="clndr-grid">
+              <div class="days-of-the-week clearfix">
+                <% _.each(daysOfTheWeek, function(day) { %>
+                  <div class="header-day"><%= day %></div>
+                <% }); %>
+              </div>
+              <div class="days clearfix">
+                <% _.each(days, function(day) { %>
+
+
+					
+					
+                  <div class="<%= day.classes %>" id="<%= day.id %>">
+					<% if(day.events[0]!=undefined){%>
+				        <% _.each(day.events, function(event){ %>
+						  <span class="event day-number" title="<%=event.title%>"><a href="<%=event.url%>" target="_blank"><%= day.day %></a></span>
+				        <% }) %>
+			        <% } else { %>
+					  	<span class="day-number"><%= day.day %></span>
+					<% } %>
+				  </div>
+
+                <% }); %>
+              </div>
+            </div>
+          </script>
+        </div>
+
+
+
+
+	<script type="text/javascript" charset="utf-8">
+	// so instead, pass in your template as a string!
+	// Create a Clndr and save the instance as theCalendarInstance
+
+
+	var events = [
+	    { date: '2013-09-10', title: 'CLNDR GitHub Page Finished', url: 'http://google.com', location: '6771 rue waverly' }
+	  ];
+
+	$('#my-clndr').clndr({
+  	  template: $('#my-clndr-template').html(),
+ // 	  startWithMonth: "2013-09-01",
+  	  events: events,
+	  clickEvents: {
+	    click: function(target) {
+			var currentDay = target.element;
+		  if($(currentDay).hasClass("event")) $(currentDay).attr("link","")
+	    },
+	    onMonthChange: function(month) {
+	      console.log('you just went to ' + month.format('MMMM, YYYY'));
+	    }
+	  },
+	  
+	});
+
+
+
+	
+	</script>
+</body>
+</html>

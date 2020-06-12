@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>calendar</title>
+    <link rel="stylesheet/less" type="text/css" href="clndr.less" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="underscore-min.js"></script>
+	<script src="clndr.js"></script>
+	<script src="moment.min.js"></script>
+	<script src="less.js"></script>
+</head>
+<body>
+    <div id="full-clndr" class="clearfix">
+
+      <script type="text/template" id="full-clndr-template">
+        <div class="clndr-grid">
+	    <div class="month"><%= month %></div>
+          <div class="days-of-the-week clearfix">
+            <% _.each(daysOfTheWeek, function(day) { %>
+              <div class="header-day"><%= day %></div>
+            <% }); %>
+          </div>
+          <div class="days clearfix">
+            <% _.each(days, function(day) { %>
+              <div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-number"><%= day.day %></span></div>
+            <% }); %>
+          </div>
+        </div>
+        <div class="event-listing">
+          <div class="event-listing-title">EVENTS THIS MONTH</div>
+          <% _.each(eventsThisMonth, function(event) { %>
+              <div class="event-item">
+			  <a href="<%= event.url %>">
+                <div class="event-item-name"><%= event.title %></div>
+                <div class="event-item-location"><%= event.location %></div>
+			  </a>
+              </div>
+            <% }); %>
+        </div>
+      </script>
+
+	<script type="text/javascript" charset="utf-8">
+	var event_json = [
+	    { date: '2013-09-09', title: 'CLNDR GitHub Page Finished', url: 'http://github.com/kylestetz/CLNDR', location: '6771 rue waverly' },
+	    { date: '2013-09-10', title: 'CLNDR GitHub Page Finished', url: 'http://github.com/kylestetz/CLNDR', location: '6771 rue waverly' }
+	  ];
+	// so instead, pass in your template as a string!
+	$('#full-clndr').clndr({
+	  template: $('#full-clndr-template').html(),
+	  startWithMonth: "2013-09-01",
+	  events: event_json
+	});
+	</script>
+</body>
+</html>

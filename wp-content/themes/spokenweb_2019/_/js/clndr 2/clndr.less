@@ -1,0 +1,358 @@
+@import url(http://fonts.googleapis.com/css?family=Asap:400,700);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+// @import 'full-clndr.less';
+
+.clndr
+{
+	position:relative;
+	a
+	{
+	  font-weight:bold;
+	  //text-decoration: underline;
+	  //background-color: @light-gray;
+	  color: @dark-yellow;
+	  padding: 0 2px;
+	  border-radius: 2px;
+	  .transition(background-color 0.2s, color 0.4s;);
+    background-color: lighten(@yellow, 10%);
+	  &:hover
+	  {
+		cursor:pointer;
+	    background-color: none;
+	    color: #212121;
+	  }
+	  &:visited
+	  {
+		  color: @dark-yellow;
+	  }
+	}
+
+}
+
+.block
+{
+  padding: 80px 0;
+  width: 100%;
+}
+
+.inner
+{
+  width:100%
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+
+
+.transition(@props)
+{
+  -webkit-transition: @props;
+  -moz-transition: @props;
+  -ms-transition: @props;
+  -o-transition: @props;
+  transition: @props;
+}
+
+// some colors
+
+@red: #ff5a45;
+@blue: #71bbd2;
+@dark-blue: #3883a3;
+@yellow:#d2a548;
+@dark-yellow:#fff;
+@dark-green:  #69a776;
+@light-green: #97ce7f;
+@dark-gray: #414141;
+@light-gray: #ebebeb;
+
+.bg-gray
+{
+  background-color: @dark-gray;
+}
+
+.bg-red
+{
+  background-color: @red;
+  a
+  {
+    color: @red;
+    &:hover
+    {
+      background-color: lighten(@red, 20%);
+      color: #212121;
+    }
+  }
+}
+
+.bg-blue
+{
+  background-color: @blue;
+}
+
+.bg-green
+{
+  background-color: @light-green;
+}
+
+.bg-yellow
+{
+  background-color: @yellow;
+}
+
+
+.clndr-logo
+{
+  margin: 0 auto;
+  width: 113px;
+  height: 113px;
+  background-image: url('./clndr-logo.svg');
+}
+
+.banner-text
+{
+  text-align: center;
+  color: #f4f4f4;
+  letter-spacing: 1px;
+  font-weight: normal;
+  text-shadow: 2px 2px 2px #212121;
+  &.below
+  {
+    margin-top: 30px;
+    a
+    {
+      background-color: transparent;
+      color: @light-green;
+      &:hover
+      {
+        color: lighten(@light-green, 20%);
+      }
+    }
+  }
+}
+
+.more-space
+{
+  margin-top: 3em;
+}
+
+.month-bar { position:relative; }
+	.clndr-previous-button { position:absolute; left:150px; padding:0px 6px 7px 4px !important; }
+
+	.clndr-next-button { position:absolute; right:150px; padding:0px 4px 7px 6px !important; }
+	
+
+
+
+
+#single-clndr
+{
+  font-size:20px;	
+  //margin: 0 auto;
+  //background-color: #f4f4f4;
+  //-moz-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //-webkit-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+
+  padding-bottom: 12px;
+  
+  .clndr-grid
+  {
+    border-right: 2px solid white;
+  }
+
+  .month-bar
+  {
+		font-size:40px;
+    text-align: center;
+    padding: 12px 12px 35px 12px;
+  }
+
+  .days-of-the-week
+  {
+    width: 100%;
+    // background-color: @light-gray;
+    .header-day
+    {
+      .clearfix;
+      float: left;
+      width: 14.2857%;
+      padding: 12px 0;
+      text-align: center;
+    }
+  }
+
+  .days
+  {
+    .day, .empty
+    {
+      float: left;
+      width: 14.2857%;
+      padding: 24px 0;
+      text-align: center;
+      &:hover{
+		  cursor:default;
+      }
+      &.today
+      {
+        background-color: @light-gray;
+        -moz-box-shadow: inset 0 0 8px #d4d4d4;
+        -webkit-box-shadow: inset 0 0 8px #d4d4d4;
+        box-shadow: inset 0 0 8px #d4d4d4;
+      }
+
+      &.event
+      {
+        color: @yellow;
+      }
+
+      &.adjacent-month
+      {
+        .day-number
+        {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}
+
+.event-listing
+{
+
+  .event-listing-title
+  {
+    padding: 14px;
+    background-color: @yellow;
+    text-align: center;
+    color: white;
+    letter-spacing: 1px;
+  }
+  .event-item
+  {
+    padding: 14px;
+    color: #4f4f4f;
+  }
+  .event-item-location
+  {
+    font-weight: 400;
+  }
+}
+
+#clndr-container { position:relative; width:100%; clear:both; }
+
+#clndr-container h1 { font-size:40px; margin:0px; padding:0px; }
+
+.year-container { 
+  div.year{
+	font-weight:bold;
+	text-transform:uppercase;
+	font-size:40px;
+	text-align:center;
+	background:#000;
+	color:#fff;
+	border-radius:2px;
+  }
+
+}
+
+.clndr-year {
+ width:25%;
+  font-size:12px;	
+  margin: 0px auto 0px auto;
+  //background-color: #f4f4f4;
+  //-moz-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //-webkit-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  padding-bottom: 12px;
+  padding:20px;
+	margin-bottom:60px;
+  float:left;
+  	  height:200px;
+  .clndr-grid
+  {
+    border-right: 2px solid white;
+  }
+
+  div.year{
+	  font-weight:bold;
+	  text-transform:uppercase;
+	  font-size:20px;
+    padding: 12px;
+		position:absolute;
+		//top:-20px;
+		left:-0px;
+  }
+
+  .month-bar
+  {
+	  font-weight:bold;
+	  text-transform:uppercase;
+	  font-size:20px;
+    text-align: center;
+    padding: 12px;
+//		margin-top:100px;
+  }
+
+  .days-of-the-week
+  {
+    width: 100%;
+    // background-color: @light-gray;
+    .header-day
+    {
+      .clearfix;
+      float: left;
+      width: 14.2857%;
+      padding: 5px 0;
+      text-align: center;
+    }
+  }
+
+  .days
+  {
+    .day, .empty
+    {
+      float: left;
+      width: 14.2857%;
+      padding: 5px 0;
+      text-align: center;
+      &:hover{
+		  cursor:default;
+      }
+
+      &.today
+      {
+        background-color: @light-gray;
+        -moz-box-shadow: inset 0 0 8px #d4d4d4;
+        -webkit-box-shadow: inset 0 0 8px #d4d4d4;
+        box-shadow: inset 0 0 8px #d4d4d4;
+      }
+
+      &.event
+      {
+        color: @yellow;
+      }
+
+      &.adjacent-month
+      {
+        .day-number
+        {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}

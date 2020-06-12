@@ -1,0 +1,117 @@
+body {
+	background:#efefef;
+	font-size: 14px;
+	font-family:'Helevetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+}
+
+div#login {
+	width:500px;
+	margin: 0 auto;
+	margin-top:100px;
+	padding:20px;
+	background-color:white;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #cdcdcd;
+}
+
+#login h1 { 
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	font-weight:bold;
+	font-family:'Georgia', 'Times', serif;
+	font-size:52px !important;
+	margin: 0; 
+	padding: 50px 20px ;
+	background:url('../img/header10.jpg') top center;
+	font-style:italic;
+	letter-spacing:-4px;
+}
+
+.login h1 a {
+	font-size:52px !important;
+	font-weight:bold !important;
+	font-style:italic !important;
+} 
+
+
+#login h1 a:link, #login h1 a:visited { color:#fff; text-decoration: none; text-shadow:0px 0px 2px #000; background-color:transparent; background-image:none !important; display:inline !important;
+}
+#login h1 a:hover {  color:#efefef; background-color:transparent; }
+#login h1 a:active { color:#efefef; background-color:transparent; }
+
+
+a, a:visited{ color: #183B59; text-decoration: none; }
+a:hover { background-color:#f2e9c4; }
+a:active { background-color:#f15f22; }
+
+#registerform, #loginform, #lostpasswordform, #nav, #login_error, .message {
+	border:none !important;
+	-moz-box-shadow:none !important;
+	-webkit-box-shadow:none !important;
+	-khtml-box-shadow: !important;
+	box-shadow:none !important;
+	width: 400px;
+	margin:40px auto;
+}
+
+#login p label { font-size:13px !important ; }
+
+/* errors are */
+#login_error { color: #e00f0f; }
+
+
+
+#nav { color:#c9c8c8; text-shadow:0 1px 0px #fff; text-transform:lowercase;  }
+.message { color:#6E6E6E; font-weight:bold; }
+
+.register { display:none; }
+
+
+#registerform input[type="text"], #registerform input[type="password"],
+#loginform input[type="text"], #loginform input[type="password"],
+#lostpasswordform input[type="text"], #lostpasswordform input[type="password"] {
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius:4px;
+	border-radius:4px !important;
+	border: 1px solid #bfbfbf;
+
+	background-color:#fafafa;
+	margin:4px 0 16px 0;
+	font-size:14px;
+	padding:6px 3px;
+	width:100%;
+	font-family:'Helevetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+	color: #231f20 !important;
+}
+
+#loginform input[type="submit"]:active { 
+	background-color:#005175;
+	color:white;
+}
+
+
+#backtoblog { display:none !important; }
+
+.forgetmenot label { line-height:13px !important; }
+
+#privacy_policy { border: none !important; color:#929497;}
+
+p.submit { float:right; }
+
+.required-item { font-weight:bold; }
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
