@@ -133,7 +133,7 @@
 
 
 	<!-- site-wide javascript code -->
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/_/js/functions.js?v=1.41"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/_/js/functions.js?v=1.42"></script>
 
 	<!--fancybox-->
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/_/js/jquery.fancybox.min.js"></script>

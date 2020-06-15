@@ -32,7 +32,7 @@
 
   <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/js/mediaelementjs/mediaelementplayer.min.css">
 
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css?v=1.92">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css?v=1.93">
 
   <?php if (is_page('spokenweb')):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/about.css?v=1.1"><?php endif;?>
 	<?php if (is_page('podcast') || get_post_type()=='podcast' || get_post($post->post_parent)->post_name=='podcast'):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/podcast.css?v=1.1"><?php endif;?>
