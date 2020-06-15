@@ -14,11 +14,7 @@
     }
     add_action('init', 'removeHeadLinks');
     remove_action('wp_head', 'wp_generator');
- 
- 
- 
- 
-    
+
 	function get_current_user_role() {
 		global $wp_roles;
 		$current_user = wp_get_current_user();
@@ -26,38 +22,27 @@
 		$role = array_shift($roles);
 		return isset($wp_roles->role_names[$role]) ? strtolower( translate_user_role($wp_roles->role_names[$role] ) ) : false;
 	}
-	
+
 	function is_user_subscriber() {
 		return ( strcmp("subscriber", get_current_user_role() ) == 0);
 	}
-  
-  
-  
-  
 
-
-	  register_nav_menus(array(
-	    'primary_navigation' => __('Primary Navigation'),
-	  ));
-
-
-
+  register_nav_menus(array(
+    'primary_navigation' => __('Primary Navigation'),
+  ));
 
 	add_action( 'init', 'my_add_excerpts_to_pages' );
 	function my_add_excerpts_to_pages() {
 	     add_post_type_support( 'page', 'excerpt' );
 	}
-	
-	
-	
+
 	add_filter('upload_mimes','add_custom_mime_types');
 		function add_custom_mime_types($mimes){
 			return array_merge($mimes,array (
 				'json' => 'application/json'
 			));
 		}
-	
-	
+
 		class Bootstrap_Walker_Menu_Nav extends Walker_Nav_Menu {
 
 		   function start_lvl(&$output, $depth = 0, $args = array()) {
@@ -86,7 +71,7 @@
 		            if ( $depth === 0 ) {
 		                $element->classes[] = 'dropdown';
 		            } elseif ( $depth === 1 ) {
-		                // Extra level of dropdown menu, 
+		                // Extra level of dropdown menu,
 		                // as seen in http://twitter.github.com/bootstrap/components.html#dropdowns
 		                $element->classes[] = 'dropdown-submenu';
 		            }
@@ -95,19 +80,18 @@
 		    parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 		    }
 		}
-	
+
 		function add_classes_on_li($classes, $item, $args) {
 		  $classes[] = 'nav-item';
 		  return $classes;
 		}
 		add_filter('nav_menu_css_class','add_classes_on_li',1,3);
-		
+
 		function add_link_atts($atts) {
 		  $atts['class'] = "nav-link";
 		  return $atts;
 		}
 		add_filter( 'nav_menu_link_attributes', 'add_link_atts');
-		
 
 		add_filter ('get_archives_link',
 		function ($link_html, $url, $text, $format, $before, $after) {
@@ -116,7 +100,6 @@
 		    }
 		    return $link_html;
 		}, 10, 6);
-
 
     function has_parent() {
     	global $post;
@@ -134,8 +117,6 @@
 
       return count($pages);
     }
-
-
 
     function create_events_post_type() {
     	// Custom post: Events
@@ -209,6 +190,24 @@
     }
     add_action( 'init', 'create_collections_post_type', 0 );
 
+		function create_publications_post_type() {
+			// Custom post: Publications
+			register_post_type('publications', array(
+				'label' => __('Publications'),
+				'singular_name' => __('Publication'),
+				'public' => false, // allows it to be publicly queryable
+				'exclude_from_search' => true,
+				'show_ui' => true, // displays the post time in the Admin Interface
+				'menu_position' => 25,
+				'capability_type' => 'post',
+				'hierarchical' => false,
+				'rewrite' => array("slug" => "publications", "with_front" => false), // the slug for permalinks
+				'supports' => array('title', 'revisions', 'thumbnail', 'editor') // What can this post type do
+			));
+
+		}
+		add_action( 'init', 'create_publications_post_type', 0 );
+
     function create_toolkits_post_type() {
     	// Custom post: Toolkits
     	register_post_type('toolkits', array(
@@ -227,7 +226,7 @@
     }
     add_action( 'init', 'create_toolkits_post_type', 0 );
 
-    function create_podcast_post_type() {
+		function create_podcast_post_type() {
     	// Custom post: Podcast
     	register_post_type('podcast', array(
     		'label' => __('Podcast'),
@@ -245,7 +244,6 @@
 
     }
     add_action( 'init', 'create_podcast_post_type', 0 );
-
 
     function my_post_count_queries( $query ) {
       if (!is_admin() && $query->is_main_query()){
@@ -283,8 +281,8 @@
     add_filter( 'pre_get_posts', 'namespace_add_custom_types' );
 
     //Remove JQuery migrate
-    
-    function remove_jquery_migrate($scripts) { if (!is_admin() && isset($scripts->registered['jquery'])) { $script = $scripts->registered['jquery']; if ($script->deps) { 
+
+    function remove_jquery_migrate($scripts) { if (!is_admin() && isset($scripts->registered['jquery'])) { $script = $scripts->registered['jquery']; if ($script->deps) {
       // Check whether the script has any dependencies
       $script->deps = array_diff($script->deps, array( 'jquery-migrate' )); } } } add_action('wp_default_scripts', 'remove_jquery_migrate');
 
