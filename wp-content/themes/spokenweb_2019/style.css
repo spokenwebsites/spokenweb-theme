@@ -1691,6 +1691,11 @@ article h3 {
    text-decoration:none;
  }
 
+ .btn-outline-dark:hover, .btn-outline-dark:hover a {
+   color:#fff!important;
+   text-decoration:none;
+ }
+
 .cfp-content p { font-size:16px; line-height:26px; font-weight:500; }
 .cfp-content ul, .post-full ol { list-style-position: inside; }
 .cfp-content ul { list-style-type: disc; }
@@ -1769,13 +1774,15 @@ article h3 {
 */
 
 @media (max-width: 991px){
-    .navbar-main .nav-link {
-        padding: 1rem 2rem!important;
-    }
-    #searchform { width:192px; }
-    #searchContainer { margin-left:2rem!important; margin-top:10px; margin-bottom:40px; }
+  .hyphen { display:none!important; }
 
-    .navbar-collapse.show, .navbar-collapse.collapsing { position:absolute; top:80px; width:100%; background:#fff; left:0px; }
+  .navbar-main .nav-link {
+      padding: 1rem 2rem!important;
+  }
+  #searchform { width:192px; }
+  #searchContainer { margin-left:2rem!important; margin-top:10px; margin-bottom:40px; }
+
+  .navbar-collapse.show, .navbar-collapse.collapsing { position:absolute; top:80px; width:100%; background:#fff; left:0px; }
 
 }
 
@@ -1892,7 +1899,7 @@ article h3 {
 	.clndr-year {
 		width:100%;
 	}
-	.desktop { display:none!important; }
+  .desktop { display:none!important; }
 	.mobile { display:block; }
 	header h1 { text-align:center; font-size:50px!important; height:104px; }
     /*
@@ -1950,4 +1957,8 @@ article h3 {
 @media (max-width: 576px){
     .waveform { width:70%; position:relative;}
     .container-audio .time-container { font-size:15px; top:10px; }
+}
+
+@media (max-width: 460px){
+  span.hyphen { display:inline!important; }
 }

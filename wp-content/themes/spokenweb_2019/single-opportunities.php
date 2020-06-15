@@ -14,20 +14,40 @@ $type_of_call_other = $post_custom_fields['type_of_call_-_other'][0];
 $sidebar_content = $post_custom_fields['sidebar_content'][0];
 $submit_url = $post_custom_fields['submit_url'][0];
 if ($type_of_call=="Other") $type_of_call = $type_of_call_other;
+
+$bilingual = $post_custom_fields['bilingual'][0];
+$language = $post_custom_fields['language'][0];
+$alt_language_url = $post_custom_fields['alt_language_url'][0];
+$date_end_written = $post_custom_fields['date_end_written'][0];
+
+if ($language == "French"){
+  $alt_lang = "EN";
+  $deadline_msg = "Date limite :";
+  $call_for_msg = "APPEL <em>aux</em>";
+} else {
+  $alt_lang = "FR";
+  $deadline_msg = "Deadline for proposals:";
+  $call_for_msg = "CALL <em>for</em>";
+}
+
 ?>
 <?php if(isset($call_for_proposals_template) && $call_for_proposals_template=="Black Lives Matter"):?>
 <section class="container-fluid">
     <div class="row">
       <div class="col-lg-5 cfp blm">
         <aside style="background:#262626; color:#fff;">
-          <h1>CALL <em>for</em> <?php echo $type_of_call;?></h1>
+          <h1><?php echo $call_for_msg;?> <?php echo $type_of_call;?></h1>
           <img class="logo" src="<?php bloginfo('template_directory'); ?>/_/img/logo_long_white.png" width="259">
 
           <h3 class="pt-3"><?php echo $event_title;?></h3>
           <?php echo wpautop($sidebar_content);?>
           <hr>
-          <h2 class="condensed">Deadline for proposals:</h2>
+          <h2 class="condensed"><?php echo $deadline_msg;?></h2>
+          <?php if(isset($date_end_written) && $date_end_written !=""):?>
+            <h2><?php echo $date_end_written;?></h2>
+          <?php else:?>
           <h2><?php echo $date_end;?></h2>
+          <?php endif;?>
         </aside>
         <?php if(isset($submit_url) && $submit_url!=""):?>
         <div class="btn-container">
@@ -36,6 +56,9 @@ if ($type_of_call=="Other") $type_of_call = $type_of_call_other;
         <?php endif;?>
       </div>
       <div class="col-lg-6 offset-lg-1 cfp-content">
+        <?php if (isset($alt_language_url) && $alt_language_url!=""):?>
+        <button class="btn btn-outline-dark" style="position:absolute; right:1rem; top:0.5rem;"><a href="<?php echo $alt_language_url;?>"><?php echo $alt_lang;?></a></button>
+        <?php endif;?>
       	<article <?php post_class('post-full, mt-1, mt-lg-5') ?> id="post-<?php the_ID(); ?>">
 
       		<div class="entry">

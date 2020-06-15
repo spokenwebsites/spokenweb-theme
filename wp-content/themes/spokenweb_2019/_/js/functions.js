@@ -466,7 +466,7 @@ if ($("body").hasClass("home")) {
     e.preventDefault()
     if ($(".blm .post-content").is(":hidden")){
       $(".blm .post-excerpt").hide();
-      $(".blm .post-content").show();      
+      $(".blm .post-content").show();
     }
     $(window).animate({
       scrollTop: $(e.target.hash).offset().top - 20
@@ -1114,6 +1114,127 @@ if (page == "collections") {
   });
 
 }
+
+if (page == "publications") {
+  /*
+  $("#selectInstitution").change(function() {
+    $new_i = 0;
+    $(".people-container").removeClass("first");
+    $curInstitution = $(this).val();
+    $(".people-container").removeAttr("data-i");
+    $(".people-container .current a").first().trigger("click");
+    if ($curInstitution == "All") {
+      $(".people-container").each(function() {
+        $(this).show();
+        $(this).attr("data-i", $new_i);
+        $(this).data('i', $new_i);
+        if ($new_i % 4 === 0) $(this).addClass("first");
+        $new_i++;
+      });
+    } else {
+      $(".people-container").each(function() {
+        if ($(this).data("institution") == $curInstitution) {
+          $(this).show();
+          $(this).attr("data-i", $new_i);
+          $(this).data("i", $new_i);
+          if ($new_i % 4 === 0) $(this).addClass("first");
+          $new_i++;
+        } else {
+          $(this).hide();
+        }
+      });
+      $cur_i = 0;
+      $prev_i = $(".people-container").length;
+      $prev_height = 0;
+      $first_i = 0;
+    }
+    $("#selectFunction").val("All");
+    $("#selectAffiliation").val("All");
+    //teamSidebar("institution");
+  });
+
+  $("#selectFunction").change(function() {
+    $new_i = 0;
+    $(".people-container").removeClass("first");
+    $curFunction = $(this).val();
+    $(".people-container").removeAttr("data-i");
+    $(".people-container .current a").first().trigger("click");
+    if ($curFunction == "All") {
+      $(".people-container").each(function() {
+        $(this).show();
+        $(this).attr("data-i", $new_i);
+        $(this).data('i', $new_i);
+        if ($new_i % 4 === 0) $(this).addClass("first");
+        $new_i++;
+      });
+    } else {
+      $(".people-container").each(function() {
+        if ($(this).data("function").indexOf($curFunction) > -1) {
+          $(this).show();
+          $(this).attr("data-i", $new_i);
+          $(this).data("i", $new_i);
+          if ($new_i % 4 === 0) $(this).addClass("first");
+          $new_i++;
+        } else {
+          $(this).hide();
+        }
+      });
+      $cur_i = 0;
+      $prev_i = $(".people-container").length;
+      $prev_height = 0;
+      $first_i = 0;
+    }
+
+
+    $("#selectAffiliation").val("All");
+    $("#selectInstitution").val("All");
+    //teamSidebar("function");
+  });
+
+  if (typeof location.hash != 'undefined') {
+    $("window").position(0);
+    $this = $(".people-container a[href='" + location.hash + "']");
+    $target = $(location.hash);
+    if ($target.length) {
+      //$("body").scrollTo($this, 400, {offset:-10, onAfter: function(){
+      $target.slideDown();
+      //}});
+    }
+  }
+
+  function teamSidebar(changed) {
+    var institutions = [];
+
+    //$(".people-container:visible").each(function(){
+    $(".people-container:visible").each(function() {
+      institutions.push($(this).data("institution"));
+    });
+
+    institutions = institutions.filter(function(e) {
+      return e
+    });
+
+    institutions = unique(institutions);
+
+    institutions.sort();
+
+    //if (changed!="institution"){
+    $("#selectInstitution option").remove();
+    $("#selectInstitution").append('<option value="All">All</option>');
+    for (var i = 0; i < institutions.length; i++) {
+      $("#selectInstitution").append('<option value="' + institutions[i] + '">' + institutions[i] + '</option>');
+    }
+    //}
+
+  }
+
+
+  $(window).on('load', function() {
+    teamSidebar();
+  });
+  */
+}
+
 
 if (page == "team") {
 
