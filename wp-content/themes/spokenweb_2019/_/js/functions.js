@@ -1116,115 +1116,162 @@ if (page == "collections") {
 }
 
 if (page == "publications") {
-  /*
-  $("#selectInstitution").change(function() {
+  $("#selectYear").change(function() {
     $new_i = 0;
-    $(".people-container").removeClass("first");
-    $curInstitution = $(this).val();
-    $(".people-container").removeAttr("data-i");
-    $(".people-container .current a").first().trigger("click");
-    if ($curInstitution == "All") {
-      $(".people-container").each(function() {
+    $curYear = $(this).val();
+    $(".publication-content").removeAttr("data-i");
+    if ($curYear == "All") {
+      $(".publication-container").show();
+      $(".publication-content").each(function() {
         $(this).show();
         $(this).attr("data-i", $new_i);
         $(this).data('i', $new_i);
-        if ($new_i % 4 === 0) $(this).addClass("first");
         $new_i++;
       });
     } else {
-      $(".people-container").each(function() {
-        if ($(this).data("institution") == $curInstitution) {
+      $(".publication-container").hide();
+      $(".publication-content").each(function() {
+        if ($(this).data("year") == $curYear) {
           $(this).show();
           $(this).attr("data-i", $new_i);
           $(this).data("i", $new_i);
-          if ($new_i % 4 === 0) $(this).addClass("first");
           $new_i++;
+          $(this).parent().show();
         } else {
           $(this).hide();
         }
       });
       $cur_i = 0;
-      $prev_i = $(".people-container").length;
-      $prev_height = 0;
+      $prev_i = $(".publication-content").length;
       $first_i = 0;
     }
-    $("#selectFunction").val("All");
-    $("#selectAffiliation").val("All");
-    //teamSidebar("institution");
+    $("#selectType").val("All");
+    $("#selectTeamMember").val("All");
+    // $("#selectYear").val("All");
   });
 
-  $("#selectFunction").change(function() {
+  $("#selectTeamMember").change(function() {
     $new_i = 0;
-    $(".people-container").removeClass("first");
-    $curFunction = $(this).val();
-    $(".people-container").removeAttr("data-i");
-    $(".people-container .current a").first().trigger("click");
-    if ($curFunction == "All") {
-      $(".people-container").each(function() {
+    $curTeamMember = $(this).val();
+    $(".publication-content").removeAttr("data-i");
+    if ($curTeamMember == "All") {
+      $(".publication-container").show();
+      $(".publication-content").each(function() {
         $(this).show();
         $(this).attr("data-i", $new_i);
         $(this).data('i', $new_i);
-        if ($new_i % 4 === 0) $(this).addClass("first");
         $new_i++;
       });
     } else {
-      $(".people-container").each(function() {
-        if ($(this).data("function").indexOf($curFunction) > -1) {
+      $(".publication-container").hide();
+      $(".publication-content").each(function() {
+        if ($(this).data("team-members").indexOf($curTeamMember)>-1) {
           $(this).show();
           $(this).attr("data-i", $new_i);
           $(this).data("i", $new_i);
-          if ($new_i % 4 === 0) $(this).addClass("first");
           $new_i++;
+          $(this).parent().show();
         } else {
           $(this).hide();
         }
       });
       $cur_i = 0;
-      $prev_i = $(".people-container").length;
-      $prev_height = 0;
+      $prev_i = $(".publication-content").length;
       $first_i = 0;
     }
-
-
-    $("#selectAffiliation").val("All");
-    $("#selectInstitution").val("All");
-    //teamSidebar("function");
+    $("#selectType").val("All");
+    // $("#selectTeamMember").val("All");
+    $("#selectYear").val("All");
   });
 
-  if (typeof location.hash != 'undefined') {
-    $("window").position(0);
-    $this = $(".people-container a[href='" + location.hash + "']");
-    $target = $(location.hash);
-    if ($target.length) {
-      //$("body").scrollTo($this, 400, {offset:-10, onAfter: function(){
-      $target.slideDown();
-      //}});
+  $("#selectType").change(function() {
+    $new_i = 0;
+    $curType = $(this).val();
+    $(".publication-content").removeAttr("data-i");
+    if ($curType == "All") {
+      $(".publication-container").show();
+      $(".publication-content").each(function() {
+        $(this).show();
+        $(this).attr("data-i", $new_i);
+        $(this).data('i', $new_i);
+        $new_i++;
+      });
+    } else {
+      $(".publication-container").hide();
+      $(".publication-content").each(function() {
+        if ($(this).data("type") == $curType) {
+          $(this).show();
+          $(this).attr("data-i", $new_i);
+          $(this).data("i", $new_i);
+          $new_i++;
+          $(this).parent().show();
+        } else {
+          $(this).hide();
+        }
+      });
+      $cur_i = 0;
+      $prev_i = $(".publication-content").length;
+      $first_i = 0;
     }
-  }
+    // $("#selectType").val("All");
+    $("#selectTeamMember").val("All");
+    $("#selectYear").val("All");
+  });
 
   function teamSidebar(changed) {
-    var institutions = [];
+    var years = [];
+    var teamMembers = [];
+    var types = [];
 
     //$(".people-container:visible").each(function(){
-    $(".people-container:visible").each(function() {
-      institutions.push($(this).data("institution"));
+    $(".publication-content:visible").each(function() {
+      years.push($(this).data("year"));
+      types.push($(this).data("type"));
+
+      teamMembersArray = $(this).data("team-members").split(",");
+      for (const teamMember of teamMembersArray) {
+        teamMembers.push(teamMember);
+      }
+
     });
 
-    institutions = institutions.filter(function(e) {
+    years = years.filter(function(e) {
+      return e
+    });
+    teamMembers = teamMembers.filter(function(e) {
+      return e
+    });
+    types = types.filter(function(e) {
       return e
     });
 
-    institutions = unique(institutions);
+    years = unique(years);
 
-    institutions.sort();
+    teamMembers = unique(teamMembers);
+    types = unique(types);
 
-    //if (changed!="institution"){
-    $("#selectInstitution option").remove();
-    $("#selectInstitution").append('<option value="All">All</option>');
-    for (var i = 0; i < institutions.length; i++) {
-      $("#selectInstitution").append('<option value="' + institutions[i] + '">' + institutions[i] + '</option>');
+    years.sort(function(a, b){return b-a});
+    teamMembers.sort();
+    types.sort();
+
+
+    $("#selectYear option").remove();
+    $("#selectYear").append('<option value="All">All</option>');
+    for (var i = 0; i < years.length; i++) {
+      $("#selectYear").append('<option value="' + years[i] + '">' + years[i] + '</option>');
     }
-    //}
+
+    $("#selectType option").remove();
+    $("#selectType").append('<option value="All">All</option>');
+    for (var i = 0; i < types.length; i++) {
+      $("#selectType").append('<option value="' + types[i] + '">' + types[i] + '</option>');
+    }
+
+    $("#selectTeamMember option").remove();
+    $("#selectTeamMember").append('<option value="All">All</option>');
+    for (var i = 0; i < teamMembers.length; i++) {
+      $("#selectTeamMember").append('<option value="' + teamMembers[i] + '">' + teamMembers[i] + '</option>');
+    }
 
   }
 
@@ -1232,7 +1279,7 @@ if (page == "publications") {
   $(window).on('load', function() {
     teamSidebar();
   });
-  */
+
 }
 
 
