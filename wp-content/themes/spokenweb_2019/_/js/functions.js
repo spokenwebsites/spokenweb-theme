@@ -89,7 +89,9 @@ if (page == "spokenweblog" || page=="audio-of-the-week") {
       } else {
         $(this).parent().parent().find("button").text($(this).text());
         $(".article").fadeOut();
-        $(".article[data-"+$type+"*='"+$target+"']").fadeIn();
+        console.log($target);
+        $(".article[data-"+$type+"*="+$target+"]").fadeIn();
+
       }
     }
   });
@@ -104,7 +106,7 @@ if (page == "spokenweblog" || page=="audio-of-the-week") {
 
       $(this).parent().parent().find("button").text($(this).text());
       $(".container.articles").fadeOut();
-      $(".container.articles[data-"+$type+"*='"+$target+"']").fadeIn();
+      $(".container.articles[data-"+$type+"*="+$target+"]").fadeIn();
     }
   });
 
