@@ -16,11 +16,13 @@
 
 
 <?php
+$blm = get_page_by_path( 'spokenweb-statement-in-condemnation-of-racism-and-in-support-of-black-lives-matter', OBJECT, 'post' );
+$blm_id = $blm->ID;
 	query_posts(
 		array(
 			'posts_per_page'=>1,
 			'post_status' => 'publish',
-      'post_name' => 'spokenweb-statement-in-condemnation-of-racism-and-in-support-of-black-lives-matter'
+      'p' => $blm_id
 		)
 	);
 ?>
