@@ -92,6 +92,7 @@ $slug = $cat->slug;
           <a class="dropdown-item active" href="#">ALL</a>
           <a class="dropdown-item" href="#article">ARTICLES</a>
           <a class="dropdown-item" href="#audio-of-the-week">AUDIO OF THE WEEK</a>
+          <a class="dropdown-item" href="#interviews">INTERVIEWS</a>
         </div>
       </div>
     </div>
@@ -125,6 +126,7 @@ $slug = $cat->slug;
     $themes = array();
     if (has_category('spokenweblog')){
       if (has_category('article')) $themes[]="article";
+      if (has_category('interviews')) $themes[]="interviews";
       if (has_category('audio-of-the-week')) $themes[]="audio-of-the-week";
     }
     $themes = implode(" ", $themes);
