@@ -82,13 +82,14 @@ if (page == "spokenweblog" || page=="audio-of-the-week") {
       $type = $(this).parent().parent().find("button").data("type");
       $(this).parent().find(".active").removeClass("active");
       $(this).addClass("active");
-      if ($target==""){ $(this).parent().parent().find("button").text($(this).parent().parent().find("button").data("title"));
+      if ($target==""){
+        $(this).parent().parent().find("button").text($(this).parent().parent().find("button").data("title"));
         $(".article").fadeOut();
         $(".article").fadeIn();
       } else {
         $(this).parent().parent().find("button").text($(this).text());
         $(".article").fadeOut();
-        $(".article[data-"+$type+"="+$target+"]").fadeIn();
+        $(".article[data-"+$type+"*="+$target+"]").fadeIn();
       }
     }
   });
@@ -103,7 +104,7 @@ if (page == "spokenweblog" || page=="audio-of-the-week") {
 
       $(this).parent().parent().find("button").text($(this).text());
       $(".container.articles").fadeOut();
-      $(".container.articles[data-"+$type+"="+$target+"]").fadeIn();
+      $(".container.articles[data-"+$type+"*="+$target+"]").fadeIn();
     }
   });
 
