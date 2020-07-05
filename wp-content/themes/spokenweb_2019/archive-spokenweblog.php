@@ -133,7 +133,7 @@ $slug = $cat->slug;
   ?>
 
     <div class="article col-md-6 p-2" data-themes="<?php echo $themes;?>">
-      <div class="h-100 position-relative" style="border:1px solid #e4e4e4;">
+      <div class="h-100 d-flex flex-column align-items-end" style="border:1px solid #e4e4e4;">
         <div class="d-flex pt-4">
           <div class="w-50 pl-4 pr-3 justify-content-center align-self-center">
         		<?php  if ( has_post_thumbnail() ):?>
@@ -151,20 +151,15 @@ $slug = $cat->slug;
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-between mb-5">
-          <div class="px-4 mt-auto mb-3">
-            <?php if(isset($audio_url) && $audio_url!=""):?>
-            <audio src="<?php echo $audio_url;?>" class="w-100 mt-3" controls></audio>
-            <?php endif;?>
-            <p class="small mt-4"><?php echo get_the_excerpt();?></p>
-          </div>
+        <div class="px-4">
+          <?php if(isset($audio_url) && $audio_url!=""):?>
+          <audio src="<?php echo $audio_url;?>" class="w-100 mt-3" controls></audio>
+          <?php endif;?>
+          <p class="small mt-4"><?php echo get_the_excerpt();?></p>
         </div>
-        <div class="position-absolute mt-5" style="bottom:0px; border-top:1px solid #e4e4e4; width:100%">
-          <div class="meta w-100 align-self-end">
-            <p class="smaller p-3"><?php if(has_category()!=0):?><?php the_category(', ');?><?php endif;?><?php if(has_tag()!=0):?><?php if(has_category()!=0):?> | <?php endif;?><?php the_tags('', ', ');?><?php endif;?></p>
-          </div>
+        <div class="d-flex w-100 justify-content-between mt-auto meta" style="border-top:1px solid #e4e4e4;">
+          <p class="smaller p-3"><?php if(has_category()!=0):?><?php the_category(', ');?><?php endif;?><?php if(has_tag()!=0):?><?php if(has_category()!=0):?> | <?php endif;?><?php the_tags('', ', ');?><?php endif;?></p>
         </div>
-
       </div>
     </div>
 
