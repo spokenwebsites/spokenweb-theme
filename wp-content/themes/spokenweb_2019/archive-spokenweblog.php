@@ -196,6 +196,7 @@ $slug = $cat->slug;
     $themes = array();
     if (has_category('spokenweblog')){
       if (has_category('article')) $themes[]="article";
+      if (has_category('interviews')) $themes[]="interviews";
       if (has_category('audio-of-the-week')) $themes[]="audio-of-the-week";
     }
     $themes = implode(" ", $themes);
