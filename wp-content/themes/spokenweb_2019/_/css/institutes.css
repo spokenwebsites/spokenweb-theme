@@ -163,6 +163,10 @@
   line-height:1.8rem;
 }
 
+.page-institutes article p, .page-institutes article h1, .page-institutes article h2, .page-institutes article h3, .page-institutes article h4, .page-institutes article h5 {
+    width: 100%;
+}
+
 .page-institutes article h3 {
     margin-top: 2rem;
     margin-bottom:1rem;
@@ -203,7 +207,7 @@
     display: none;
 }
 
-.page-institutes .nav-tabs { 
+.page-institutes .nav-tabs {
   border-bottom:1px solid transparent;
 }
 
@@ -298,7 +302,7 @@ a.dropdown-item {
     top: 0px;
     z-index: 1030;
   }
-  
+
 
 }
 
@@ -307,11 +311,10 @@ a.dropdown-item {
   .page-institutes .hero {
     margin-bottom:0px;
   }
-  
+
   .page-institutes .hero h1{
     font-size: 3.5rem;
     left: 30px;
     bottom: -17px;
-  }  
+  }
 }
-

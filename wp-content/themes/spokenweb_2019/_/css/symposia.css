@@ -162,6 +162,10 @@
   line-height:1.8rem;
 }
 
+.page-symposia article p, .page-symposia article h1, .page-symposia article h2, .page-symposia article h3, .page-symposia article h4, .page-symposia article h5 {
+    width: 100%;
+}
+
 .page-symposia article h3 {
     margin-top: 2rem;
     margin-bottom:1rem;
@@ -202,7 +206,7 @@
     display: none;
 }
 
-.page-symposia .nav-tabs { 
+.page-symposia .nav-tabs {
   border-bottom:1px solid transparent;
 }
 
@@ -289,8 +293,8 @@ a.dropdown-item {
     top: 0px!important;
     z-index: 1030;
   }
-  
-  
+
+
 
 }
 
@@ -312,11 +316,10 @@ a.dropdown-item {
   .page-symposia .hero {
     margin-bottom:0px;
   }
-  
+
   .page-symposia .hero h1{
     font-size: 3.5rem;
     left: 30px;
     bottom: -17px;
-  }  
+  }
 }
-
