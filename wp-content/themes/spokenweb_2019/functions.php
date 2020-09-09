@@ -287,4 +287,79 @@
       // Check whether the script has any dependencies
       $script->deps = array_diff($script->deps, array( 'jquery-migrate' )); } } } add_action('wp_default_scripts', 'remove_jquery_migrate');
 
+
+			function events_all( $data ) {
+
+				if (isset($_GET['offset'])) $offset = $_GET['offset'];
+				else $offset = 0;
+				$args = array ('post_type'=>'events', 'posts_per_page'=>1000, 'offset'=>$offset);
+
+				$post_query = new WP_Query($args);
+
+				if ($post_query->have_posts()) {
+
+					$data = array();
+
+					while ($post_query->have_posts()) {
+						$post_query->the_post();
+						global $post;
+						$post_custom_fields = get_post_custom( $post->ID );
+
+						// $ curl http://localhost/spokenweb/wp-json/events/all | jq ' | [.title, .date_start, .date_end, .city, .institution, .venue, .categories, .tags]'
+						//
+						// $ cat sampleOrder.json | jq '.order | [.id, .email, .phone, .billing_address, .shipping_address, .line_items]'
+
+						$title = $post->post_title;
+						$date_start = str_replace("/", "-", $post_custom_fields['event_start'][0]);
+						$date_end = str_replace("/", "-", $post_custom_fields['event_end'][0]);
+						$city = $post_custom_fields['city'][0];
+						$institution = $post_custom_fields['institution'][0];
+						$venue = $post_custom_fields['venue'][0];
+						$categories = get_the_category();
+						$tags = get_the_tags();
+						$tag_names = array();
+						$category_names = array();
+						$categories_string = "";
+						$categories_string = "";
+
+						if ($categories) {
+							foreach($categories as $category) {
+								$category_names[] = $category->name;
+							}
+							if (isset($category_names)) $categories_string = implode(", ", $category_names);
+						}
+
+						if ($tags) {
+					  	foreach($tags as $tag) {
+					    	$tag_names[] = $tag->name;
+					  	}
+							if (isset($tag_names)) $tags_string = implode(", ", $tag_names);
+						}
+
+						$data['title'] = $title;
+						$data['date_start'] = $date_start;
+						$data['date_end'] = $date_end;
+						$data['city'] = $city;
+						$data['institution'] = $institution;
+						$data['venue'] = $venue;
+						$data['categories'] = $categories_string;
+						$data['tags'] = $tags_string;
+
+						$data_array['events'][] = $data;
+					}
+
+					return $data_array;
+
+				}
+
+			}
+
+			add_action( 'rest_api_init', function() {
+				register_rest_route( 'events', '/all', array(
+					'methods' => 'GET',
+					'callback' => 'events_all',
+				));
+			});
+
+
 ?>
