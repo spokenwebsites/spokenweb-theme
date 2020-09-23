@@ -14,8 +14,6 @@ $(document).ready(function() {
   if ($("body").hasClass('single-events')) $("#menu-item-20").addClass("current_page_item");
 });
 
-
-
 $('audio:not(".wp-audio-shortcode")').mediaelementplayer(/* Options */);
 
 $(window).on('load', function() {
@@ -67,10 +65,29 @@ $(document).ready(function() {
 
 });
 
+
 if (page == "spokenweblog_single") {
+  $('[data-toggle="tooltip"]').tooltip()
+
+
+  new ClipboardJS('.btn', {
+    container: document.getElementById('citationModal')
+  });
+
   $("#menu-main-menu").find(".current_page_parent").removeClass("current_page_parent");
   $("#menu-main-menu").find(".current-post-ancestor").addClass("current_page_parent");
 
+  $('#citationModal').on('show.bs.modal', function(event) {
+
+    button = $(event.relatedTarget); // Button that triggered the modal
+    const citation_mla = button.data('mla');
+    const citation_chi = button.data('chi');
+    const modal = $(this);
+    modal.find('.modal-body .citation-mla').html(citation_mla);
+    modal.find('.modal-body .citation-chi').html(citation_chi);
+
+
+  })
 }
 
 if (page == "spokenweblog" || page=="audio-of-the-week") {
@@ -340,19 +357,46 @@ if (page == "past-events") {
 }
 
 if (page == "episodes") {
-  $(".category-select a").click(function(e) {
+  $(".category-select.sort a").click(function(e) {
     e.preventDefault();
-    $cat = $(this).attr("href").replace("#", "");
-    $(this).parent().parent().find(".category-select a button").removeClass("active");
+    const cat = $(this).attr("href").replace("#", "");
+    $(this).parent().parent().find(".category-select.sort a button").removeClass("active");
     $(this).find("button").addClass("active");
-    if ($cat == "desc") {
+    console.log(cat)
+    if (cat == "desc") {
+      console.log(1)
       $(".episodes .desc").fadeIn();
       $(".episodes .asc").hide();
     }
-    if ($cat == "asc") {
+    if (cat == "asc") {
+      console.log(2)
       $(".episodes .asc").fadeIn();
       $(".episodes .desc").hide();
     }
+  });
+
+  $(".category-select.filter a").click(function(e) {
+    e.preventDefault();
+    const cat = $(this).attr("href").replace("#", "");
+    $(this).parent().parent().find(".category-select.filter a button").removeClass("active");
+    $(this).find("button").addClass("active");
+    console.log(cat)
+
+    if (cat == "all") {
+      $(".episodes [data-type='spokenweb_podcast']").fadeIn();
+      $(".episodes [data-type='shortcuts']").fadeIn();
+    }
+
+    if (cat == "spokenweb-podcast") {
+      $(".episodes [data-type='spokenweb_podcast']").fadeIn();
+      $(".episodes [data-type='shortcuts']").hide();
+    }
+
+    if (cat == "shortcuts") {
+      $(".episodes [data-type='shortcuts']").fadeIn();
+      $(".episodes [data-type='spokenweb_podcast']").hide();
+    }
+
   });
 }
 

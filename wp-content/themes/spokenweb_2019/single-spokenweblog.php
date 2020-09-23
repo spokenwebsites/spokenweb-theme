@@ -16,23 +16,36 @@ $cat_link = get_category_link( $cat_id );
   while (have_posts()) : the_post();
 
   	$post_custom_fields = get_post_custom();
-  	$date_end_orig = $post_custom_fields['date_end'][0];
-  	$event_time = $post_custom_fields['event_time'][0];
 
-  	$date_end=date_create_from_format("Ymd",$date_end_orig);
-  	$date_end_mini=date_format($date_end,"j, Y");
-  	$date_end=date_format($date_end,"M d, Y");
+    $date = get_the_date('j F, Y');
+    $current_date = date('j F, Y');
 
-  	$author = $post_custom_fields['author'][0];
+    $author = $post_custom_fields['author'][0];
+    $author_index = $post_custom_fields['author_index_name'][0];
   	$author_bio = $post_custom_fields['author_bio'][0];
   	$author_image = $post_custom_fields['author_image'][0];
+
+    $interviewee = $post_custom_fields['interviewee'][0];
+    $interviewee_index = $post_custom_fields['interviewee_index_name'][0];
+  	$interviewee_bio = $post_custom_fields['interviewee_bio'][0];
 
     $title = get_the_title();
 
   	$audio = $post_custom_fields['audio'][0];
   	$subtitle = $post_custom_fields['subtitle'][0];
     $audio_url = wp_get_attachment_url($audio);
+    $post_url = "spokenweb.ca/$post->post_name/";
+    $post_url_full = "https://spokenweb.ca/$post->post_name/";
+?>
 
+
+<?php if (has_category('interviews')){
+  $citation_mla = "$interviewee_index. “$title.” Interview by $author. <em>SPOKENWEBLOG</em>, $date, $post_url. Accessed $current_date";
+  $citation_chi = "$interviewee_index, “$title,” interview by $author, <em>SPOKENWEBLOG</em>, $date, $post_url_full.";
+} else {
+  $citation_mla = "$author_index. “$title.” <em>SPOKENWEBLOG</em>, $date, $post_url. Accessed $current_date.";
+  $citation_chi = "$author_index, “$title,” <em>SPOKENWEBLOG</em>, $date, $post_url_full.";
+}
 ?>
 
 <div class="container featured-article mt-3 p-4">
@@ -40,8 +53,6 @@ $cat_link = get_category_link( $cat_id );
   <div class="row d-flex justify-content-between p-2">
     <div class="col-md-6 justify-content-center align-self-center">
       <h2 class="mb-3"><?php the_title();?><?php if(isset($subtitle) && $subtitle!="") echo " – $subtitle";?></h2>
-
-
       <div class="mb-2 d-flex justify-content-end flex-row-reverse">
         <h5 class="mb-1"><?php the_time('F j, Y'); ?></h5>
         <h5 class="mb-1 mr-5"><?php echo $author;?></h5>
@@ -64,6 +75,12 @@ $cat_link = get_category_link( $cat_id );
         <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
 
         <div class="fb-share-button mt-4" data-href="<?php echo $actual_link;?>" data-layout="button" data-size="large" data-mobile-iframe="true"></div>
+
+        <div class="d-inline-block" style="top: -0.5rem; position: relative;">
+          <span class="d-lg-inline d-none ml-3 mr-1">|</span>
+          <button class="btn" data-toggle="modal" data-target="#citationModal" data-mla="<?php echo $citation_mla;?>" data-chi="<?php echo $citation_chi;?>"><span>Cite this article <i style="background:#000; color:#fff; font-size:10px;" class="ml-2 p-2 rounded-circle fas fa-quote-left"></i></span></button>
+        </div>
+
       </div>
     </div>
     <div class="col-md-5 justify-content-center align-self-center mx-auto d-none d-md-block">
@@ -98,6 +115,36 @@ $cat_link = get_category_link( $cat_id );
   </div>
 
 </div>
+
+<div id="citationModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header mt-4 mx-4">
+        <h3 class="modal-title text-uppercase">Choose your citation format</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-4 mb-2 pb-0">
+
+        <h3 class="mt-2">MLA</h3>
+        <p class="citation-mla small px-3 py-4 my-3" style="border:1px solid #ccc; border-radius: 4px;"></p>
+        <button data-clipboard-text="<?php echo $citation_mla;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
+
+        <h3 class="mt-5">Chicago</h3>
+        <p class="citation-chi small px-3 py-4 my-3" style="border:1px solid #ccc; border-radius: 4px;"></p>
+        <button data-clipboard-text="<?php echo $citation_chi;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
+
+      </div>
+
+      <div class="modal-footer mx-4 mb-3" style="border: none;">
+      <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+    </div>
+
+    </div>
+  </div>
+</div>
+
 <?php endwhile;?>
 
 </div>

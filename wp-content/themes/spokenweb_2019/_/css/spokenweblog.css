@@ -53,6 +53,17 @@ color:rgba(32,39,39,0.75);
 font-weight:500;
 }
 
+@media (max-width: 767px) {
+  .modal .modal-body {
+    padding: 15px 15px 40px 15px;
+    margin-top:0px;
+  }
+  .modal .close {
+    color: #000!important;
+    text-shadow: 0 1px 0 #fff!important;
+    opacity: .5;
+  }
+}
 
 .news_bg #content h3 {
 color:#303030;

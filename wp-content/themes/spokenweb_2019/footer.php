@@ -8,7 +8,9 @@
     <div class="clear"></div>
 	</div> <!-- close #content -->
 
-
+  <?php if (is_single() && (has_category("audio-of-the-week") || has_category("spokenweblog"))):?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <?php endif;?>
 
 	<div class="clear"></div>
 	<?php

@@ -305,10 +305,6 @@
 						global $post;
 						$post_custom_fields = get_post_custom( $post->ID );
 
-						// $ curl http://localhost/spokenweb/wp-json/events/all | jq ' | [.title, .date_start, .date_end, .city, .institution, .venue, .categories, .tags]'
-						//
-						// $ cat sampleOrder.json | jq '.order | [.id, .email, .phone, .billing_address, .shipping_address, .line_items]'
-
 						$title = $post->post_title;
 						$date_start = str_replace("/", "-", $post_custom_fields['event_start'][0]);
 						$date_end = str_replace("/", "-", $post_custom_fields['event_end'][0]);
