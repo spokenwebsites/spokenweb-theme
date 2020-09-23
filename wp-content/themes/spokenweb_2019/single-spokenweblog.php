@@ -40,7 +40,7 @@ $cat_link = get_category_link( $cat_id );
 
 
 <?php if (has_category('interviews')){
-  $citation_mla = "$interviewee_index. “$title.” Interview by $author. <em>SPOKENWEBLOG</em>, $date, $post_url. Accessed $current_date";
+  $citation_mla = "$interviewee_index. “$title.” Interview by $author. <em>SPOKENWEBLOG</em>, $date, $post_url. Accessed $current_date.";
   $citation_chi = "$interviewee_index, “$title,” interview by $author, <em>SPOKENWEBLOG</em>, $date, $post_url_full.";
 } else {
   $citation_mla = "$author_index. “$title.” <em>SPOKENWEBLOG</em>, $date, $post_url. Accessed $current_date.";
@@ -128,12 +128,12 @@ $cat_link = get_category_link( $cat_id );
       <div class="modal-body mx-4 mb-2 pb-0">
 
         <h3 class="mt-2">MLA</h3>
-        <textarea class="form-control citation-mla small px-3 my-3" rows="3" onclick="this.focus();this.select()" readonly="readonly"></textarea>
-        <button data-clipboard-text="<?php echo $citation_mla;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
+        <div class="selectable citation-mla small px-3 my-3"></div>
+        <button id="citation-mla-button" data-clipboard-text="<?php echo $citation_mla;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
 
         <h3 class="mt-5">Chicago</h3>
-        <textarea class="form-control citation-chi small px-3 my-3" rows="3" onclick="this.focus();this.select()" readonly="readonly"></textarea>
-        <button data-clipboard-text="<?php echo $citation_chi;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
+        <div class="selectable citation-chi small px-3 my-3"></div>
+        <button id="citation-chi-button" data-clipboard-text="<?php echo $citation_chi;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
 
       </div>
 

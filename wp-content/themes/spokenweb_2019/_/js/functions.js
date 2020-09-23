@@ -86,7 +86,6 @@ if (page == "spokenweblog_single") {
     modal.find('.modal-body .citation-mla').html(citation_mla);
     modal.find('.modal-body .citation-chi').html(citation_chi);
 
-
   })
 }
 

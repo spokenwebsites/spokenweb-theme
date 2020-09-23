@@ -53,6 +53,20 @@ color:rgba(32,39,39,0.75);
 font-weight:500;
 }
 
+
+.selectable{
+  -webkit-touch-callout: all; /* iOS Safari */
+  -webkit-user-select: all; /* Safari */
+  -khtml-user-select: all; /* Konqueror HTML */
+  -moz-user-select: all; /* Firefox */
+  -ms-user-select: all; /* Internet Explorer/Edge */
+  user-select: all; /* Chrome and Opera */
+  background: #e9ecef;
+  padding: .375rem .75rem;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
 @media (max-width: 767px) {
   .modal .modal-body {
     padding: 15px 15px 40px 15px;
