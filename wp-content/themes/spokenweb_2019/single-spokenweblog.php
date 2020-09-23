@@ -128,11 +128,11 @@ $cat_link = get_category_link( $cat_id );
       <div class="modal-body mx-4 mb-2 pb-0">
 
         <h3 class="mt-2">MLA</h3>
-        <p class="citation-mla small px-3 py-4 my-3" style="border:1px solid #ccc; border-radius: 4px;"></p>
+        <textarea class="form-control citation-mla small px-3 my-3" rows="3" disabled></textarea>
         <button data-clipboard-text="<?php echo $citation_mla;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
 
         <h3 class="mt-5">Chicago</h3>
-        <p class="citation-chi small px-3 py-4 my-3" style="border:1px solid #ccc; border-radius: 4px;"></p>
+        <textarea class="form-control citation-chi small px-3 my-3" rows="3" disabled></textarea>
         <button data-clipboard-text="<?php echo $citation_chi;?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
 
       </div>
