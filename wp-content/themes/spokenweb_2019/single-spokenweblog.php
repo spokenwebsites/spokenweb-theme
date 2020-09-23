@@ -125,16 +125,16 @@ $cat_link = get_category_link( $cat_id );
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-4 mb-2 pb-0">
+      <div class="modal-body mx-4 mb-2 pb-0 row">
+        <div class="col-md-10">
+          <h3 class="mt-2">MLA</h3>
+          <div class="selectable citation-mla small px-3 my-3"><?php echo $citation_mla;?></div>
+          <button id="citation-mla-button" data-clipboard-text="<?php echo strip_tags($citation_mla);?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
 
-        <h3 class="mt-2">MLA</h3>
-        <div class="selectable citation-mla small px-3 my-3"><?php echo $citation_mla;?></div>
-        <button id="citation-mla-button" data-clipboard-text="<?php echo strip_tags($citation_mla);?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
-
-        <h3 class="mt-5">Chicago</h3>
-        <div class="selectable citation-chi small px-3 my-3"><?php echo $citation_chi;?></div>
-        <button id="citation-chi-button" data-clipboard-text="<?php echo strip_tags($citation_chi);?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
-
+          <h3 class="mt-5">Chicago</h3>
+          <div class="selectable citation-chi small px-3 my-3"><?php echo $citation_chi;?></div>
+          <button id="citation-chi-button" data-clipboard-text="<?php echo strip_tags($citation_chi);?>" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="right" data-trigger="click" title="Copied!">Copy citation</button>
+        </div>
       </div>
 
       <div class="modal-footer mx-4 mb-3" style="border: none;">
