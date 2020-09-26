@@ -50,7 +50,7 @@ $cat_link = get_category_link( $cat_id );
 
 <div class="container featured-article mt-3 p-4">
 
-  <div class="row d-flex justify-content-between p-2">
+  <div class="row d-flex justify-content-between p-sm-2">
     <div class="col-md-6 justify-content-center align-self-center">
       <h2 class="mb-3"><?php the_title();?><?php if(isset($subtitle) && $subtitle!="") echo " – $subtitle";?></h2>
       <div class="mb-2 d-flex justify-content-end flex-row-reverse">
@@ -74,7 +74,7 @@ $cat_link = get_category_link( $cat_id );
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large">Tweet</a>
         <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
 
-        <div class="fb-share-button mt-4" data-href="<?php echo $actual_link;?>" data-layout="button" data-size="large" data-mobile-iframe="true"></div>
+        <div class="fb-share-button" data-href="<?php echo $actual_link;?>" data-layout="button" data-size="large" data-mobile-iframe="true"></div>
 
         <div class="d-inline-block" style="top: -0.5rem; position: relative;">
           <span class="d-lg-inline d-none ml-3 mr-1">|</span>
