@@ -217,8 +217,10 @@ width: 50%!important;
 @media (max-width:500px ){
 
   #citation-button-container {
+    display: block!important;
     top: 0rem;
   }
+
 html, body {
   font-size:14px;
 }
