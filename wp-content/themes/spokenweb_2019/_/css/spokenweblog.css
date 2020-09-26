@@ -209,9 +209,16 @@ width: 50%!important;
 width: 50%!important;
 }
 
+#citation-button-container {
+  top: -0.5rem; position: relative;
+}
+
 
 @media (max-width:500px ){
 
+  #citation-button-container {
+    top: 0rem;
+  }
 html, body {
   font-size:14px;
 }
