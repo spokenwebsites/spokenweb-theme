@@ -5,6 +5,10 @@ $post_custom_fields = get_post_custom();
 $top_header = $post_custom_fields['top_header'][0];
 $left_column = $post_custom_fields['left_column'][0];
 $right_column = $post_custom_fields['right_column'][0];
+$bottom_section = $post_custom_fields['bottom_section'][0];
+$bottom_section_title = $post_custom_fields['bottom_title'][0];
+$bottom_section_left = $post_custom_fields['bottom_section_left'][0];
+$bottom_section_right = $post_custom_fields['bottom_section_right'][0];
 ?>
 <section class="container episodes-container">
   <div class="row">
@@ -232,4 +236,35 @@ $right_column = $post_custom_fields['right_column'][0];
     </div>
   </div>
 </section>
+
+<?php if (isset($bottom_section) && $bottom_section == true):?>
+<section class="container" style="padding-top: 0px; margin-top: -2rem;">
+  <div class="row pb-5">
+    <div class="col-md-10 offset-md-1 col-sm-12">
+      <?php if (isset($bottom_section_title) && $bottom_section_title!==""):?>
+      <div class="header-container text-center">
+        <h3><?php echo $bottom_section_title;?></h3>
+      </div>
+      <?php endif;?>
+      <div class="row">
+        <div class="col-md-10 offset-md-1 col-sm-12">
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-11 col-sm-12">
+      <div class="row entry-content">
+        <div class="col-md-5 offset-md-1 col-sm-6">
+          <?php echo wpautop($bottom_section_left);?>
+        </div>
+        <div class="col-md-5 offset-md-1 col-sm-6">
+          <?php echo wpautop($bottom_section_right);?>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<?php endif;?>
+
 <?php get_footer(); ?>
