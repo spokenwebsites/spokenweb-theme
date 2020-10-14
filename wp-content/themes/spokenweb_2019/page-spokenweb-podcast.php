@@ -18,7 +18,7 @@ $bottom_section_right = $post_custom_fields['bottom_section_right'][0];
       <h1>About the</h1>
       <div class="accent"><h1>SpokenWeb Podcast</h1></div>
     </div>
-    <div class="col-md-10 offset-md-1 col-sm-12">
+    <div class="col-sm-12 text-center">
       <div class="subscribe-link-container"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>
       <div class="header-container">
         <?php echo wpautop($top_header);?>
