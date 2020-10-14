@@ -13,7 +13,8 @@ $(document).ready(function() {
 
   if ($("body").hasClass('single-events')) $("#menu-item-20").addClass("current_page_item");
   if ($("body").hasClass('single-podcast')) {
-    $("#menu-item-9186").addClass("current_page_item");
+    $('.current_page_parent').removeClass('current_page_parent')
+    $("#menu-item-9186").addClass("current_page_parent");
     if ($("body").hasClass('shortcuts_bg')){
       $("#menu-item-11069").addClass("current_page_item");
 
