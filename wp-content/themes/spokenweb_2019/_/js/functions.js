@@ -12,7 +12,17 @@ $(document).ready(function() {
   });
 
   if ($("body").hasClass('single-events')) $("#menu-item-20").addClass("current_page_item");
+  if ($("body").hasClass('single-podcast')) {
+    $("#menu-item-9186").addClass("current_page_item");
+    if ($("body").hasClass('shortcuts_bg')){
+      $("#menu-item-11069").addClass("current_page_item");
+
+    } else {
+      $("#menu-item-11070").addClass("current_page_item");
+    }
+  }
 });
+
 
 $('audio:not(".wp-audio-shortcode")').mediaelementplayer(/* Options */);
 
