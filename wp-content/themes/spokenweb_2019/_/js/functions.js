@@ -399,6 +399,25 @@ if (page == "episodes") {
   });
 }
 
+if (page == "spokenweb-podcast" || page == "shortcuts") {
+  $(".category-select.sort a").click(function(e) {
+    e.preventDefault();
+    const cat = $(this).attr("href").replace("#", "");
+    $(".category-select.sort a button").removeClass("active");
+    $(this).find("button").addClass("active");
+    if (cat == "desc") {
+      $(".episodes .desc").fadeIn();
+      $(".episodes .asc").hide();
+    }
+    if (cat == "asc") {
+      $(".episodes .asc").fadeIn();
+      $(".episodes .desc").hide();
+    }
+  });
+
+}
+
+
 
 if ($("body").hasClass("single-podcast")) {
   $("#audio-embed-link").click(function(e) {
