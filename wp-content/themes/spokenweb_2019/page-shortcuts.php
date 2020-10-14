@@ -64,7 +64,6 @@ $bottom_section_right = $post_custom_fields['bottom_section_right'][0];
         $args = array(
           'posts_per_page'=>-1,
     			'post_type'=>'podcast',
-          'post_status' => 'publish',
       		'order'=>'DESC',
           'orderby'=>'date',
           'meta_key'=>'type',
