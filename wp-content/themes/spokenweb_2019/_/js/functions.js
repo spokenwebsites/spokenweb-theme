@@ -22,6 +22,16 @@ $(document).ready(function() {
       $("#menu-item-11070").addClass("current_page_item");
     }
   }
+
+  if ($('body').hasClass('category-institutes')) {
+    $("#menu-item-20").addClass("current_page_parent");
+    $("#menu-item-9980").addClass("current_page_item");
+  }
+  if ($('body').hasClass('category-symposia')) {
+    $("#menu-item-20").addClass("current_page_parent");
+    $("#menu-item-9936").addClass("current_page_item");
+  }
+
 });
 
 
