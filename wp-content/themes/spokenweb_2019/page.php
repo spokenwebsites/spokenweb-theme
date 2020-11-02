@@ -1,5 +1,7 @@
 <?php if (is_page('podcast') || get_post_type()=='podcast' || get_post($post->post_parent)->post_name=='podcast'):?>
   <?php get_template_part( 'page', 'podcast' ); ?>
+<?php elseif (is_page('swb-articles')):?>
+  <?php wp_redirect(get_permalink(get_page_by_title('SPOKENWEBLOG'))); ?>
 <?php else:?>
 
   <?php get_header(); ?>
