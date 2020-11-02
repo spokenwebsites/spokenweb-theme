@@ -46,7 +46,7 @@
   <?php if (is_single() && (has_category("audio-of-the-week") || has_category("spokenweblog"))):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css"><?php endif;?>
 
 	<?php if (is_page('about-us') || get_post($post->post_parent)->post_name=='about-us' ) $header_class='about_bg'; ?>
-	<?php if (is_archive() || is_home() || is_singular('post') ) $header_class='news_bg'; ?>
+	<?php if (is_archive() || is_home() || is_singular('post') || (is_page('about-swb')  ) $header_class='news_bg'; ?>
 	<?php if (is_page('research') || get_post($post->post_parent)->post_name=='research') $header_class='research_bg'; ?>
 	<?php if (is_page('podcast') || get_post_type()=='podcast' || get_post($post->post_parent)->post_name=='podcast') $header_class='podcast_bg'; ?>
   <?php if (is_page('shortcuts') || $podcast_type == "ShortCuts") $header_class='shortcuts_bg';?>
