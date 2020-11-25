@@ -43,66 +43,6 @@ $bottom_section_right = $post_custom_fields['bottom_section_right'][0];
 </section>
 <?php endwhile; endif;?>
 
-<section class="container-fluid featured-episode">
-  <div class="row">
-    <div class="col-md-4 offset-md-1 col-sm-6 text-container">
-
-      <?php
-      $args = array(
-        'posts_per_page'=>1,
-  			'post_type'=>'podcast',
-  			'post_status' => 'publish',
-    		'order'=>'ASC',
-    		'orderby'=>'menu_order'
-  		);
-
-    	$featured_podcast_query = new WP_Query( $args );
-      ?>
-
-    	<?php if ($featured_podcast_query->have_posts()) : $i=0; while ($featured_podcast_query->have_posts()) : $featured_podcast_query->the_post(); ?>
-      <?php
-				$post_custom_fields = get_post_custom();
-    		$subtitle = $post_custom_fields['subtitle'][0];
-    		$producer = $post_custom_fields['producer'][0];
-      ?>
-
-			<?php if ( has_post_thumbnail()){
-        $img_lg = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' ); $img_lg_url = $img_lg[0];
-        $img_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' ); $img_thumb = $img_thumb[0];
-        $img_lg_width = $img_lg[1];
-        $img_lg_height = $img_lg[2];
-      } else {
-        $img_lg_url = "";
-        $img_lg_width = "";
-        $img_lg_height = "";
-        $img_thumb = "";
-      } ?>
-
-
-
-      <h3>Featured Episode</h3>
-
-      <h5><?php echo $subtitle;?></h5>
-
-      <h2><?php the_title();?></h2>
-
-      <p><?php the_excerpt();?></p>
-
-      <p><strong>Produced by <?php echo $producer;?></strong></p>
-
-      <?php endwhile; endif;?>
-
-    </div>
-    <div class="col-md-6 offset-md-1 col-sm-6 img-container">
-      <a href="<?php the_permalink();?>">
-        <div class="event-img filter" style="background:url('<?php echo $img_lg_url;?>');"></div>
-        <section class="event-orange"></section>
-        <span class="listen-now"><span class="oi oi-media-play"></span>Listen Now</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <section class="container episodes">
   <div class="row">
 
