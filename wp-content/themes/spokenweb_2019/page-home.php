@@ -78,7 +78,7 @@ $blm_id = $blm->ID;
 			'post_status' => 'publish',
 			'order'=>'DESC',
       'orderby'=>'date',
-      'category_name'=>'audio-of-the-week'
+      'category_name'=>array('audio-of-the-week', 'shortcuts')
 		)
 	);
 
@@ -95,7 +95,7 @@ $blm_id = $blm->ID;
 <section id="audio" class="alt container-fluid" data-audio="<?php echo $audio_url;?>">
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="title">Audio of the Week</h1>
+      <h1 class="title">New Audio from <em>ShortCuts</em></h1>
     </div>
     <div class="col-sm-7">
       <h3 class="subtitle">
