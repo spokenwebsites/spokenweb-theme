@@ -7,6 +7,10 @@
 
   <?php get_template_part( 'archive', 'audio-of-the-week' );?>
 
+<?php elseif ( is_category() && ($slug=="shortcuts")):?>
+
+  <?php get_template_part( 'archive', 'shortcuts' );?>
+
 <?php elseif ( is_category() && ($slug=="spokenweblog")):?>
 
   <?php get_template_part( 'archive', 'spokenweblog' );?>
