@@ -78,7 +78,7 @@ $blm_id = $blm->ID;
 			'post_status' => 'publish',
 			'order'=>'DESC',
       'orderby'=>'date',
-      'category_name'=>array('audio-of-the-week', 'shortcuts')
+      'category_name'=>'shortcuts'
 		)
 	);
 
