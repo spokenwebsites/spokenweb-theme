@@ -235,7 +235,7 @@ p.return-link a:hover span.return-text { text-decoration:underline; }
   .episode button.btn-sw { font-size:15px; }
   .episode .category-select { margin-top:15px; margin-bottom:15px; }
   .shortcuts_bg .episode h4 { font-size:14px; }
-  .shortcuts_bg p { font-size: 16px; line-height:20px; }
+  .shortcuts_bg p, .shortcuts_bg ul li, .shortcuts_bg ol li { font-size: 16px; line-height:20px; }
   .shortcuts_bg .episodes-container .logo-container { left:250px; top:5px; }
   /* .shortcuts_bg .podcast .logo-container { position:absolute; left:194px; top:20px; } */
   .shortcuts_bg .episodes-container .logo-container img { width:90px; }
