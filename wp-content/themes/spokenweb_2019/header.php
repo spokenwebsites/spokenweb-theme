@@ -38,7 +38,7 @@
 
   <?php if(get_post_type()== 'podcast') $podcast_type = get_post_meta($post->ID, $key='type', true);?>
 	<?php if (!is_page('shortcuts') && $podcast_type != "ShortCuts" && (is_page('podcast') || get_post_type()=='podcast' || get_post($post->post_parent)->post_name=='podcast')):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/podcast.css?v=1.2"><?php endif;?>
-  <?php if (is_page('shortcuts') || $podcast_type == "ShortCuts"):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/shortcuts.css?v=1.1"><?php endif;?>
+  <?php if (is_page('shortcuts') || $podcast_type == "ShortCuts"):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/shortcuts.css?v=1.2"><?php endif;?>
   <?php if (is_category() && (get_queried_object()->slug=="institutes" || get_queried_object()->slug=="institutes")):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/institutes.css"><?php endif;?>
   <?php if (is_category() && (get_queried_object()->slug=="symposia" || get_queried_object()->slug=="symposia")):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/symposia.css"><?php endif;?>
   <?php if (is_category() && (get_queried_object()->slug=="audio-of-the-week" || get_queried_object()->slug=="shortcuts" || get_queried_object()->slug=="spokenweblog")):?><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css"><?php endif;?>
