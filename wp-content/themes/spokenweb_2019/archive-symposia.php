@@ -32,6 +32,7 @@
         <div class="symposium-links">
           <h3><a href="#notableEvents" class="year">Notable Events</a></h3>
           <h3><a href="#schedule" class="year">Conference Schedule</a></h3>
+          <h3><a href="#postConferenceProjects" class="year">Post-Conference Projects</a></h3>
           <h3><a href="#participants" class="year">Participants</a></h3>
           <h3><a href="#participantInfo" class="year">Information for Participants</a></h3>
         </div>
@@ -82,12 +83,14 @@
 			$notable_events = $post_custom_fields['notable_events'][0];
       $participants = $post_custom_fields['conf_participants'][0];
 			$schedule = $post_custom_fields['schedule'][0];
+			$post_conference_projects = $post_custom_fields['post-conference_projects'][0];
 			$participant_info_travel = $post_custom_fields['conf_participant_info_travel'][0];
 			$participant_info_activity = $post_custom_fields['conf_participant_info_activity'][0];
 			$participant_info_accommodations = $post_custom_fields['information_for_participants_accomodations'][0];
 
       $participants = wpautop($participants);
       $schedule = wpautop($schedule);
+      $post_conference_projects = wpautop($post_conference_projects);
       $participant_info_travel = wpautop($participant_info_travel);
       $participant_info_activity = wpautop($participant_info_activity);
       $participant_info_accommodations = wpautop($participant_info_accommodations);
@@ -157,6 +160,11 @@
             <?php if(isset($schedule) && $schedule!=""):?>
               <h3 id="schedule<?php echo $i;?>" class="conf-schedule title">Conference Schedule</h3>
   						<div class="conf-schedule text"><?php echo $schedule;?></div>
+            <?php endif;?>
+
+            <?php if(isset($post_conference_projects) && $post_conference_projects!=""):?>
+              <h3 id="postConferenceProjects<?php echo $i;?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
+  						<div class="conf-post-conference-projects text"><?php echo $post_conference_projects;?></div>
             <?php endif;?>
 
             <?php if(isset($participants) && $participants!=""):?>

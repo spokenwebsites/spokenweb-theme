@@ -90,7 +90,6 @@ $(document).ready(function() {
 if (page == "spokenweblog_single") {
   $('[data-toggle="tooltip"]').tooltip()
 
-
   new ClipboardJS('.btn', {
     container: document.getElementById('citationModal')
   });
@@ -235,6 +234,7 @@ if (page == "symposia" || page == "institutes") {
 
     $notableEvents = $symposium.find(".conf-notable-events");
     $schedule = $symposium.find(".conf-schedule");
+    $postConferenceProjects = $symposium.find(".conf-post-conference-projects");
     $participants = $symposium.find(".conf-participants");
 
     $travel = $symposium.find(".conf-participant-info-travel");
@@ -247,6 +247,10 @@ if (page == "symposia" || page == "institutes") {
 
     if ($schedule && $schedule.length > 1) {
       $symposiumLinks.append('<h3><a href="#schedule' + i + '">Conference Schedule</a></h3>');
+    }
+
+    if ($postConferenceProjects && $postConferenceProjects.length > 1) {
+      $symposiumLinks.append('<h3><a href="#postConferenceProjects' + i + '">Post-Conference Projects</a></h3>');
     }
 
     if ($participants && $participants.length > 1) {
