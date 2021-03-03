@@ -57,6 +57,7 @@
 							<?php the_content(); ?>
 
 							<?php if (is_page('get-involved')) : ?>
+								<hr>
 								<?php get_template_part('template', 'current-opportunities'); ?>
 							<?php endif; ?>
 
