@@ -1,8 +1,4 @@
 	<div class="row inner-content">
-		<aside class="col-sm-3">
-			<h4 class="active"><a href="<?php echo get_permalink(get_page_by_path('opportunities')); ?>#current" class="scroll"><span>Current</span></a></h4>
-			<h4><a href="<?php echo get_permalink(get_page_by_path('opportunities')); ?>#past" class="scroll"><span>Past</span></a></h4>
-		</aside>
 		<div class="col-sm-9">
 			<h5 id="current">Current Opportunities</h5>
 			<?php
@@ -58,4 +54,3 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	
