@@ -50,9 +50,11 @@
         <h2><a href="<?php echo get_permalink(get_page_by_path('about-us/spokenweb'));?>">About Us</a></h2>
         <h2><a href="<?php echo get_permalink(get_page_by_path('contact-us'));?>">Contact Us</a></h2>
         <h2><a href="<?php echo get_permalink(get_page_by_title('Get Involved'));?>">Get Involved</a></h2>
+        <h2><a href="<?php echo get_permalink(get_page_by_title('Downloads'));?>">Downloads</a></h2>
       </div>
     	<div class="col-sm-2">
-  			<h2><a href="<?php echo get_permalink(get_page_by_title('Downloads'));?>">Downloads</a></h2>
+        <h2><a href="<?php echo get_permalink(get_page_by_title('News'));?>">News</a></h2>
+        <h2><a href="<?php echo get_permalink(get_page_by_title('Opportunities'));?>">Opportunities</a></h2>
         <h2><a href="<?php echo get_permalink(get_page_by_title('Submit an Event'));?>">Submit an Event</a></h2>
         <h2><?php wp_loginout(); ?></h2>
       </div>
