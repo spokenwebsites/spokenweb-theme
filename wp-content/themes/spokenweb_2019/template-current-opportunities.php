@@ -1,5 +1,5 @@
-	<div class="row inner-content">
-		<div class="col-sm-9">
+	<div class="row">
+		<div class="col-sm-12">
 			<h5 id="current">Current Opportunities</h5>
 			<?php
 			global $post;
