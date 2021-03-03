@@ -19,6 +19,7 @@
 			?>
 			<?php if (empty($posts) || $posts == "") : ?>
 				<p>There are no current opportunities at the moment.</p>
+				<p>View past opportunities <a href="<?php echo get_permalink(get_page_by_title('Opportunities')); ?>">here</a>.</p>
 			<?php else : ?>
 				<?php foreach ($posts as $post) : setup_postdata($post); ?>
 					<?php
