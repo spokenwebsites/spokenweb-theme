@@ -15,14 +15,16 @@
 						<section class="container-fluid w-100" style="margin-top: 80px; background: #f4f4f4; padding: 40px 60px 1.5rem;">
 							<div class="row">
 								<div class="col-sm-3">
-									<h5 class="title"><?php the_title(); ?></h5>
+									<h5 class="title"><a href="<?php echo get_permalink(get_page_by_path('spokenweblog')); ?>"><?php the_title(); ?></a></h5>
 								</div>
 							</div>
 						</section>
 				<?php endwhile;
 				endif; ?>
 
-				<p class="w-md-75 w-lg-50 py-5 px-5 mx-auto h3" style="line-height: 120%;"><strong>SPOKENWEBLOG (SWB)</strong> is a curated online space for the publication of articles in a variety of forms and formats that document and contribute to the research, development and creation activities of the SpokenWeb research network.</p>
+				<div>
+					<p class="w-md-75 w-lg-50 py-5 px-5 mx-auto h3" style="line-height: 120%;"><strong>SPOKENWEBLOG (SWB)</strong> is a curated online space for the publication of articles in a variety of forms and formats that document and contribute to the research, development and creation activities of the SpokenWeb research network.</p>
+			</div>
 			</div>
 
 			<section class="container-fluid mt-4">
