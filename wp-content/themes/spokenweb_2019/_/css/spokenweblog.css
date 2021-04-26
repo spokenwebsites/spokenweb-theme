@@ -15,6 +15,12 @@
   z-index: -1;
 }
 
+@media screen and (max-width: 767px) {
+  .news_bg .bg {
+    background-attachment: scroll;
+  }
+}
+
 .news_bg .btn-sw {
   font-size: 1.2rem;
   font-weight: 500;
