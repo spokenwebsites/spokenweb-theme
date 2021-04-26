@@ -4,12 +4,13 @@ $cat_id = $cat->term_id;
 $slug = $cat->slug;
 ?>
 
-<div class="content-header d-flex pt-5">
-  <div class="mx-auto text-center">
+<div class="content-header d-flex pt-5 bg d-flex align-items-center">
+  <div class="mx-auto text-center" style="margin-top: 80px;">
     <em>
       <h1>The</h1>
     </em>
     <h1>SPOKENWEBLOG</h1>
+    <a href="<?php echo get_permalink(get_page_by_path('spokenweblog/about-swb')); ?>"><button class="btn btn-sw mt-4">About SWB →</button></a>
   </div>
 </div>
 
@@ -140,7 +141,7 @@ $slug = $cat->slug;
       ?>
 
         <div class="article col-md-6 p-2" data-themes="<?php echo $themes; ?>">
-          <div class="h-100 d-flex flex-column align-items-end" style="border:1px solid #e4e4e4;">
+          <div class="h-100 d-flex flex-column align-items-end" style="border:1px solid #707070;">
             <div class="d-flex pt-4">
               <div class="w-50 pl-4 pr-3 justify-content-center align-self-center">
                 <?php if (has_post_thumbnail()) : ?>
@@ -167,7 +168,7 @@ $slug = $cat->slug;
               <?php endif; ?>
               <p class="small mt-4"><?php echo get_the_excerpt(); ?></p>
             </div>
-            <div class="d-flex w-100 justify-content-between mt-auto meta" style="border-top:1px solid #e4e4e4;">
+            <div class="d-flex w-100 justify-content-between mt-auto meta" style="border-top:1px solid #707070;">
               <p class="smaller p-3"><?php if (has_category() != 0) : ?><?php the_category(', '); ?><?php endif; ?><?php if (has_tag() != 0) : ?><?php if (has_category() != 0) : ?> | <?php endif; ?><?php the_tags('', ', '); ?><?php endif; ?></p>
             </div>
           </div>
@@ -213,7 +214,7 @@ $slug = $cat->slug;
       ?>
 
         <div class="article col-md-6 p-2" data-themes="<?php echo $themes; ?>">
-          <div class="h-100 position-relative" style="border:1px solid #e4e4e4;">
+          <div class="h-100 position-relative" style="border:1px solid #707070;">
             <div class="d-flex pt-4">
               <div class="w-50 pl-4 pr-3 justify-content-center align-self-center">
                 <?php if (has_post_thumbnail()) : ?>
@@ -242,7 +243,7 @@ $slug = $cat->slug;
                 <p class="small mt-4"><?php echo get_the_excerpt(); ?></p>
               </div>
             </div>
-            <div class="position-absolute mt-5" style="bottom:0px; border-top:1px solid #e4e4e4; width:100%">
+            <div class="position-absolute mt-5" style="bottom:0px; border-top:1px solid #707070; width:100%">
               <div class="meta w-100 align-self-end">
                 <p class="smaller p-3"><?php if (has_category() != 0) : ?><?php the_category(', '); ?><?php endif; ?><?php if (has_tag() != 0) : ?><?php if (has_category() != 0) : ?> | <?php endif; ?><?php the_tags('', ', '); ?><?php endif; ?></p>
               </div>
