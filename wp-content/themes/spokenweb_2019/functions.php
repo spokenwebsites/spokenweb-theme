@@ -356,6 +356,3 @@
 					'callback' => 'events_all',
 				));
 			});
-
-
-?>

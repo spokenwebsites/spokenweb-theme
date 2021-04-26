@@ -1,5 +1,5 @@
 <?php get_header(); ?>
 
-	<?php _e('<h2>Error 404 - Page Not Found</h2>','html5reset'); ?>
+	<?php _e('<h2>Error 404 - Page Not Found</h2>', 'html5reset'); ?>
 
 <?php get_footer(); ?>
