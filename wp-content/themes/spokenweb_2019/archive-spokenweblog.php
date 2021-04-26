@@ -57,7 +57,9 @@ $slug = $cat->slug;
             <?php if (has_post_thumbnail()) : ?>
               <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
               $img_lg = $img_lg[0]; ?>
-              <img src="<?php echo $img_lg; ?>" width="100%">
+              <a href="<?php the_permalink(); ?>">
+                <img src="<?php echo $img_lg; ?>" width="100%">
+            </a>
             <?php endif; ?>
           </div>
           <p>
