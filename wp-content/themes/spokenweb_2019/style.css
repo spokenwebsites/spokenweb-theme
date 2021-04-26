@@ -88,6 +88,7 @@ h3.subtitle {
   height: 80vw;
   background-repeat: no-repeat;
   position: fixed;
+  height: auto;
   right: -35%;
   top: 100px;
   background-size: cover;
