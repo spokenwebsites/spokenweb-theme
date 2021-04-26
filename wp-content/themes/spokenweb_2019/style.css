@@ -3091,12 +3091,6 @@ nav.navbar {
   z-index: -1;
 }
 
-@media screen and (max-width: 767px) {
-  .swb-about .bg {
-    background-attachment: scroll;
-  }
-}
-
 .swb-about .entry blockquote {
   padding: 1rem 0px 1rem 0px;
 }
@@ -3155,6 +3149,16 @@ nav.navbar {
 .swb-about .editorial-board li strong {
   font-weight: 500;
 }
+
+@media screen and (max-width: 767px) {
+  .swb-about .bg {
+    background-attachment: scroll;
+  }
+  .swb-about ul {
+    padding: 0px;
+  }  
+}
+
 
 /*
 .dropdown-menu {
