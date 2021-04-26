@@ -7,13 +7,19 @@
 .news_bg .bg {
   background: url('../img/swb-bg-with-text.jpg');
   background-attachment: fixed;
-  height: auto;
   background-position: center;
   background-size: cover;
   margin-top: -80px;
   height: 100vh;
   width: 100%;
 }
+
+@media screen and (max-width: 500px) {
+  .news_bg .bg {
+    background-size: 100%;
+  }
+}
+
 
 .news_bg .btn-sw {
   font-size: 1.2rem;
