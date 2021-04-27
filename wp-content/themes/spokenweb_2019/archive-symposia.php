@@ -79,12 +79,15 @@
           $permalink = get_permalink();
           $post_name = $post->post_name;
 
+          $description = $post_custom_fields['description'][0];
+
           $title = get_the_title();
           $subtitle = $post_custom_fields['subtitle'][0];
 
           $notable_events = $post_custom_fields['notable_events'][0];
           $participants = $post_custom_fields['conf_participants'][0];
           $schedule = $post_custom_fields['schedule'][0];
+          $schedule_private = $post_custom_fields['schedule_private'][0];
           $post_conference_projects = $post_custom_fields['post-conference_projects'][0];
           $participant_info_travel = $post_custom_fields['conf_participant_info_travel'][0];
           $participant_info_activity = $post_custom_fields['conf_participant_info_activity'][0];
@@ -92,6 +95,7 @@
 
           $participants = wpautop($participants);
           $schedule = wpautop($schedule);
+          $schedule_private = wpautop($schedule_private);
           $post_conference_projects = wpautop($post_conference_projects);
           $participant_info_travel = wpautop($participant_info_travel);
           $participant_info_activity = wpautop($participant_info_activity);
@@ -134,7 +138,12 @@
           if (isset($institution) && $institution != "") $event_meta[] = $institution;
           if (isset($venue) && $venue != "") $event_meta[] = $venue;
           ?>
+
           <div id="<?php echo $post_name; ?>" class="row symposium <?php echo $cat_list; ?>" data-i="<?php echo $i; ?>" data-institution="<?php echo $institution; ?>" data-location="<?php echo $city; ?>" data-eventdate="<?php echo $event_date; ?>" data-startyear="<?php echo $start_year; ?>" data-startmonth="<?php echo $start_month; ?>" data-startday="<?php echo $start_day; ?>" data-endyear="<?php echo $end_year; ?>" data-endmonth="<?php echo $end_month; ?>" data-endday="<?php echo $end_day; ?>" data-content="<?php echo $content; ?>" data-permalink="<?php echo $permalink; ?>" data-img="<?php echo $img_lg_url; ?>" data-imgwidth="<?php echo $img_lg_width; ?>" data-imgheight="<?php echo $img_lg_height; ?>" data-title="<?php echo $title; ?>" data-city="<?php echo $city; ?>" data-institution="<?php echo $institution; ?>" data-venue="<?php echo $venue; ?>" data-time="<?php echo $time; ?>" data-eventstart="<?php echo $event_start; ?>" data-eventend="<?php echo $event_end; ?>" data-type="upcoming" data-cats='<?php echo $cats; ?>' data-tags='<?php echo $tags; ?>' data-eventtype="<?php echo $event_type; ?>">
+            <?php
+            if (post_password_required()) {
+              echo get_the_password_form();
+            } ?>
             <?php if ($alert_message == true) : ?>
               <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading"><?php echo $alert_title; ?></h4>
@@ -154,7 +163,7 @@
               </span>
             </div>
 
-            <?php the_content(); ?>
+            <?php if (isset($description) && $description != "") echo wpautop($description); ?>
 
             <div class="event-conference">
               <?php if (isset($notable_events) && $notable_events != "") : ?>
@@ -162,14 +171,22 @@
                 <div class="conf-notable-events text"><?php echo $notable_events; ?></div>
               <?php endif; ?>
 
-              <?php if (isset($schedule) && $schedule != "") : ?>
-                <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
-                <div class="conf-schedule text"><?php echo $schedule; ?></div>
+              <?php if (!post_password_required()) : ?>
+                <?php if (isset($schedule_private) && $schedule_private != "") : ?>
+                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
+                  <div class="conf-schedule text"><?php echo $schedule_private; ?></div>
+                  <?php endif; ?>
+                <?php else:?>
+                <?php if (isset($schedule) && $schedule != "") : ?>
+                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
+                  <div class="conf-schedule text"><?php echo $schedule; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
-
               <?php if (isset($post_conference_projects) && $post_conference_projects != "") : ?>
-                <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
-                <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
+                <?php if (!post_password_required()) : ?>
+                  <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
+                  <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
 
               <?php if (isset($participants) && $participants != "") : ?>
