@@ -171,22 +171,21 @@
                 <div class="conf-notable-events text"><?php echo $notable_events; ?></div>
               <?php endif; ?>
 
-              <?php if (!post_password_required()) : ?>
-                <?php if (isset($schedule_private) && $schedule_private != "") : ?>
-                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
-                  <div class="conf-schedule text"><?php echo $schedule_private; ?></div>
-                  <?php endif; ?>
-                <?php else:?>
+              <?php if (empty($post->post_password) || post_password_required()) : ?>
                 <?php if (isset($schedule) && $schedule != "") : ?>
                   <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
                   <div class="conf-schedule text"><?php echo $schedule; ?></div>
                 <?php endif; ?>
-              <?php endif; ?>
-              <?php if (isset($post_conference_projects) && $post_conference_projects != "") : ?>
-                <?php if (!post_password_required()) : ?>
-                  <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
-                  <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
+              <?php else: ?>
+                <?php if (isset($schedule_private) && $schedule_private != "") : ?>
+                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
+                  <div class="conf-schedule text"><?php echo $schedule_private; ?></div>
                 <?php endif; ?>
+              <?php endif; ?>
+
+              <?php if (isset($post_conference_projects) && $post_conference_projects != "") : ?>
+                <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
+                <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
               <?php endif; ?>
 
               <?php if (isset($participants) && $participants != "") : ?>
