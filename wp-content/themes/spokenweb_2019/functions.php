@@ -395,9 +395,9 @@ function remove_protected_text()
 	return '%s';
 }
 
-add_action('init', function () {
-	remove_post_type_support('events', 'editor');
-}, 99);
+// add_action('init', function () {
+// 	remove_post_type_support('events', 'editor');
+// }, 99);
 
 function get_the_symposia_password_form( $output ) {
 	// If is in the symposia category, replace the text.
