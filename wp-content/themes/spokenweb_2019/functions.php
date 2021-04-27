@@ -398,3 +398,17 @@ function remove_protected_text()
 add_action('init', function () {
 	remove_post_type_support('events', 'editor');
 }, 99);
+
+function get_the_symposia_password_form( $output ) {
+	// If is in the symposia category, replace the text.
+	if ( in_category( 'symposia' ) ) {
+			return str_replace(
+					'This content is password protected. To view it please enter your password below:',
+					'To access private Zoom links and videos downloads, please enter password below:',
+					$output
+			);
+	}
+
+	return $output;
+}
+add_filter( 'the_password_form', 'get_the_symposia_password_form' );
