@@ -81,6 +81,8 @@
           $title = get_the_title();
           $subtitle = $post_custom_fields['subtitle'][0];
 
+          $description = $post_custom_fields['description'][0];
+
           $notable_events = $post_custom_fields['notable_events'][0];
           $participants = $post_custom_fields['conf_participants'][0];
           $schedule = $post_custom_fields['schedule'][0];
@@ -151,7 +153,7 @@
               </span>
             </div>
 
-            <?php the_content(); ?>
+            <?php if (isset($description) && $description != "") echo wpautop($description); ?>
 
             <div class="event-conference">
               <?php if (isset($notable_events) && $notable_events != "") : ?>
