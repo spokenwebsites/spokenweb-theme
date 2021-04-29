@@ -89,6 +89,7 @@
           $schedule = $post_custom_fields['schedule'][0];
           $schedule_private = $post_custom_fields['schedule_private'][0];
           $post_conference_projects = $post_custom_fields['post-conference_projects'][0];
+          $post_conference_projects_private = $post_custom_fields['post-conference_projects_private'][0];
           $participant_info_travel = $post_custom_fields['conf_participant_info_travel'][0];
           $participant_info_activity = $post_custom_fields['conf_participant_info_activity'][0];
           $participant_info_accommodations = $post_custom_fields['information_for_participants_accomodations'][0];
@@ -176,16 +177,23 @@
                   <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
                   <div class="conf-schedule text"><?php echo $schedule; ?></div>
                 <?php endif; ?>
-              <?php else: ?>
+              <?php else : ?>
                 <?php if (isset($schedule_private) && $schedule_private != "") : ?>
                   <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
                   <div class="conf-schedule text"><?php echo $schedule_private; ?></div>
                 <?php endif; ?>
               <?php endif; ?>
 
-              <?php if (isset($post_conference_projects) && $post_conference_projects != "") : ?>
-                <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
-                <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
+              <?php if (empty($post->post_password) || post_password_required()) : ?>
+                <?php if (isset($post_conference_projects) && $post_conference_projects != "") : ?>
+                  <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
+                  <div class="conf-post-conference-projects text"><?php echo $post_conference_projects; ?></div>
+                <?php endif; ?>
+              <?php else : ?>
+                <?php if (isset($post_conference_projects_private) && $post_conference_projects_private != "") : ?>
+                  <h3 id="postConferenceProjects<?php echo $i; ?>" class="conf-post-conference-projects title">Post-Conference Projects</h3>
+                  <div class="conf-post-conference-projects text"><?php echo $post_conference_projects_private; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
 
               <?php if (isset($participants) && $participants != "") : ?>
