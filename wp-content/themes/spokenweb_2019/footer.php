@@ -60,7 +60,17 @@
             <h2><a href="<?php echo get_permalink(get_page_by_title('News')); ?>">News</a></h2>
             <h2><a href="<?php echo get_permalink(get_page_by_title('Opportunities')); ?>">Opportunities</a></h2>
             <h2><a href="<?php echo get_permalink(get_page_by_title('Submit an Event')); ?>">Submit an Event</a></h2>
-            <h2><?php wp_loginout(); ?></h2>
+            <h2>
+              <a href="<?php echo admin_url();?>">
+                <?php 
+                  if (is_user_logged_in()) {
+                    echo "Admin";
+                  } else {
+                    echo "Log in";
+                  }
+                ?>
+              </a>
+            </h2>
           </div>
 
           <div class="col-sm-3">
