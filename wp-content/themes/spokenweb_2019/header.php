@@ -48,10 +48,10 @@
   <?php if (is_category() && (get_queried_object()->slug == "symposia" || get_queried_object()->slug == "symposia")) : ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/symposia.css"><?php endif; ?>
   <?php if (is_category() && (get_queried_object()->slug == "audio-of-the-week" || get_queried_object()->slug == "shortcuts" || get_queried_object()->slug == "spokenweblog")) : ?>
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css"><?php endif; ?>
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css?v=1.1"><?php endif; ?>
 
   <?php if (is_single() && (has_category("audio-of-the-week") || has_category("shortcuts") || has_category("spokenweblog"))) : ?>
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css"><?php endif; ?>
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_/css/spokenweblog.css?v=1.1"><?php endif; ?>
 
   <?php if (is_page('about-us') || get_post($post->post_parent)->post_name == 'about-us') $header_class = 'about_bg'; ?>
   <?php if (is_archive() || is_home() || is_singular('post') || is_page('about-swb')) $header_class = 'news_bg'; ?>
