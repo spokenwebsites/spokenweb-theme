@@ -404,7 +404,7 @@ function get_the_symposia_password_form( $output ) {
 	if ( in_category( 'symposia' ) ) {
 			return str_replace(
 					'This content is password protected. To view it please enter your password below:',
-					'To access private Zoom links and videos downloads, please enter password below:',
+					'Symposium registrants and participants please sign in here for access to private Zoom links and videos:',
 					$output
 			);
 	}
