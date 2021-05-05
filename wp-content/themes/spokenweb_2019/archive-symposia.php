@@ -98,7 +98,7 @@
           $schedule = wpautop($schedule);
           $schedule_private = wpautop($schedule_private);
           $post_conference_projects = wpautop($post_conference_projects);
-          $post_conference_projects_private = wpautop($$post_conference_projects_private);
+          $post_conference_projects_private = wpautop($post_conference_projects_private);
           $participant_info_travel = wpautop($participant_info_travel);
           $participant_info_activity = wpautop($participant_info_activity);
           $participant_info_accommodations = wpautop($participant_info_accommodations);
