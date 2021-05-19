@@ -92,6 +92,8 @@
                 $event_start = date_create_from_format("Y/m/d", $event_start_orig);
                 $event_end = date_create_from_format("Y/m/d", $event_end_orig);
 
+                $description = $post_custom_fields['description'][0];
+
                 $start_month = date_format($event_start, "F");
                 $start_day = date_format($event_start, "j");
                 $start_year = date_format($event_start, "Y");
@@ -128,14 +130,13 @@
 
                   <p><?php echo implode(" - ", $event_meta); ?></p>
                 </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="entry">
-                      <?php the_excerpt(); ?>
-                    </div>
-                    <a class="read-more" href="<?php echo $permalink; ?>"><button class="btn btn-sw white">READ MORE &nbsp; <span class="oi oi-arrow-right"></span></button></a>
-                  </div>
+                <div class="entry">
+                  <?php if (get_the_excerpt() == "There is no excerpt because this is a protected post.") : ?>
+                    <p><?php echo generate_excerpt($description, 100); ?></p>
+                  <?php else : the_excerpt(); ?>
+                  <?php endif; ?>
                 </div>
+                <a class="read-more" href="<?php echo $permalink; ?>"><button class="btn btn-sw white">READ MORE &nbsp; <span class="oi oi-arrow-right"></span></button></a>
               </div>
 
           </section>
