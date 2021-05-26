@@ -399,28 +399,124 @@ function remove_protected_text()
 // 	remove_post_type_support('events', 'editor');
 // }, 99);
 
-function get_the_symposia_password_form( $output ) {
+function get_the_symposia_password_form($output)
+{
 	// If is in the symposia category, replace the text.
-	if ( in_category( 'symposia' ) ) {
-			return str_replace(
-					'This content is password protected. To view it please enter your password below:',
-					'Symposium registrants and participants please sign in here for access to private Zoom links and videos:',
-					$output
-			);
+	if (in_category('symposia')) {
+		return str_replace(
+			'This content is password protected. To view it please enter your password below:',
+			'Symposium registrants and participants please sign in here for access to private Zoom links and videos:',
+			$output
+		);
 	}
 
 	return $output;
 }
-add_filter( 'the_password_form', 'get_the_symposia_password_form' );
+add_filter('the_password_form', 'get_the_symposia_password_form');
 
-function generate_excerpt( $content, $length = 40, $more = '...' ) {
-	$excerpt = strip_tags( trim( $content ) );
-	$words = str_word_count( $excerpt, 2 );
-	if ( count( $words ) > $length ) {
-		$words = array_slice( $words, 0, $length, true );
-		end( $words );
-		$position = key( $words ) + strlen( current( $words ) );
-		$excerpt = substr( $excerpt, 0, $position ) . $more;
+function generate_excerpt($content, $length = 40, $more = '...')
+{
+	$excerpt = strip_tags(trim($content));
+	$words = str_word_count($excerpt, 2);
+	if (count($words) > $length) {
+		$words = array_slice($words, 0, $length, true);
+		end($words);
+		$position = key($words) + strlen(current($words));
+		$excerpt = substr($excerpt, 0, $position) . $more;
 	}
 	return $excerpt;
 }
+
+
+function alt_gallery($output, $attr)
+{
+	global $post;
+
+	static $instance = 0;
+	$instance++;
+
+	if (isset($attr['orderby'])) {
+		$attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+		if (!$attr['orderby'])
+			unset($attr['orderby']);
+	}
+
+	extract(shortcode_atts(array(
+		'order'      => 'ASC',
+		'orderby'    => 'menu_order ID',
+		'id'         => $post->ID,
+		'itemtag'    => 'div',
+		'icontag'    => 'div',
+		'captiontag' => 'dd',
+		'columns'    => 3,
+		'size'       => 'thumbnail',
+		'include'    => '',
+		'exclude'    => ''
+	), $attr));
+
+	$id = intval($id);
+	if ('RAND' == $order)
+		$orderby = 'none';
+
+	if (!empty($include)) {
+		$include = preg_replace('/[^0-9,]+/', '', $include);
+		$_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+
+		$attachments = array();
+		foreach ($_attachments as $key => $val) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif (!empty($exclude)) {
+		$exclude = preg_replace('/[^0-9,]+/', '', $exclude);
+		$attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+	} else {
+		$attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+	}
+
+	if (empty($attachments))
+		return '';
+
+	if (is_feed()) {
+		$output = "\n";
+		foreach ($attachments as $att_id => $attachment)
+			$output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+		return $output;
+	}
+
+	$itemtag = tag_escape($itemtag);
+	$captiontag = tag_escape($captiontag);
+	$columns = intval($columns);
+	$itemwidth = $columns > 0 ? floor(100 / $columns) : 100;
+	$float = is_rtl() ? 'right' : 'left';
+	$width = "100%";
+	$selector = "gallery-{$instance}";
+
+	$gallery_style = $gallery_div = '';
+	if (apply_filters('use_default_gallery_style', true))
+
+		$size_class = sanitize_html_class($size);
+	$gallery_div = "<div id='$selector' class='my-5 row'>";
+	$output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
+
+	$i = 0;
+	foreach ($attachments as $id => $attachment) {
+
+		$thumb = wp_get_attachment_image_src($id, $size);
+		$img_full = wp_get_attachment_image_src($id, 'full');
+		$caption = wp_get_attachment_caption($id);
+
+		$output .= "<{$itemtag} class='col-lg-4 col-6 gallery-item mb-4'>";
+		$output .= "
+			<a href={$img_full[0]} data-caption={$caption}><{$icontag} class=''>
+						<img src={$thumb[0]} width={$width} />
+					</{$icontag}></a>";
+		$output .= "</{$itemtag}>";
+		if ($columns > 0 && ++$i % $columns == 0)
+			$output .= '<br style="clear: both" />';
+	}
+
+
+	$output .= "</div>\n";
+	return $output;
+}
+add_filter("post_gallery", "alt_gallery", 10, 2);
