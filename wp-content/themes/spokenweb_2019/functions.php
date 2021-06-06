@@ -507,8 +507,8 @@ function alt_gallery($output, $attr)
 
 		$output .= "<{$itemtag} class='col-lg-4 col-6 gallery-item mb-4'>";
 		$output .= "
-			<a href={$img_full[0]} data-caption={$caption}><{$icontag} class=''>
-						<img src={$thumb[0]} width={$width} />
+			<a href='{$img_full[0]}' data-caption='{$caption}'><{$icontag} class=''>
+						<img src='{$thumb[0]}' width='{$width}' />
 					</{$icontag}></a>";
 		$output .= "</{$itemtag}>";
 		if ($columns > 0 && ++$i % $columns == 0)
