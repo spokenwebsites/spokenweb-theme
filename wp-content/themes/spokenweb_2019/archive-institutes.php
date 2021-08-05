@@ -134,6 +134,10 @@
           if (isset($venue) && $venue != "") $event_meta[] = $venue;
           ?>
           <div id="<?php echo $post_name; ?>" class="row symposium <?php echo $cat_list; ?>" data-i="<?php echo $i; ?>" data-institution="<?php echo $institution; ?>" data-location="<?php echo $city; ?>" data-eventdate="<?php echo $event_date; ?>" data-startyear="<?php echo $start_year; ?>" data-startmonth="<?php echo $start_month; ?>" data-startday="<?php echo $start_day; ?>" data-endyear="<?php echo $end_year; ?>" data-endmonth="<?php echo $end_month; ?>" data-endday="<?php echo $end_day; ?>" data-content="<?php echo $content; ?>" data-permalink="<?php echo $permalink; ?>" data-img="<?php echo $img_lg_url; ?>" data-imgwidth="<?php echo $img_lg_width; ?>" data-imgheight="<?php echo $img_lg_height; ?>" data-title="<?php echo $title; ?>" data-city="<?php echo $city; ?>" data-institution="<?php echo $institution; ?>" data-venue="<?php echo $venue; ?>" data-time="<?php echo $time; ?>" data-eventstart="<?php echo $event_start; ?>" data-eventend="<?php echo $event_end; ?>" data-type="upcoming" data-cats='<?php echo $cats; ?>' data-tags='<?php echo $tags; ?>' data-eventtype="<?php echo $event_type; ?>">
+          <?php
+            if (post_password_required()) {
+              echo get_the_password_form();
+            } ?>
             <?php if ($alert_message == true) : ?>
               <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading"><?php echo $alert_title; ?></h4>
@@ -161,11 +165,18 @@
                 <div class="conf-notable-events text"><?php echo $notable_events; ?></div>
               <?php endif; ?>
 
-              <?php if (isset($schedule) && $schedule != "") : ?>
-                <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
-                <div class="conf-schedule text"><?php echo $schedule; ?></div>
+              <?php if (empty($post->post_password) || post_password_required()) : ?>
+                <?php if (isset($schedule) && $schedule != "") : ?>
+                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
+                  <div class="conf-schedule text"><?php echo $schedule; ?></div>
+                <?php endif; ?>
+              <?php else : ?>
+                <?php if (isset($schedule_private) && $schedule_private != "") : ?>
+                  <h3 id="schedule<?php echo $i; ?>" class="conf-schedule title">Conference Schedule</h3>
+                  <div class="conf-schedule text"><?php echo $schedule_private; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
-
+              
               <?php if (isset($participants) && $participants != "") : ?>
                 <h3 id="participants<?php echo $i; ?>" class="conf-participants title">Participants</h3>
                 <div class="conf-participants text"><?php echo $participants; ?></div>
