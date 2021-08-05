@@ -86,12 +86,14 @@
           $notable_events = $post_custom_fields['notable_events'][0];
           $participants = $post_custom_fields['conf_participants'][0];
           $schedule = $post_custom_fields['schedule'][0];
+          $schedule_private = $post_custom_fields['schedule_private'][0];
           $participant_info_travel = $post_custom_fields['conf_participant_info_travel'][0];
           $participant_info_activity = $post_custom_fields['conf_participant_info_activity'][0];
           $participant_info_accommodations = $post_custom_fields['information_for_participants_accomodations'][0];
 
           $participants = wpautop($participants);
           $schedule = wpautop($schedule);
+          $schedule_private = wpautop($schedule_private);
           $participant_info_travel = wpautop($participant_info_travel);
           $participant_info_activity = wpautop($participant_info_activity);
           $participant_info_accommodations = wpautop($participant_info_accommodations);
