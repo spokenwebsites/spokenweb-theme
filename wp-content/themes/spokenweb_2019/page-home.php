@@ -16,61 +16,14 @@
 
 
 <?php
-$blm = get_page_by_path('spokenweb-statement-in-condemnation-of-racism-and-in-support-of-black-lives-matter', OBJECT, 'post');
-$blm_id = $blm->ID;
-query_posts(
-  array(
-    'posts_per_page' => 1,
-    'post_status' => 'publish',
-    'p' => $blm_id
-  )
-);
+// BLM Post
+// include('post-blm.php');
 ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-    <section class="container-fluid blm">
-      <?php
-      $post_custom_fields = get_post_custom();
-      //	$audio = $post_custom_fields['audio'][0];
-      //	$subtitle = $post_custom_fields['subtitle'][0];
-      //  $audio_url = wp_get_attachment_url($audio);
-      ?>
-
-      <div id="blm-top" class="row inner-content pt-5">
-        <div class="col-md-5">
-          <h2><?php the_title(); ?></h2>
-          <hr>
-          <h3><a href="#statement">STATEMENT</a></h3>
-          <h3><a href="#fellowship">NEW PROGRAM</a></h3>
-          <h3 class="pb-4"><a href="#initiatives">LINKS TO INITIATIVES</a></h3>
-        </div>
-
-        <div class="col-md-6 offset-md-1">
-
-          <article <?php post_class('post-full') ?> id="post-<?php the_ID(); ?>">
-
-            <div class="entry post-excerpt">
-              <?php the_excerpt(); ?>
-              <h3><a href="#fellowship">Read more...</a></h3>
-              <hr>
-            </div>
-
-            <div class="entry post-content" style="display:none;">
-              <?php the_content(); ?>
-              <h3><a href="#blm-top">Back to top</a></h3>
-              <hr>
-            </div>
-
-          </article>
-
-
-        </div>
-      </div>
-    </section>
-<?php endwhile;
-endif; ?>
-
+<?php
+// BLM Post
+include('post-tr-day.php');
+?>
 
 <?php
 query_posts(
@@ -190,28 +143,27 @@ endif; ?>
         <?php if (have_posts()) : $events_num = 0; ?><?php while (have_posts()) : the_post(); ?>
 
         <?php
-                                                    $post_custom_fields = get_post_custom();
-                                                    $event_start_orig = $post_custom_fields['event_start'][0];
-                                                    $event_end_orig = $post_custom_fields['event_end'][0];
-                                                    $event_time = $post_custom_fields['event_time'][0];
+          $post_custom_fields = get_post_custom();
+          $event_start_orig = $post_custom_fields['event_start'][0];
+          $event_end_orig = $post_custom_fields['event_end'][0];
+          $event_time = $post_custom_fields['event_time'][0];
 
-                                                    $event_start = date_create_from_format("Y/m/d", $event_start_orig);
-                                                    $event_start_mini = date_format($event_start, "M j");
-                                                    $event_start = date_format($event_start, "M d, Y");
-                                                    $event_end = date_create_from_format("Y/m/d", $event_end_orig);
-                                                    $event_end_mini = date_format($event_end, "j, Y");
-                                                    $event_end = date_format($event_end, "M d, Y");
+          $event_start = date_create_from_format("Y/m/d", $event_start_orig);
+          $event_start_mini = date_format($event_start, "M j");
+          $event_start = date_format($event_start, "M d, Y");
+          $event_end = date_create_from_format("Y/m/d", $event_end_orig);
+          $event_end_mini = date_format($event_end, "j, Y");
+          $event_end = date_format($event_end, "M d, Y");
 
-                                                    if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-                                                    else $event_date = $event_start;
-
+          if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
+          else $event_date = $event_start;
         ?>
 
         <div class="col-lg-3 col-md-4 col-sm-6">
           <a class="event-link" href="<?php the_permalink(); ?>">
             <?php if (has_post_thumbnail()) : ?>
               <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
-                                                      $img_lg = $img_lg[0]; ?>
+                                                          $img_lg = $img_lg[0]; ?>
               <div class="event-container">
                 <div class="event-img filter" style="background:url('<?php echo $img_lg; ?>') center center;"></div>
                 <div class="event-gradient"></div>
@@ -226,7 +178,7 @@ endif; ?>
         </div>
 
       <?php $events_num++;
-                                                  endwhile; ?>
+                                                      endwhile; ?>
     <?php else : ?>
       <p>There are currently no upcoming events.</p>
     <?php endif;
