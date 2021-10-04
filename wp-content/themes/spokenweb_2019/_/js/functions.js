@@ -286,18 +286,12 @@ if (page == "symposia" || page == "institutes") {
 
     if ($(".sidebar-container").hasClass("affix")) $(window).scrollTop($symposium.parent().parent().offset().top-20);
 
-    //FB.XFBML.parse($symposium.find(".event-share .fb-share-button-container")[0]);
-
     permalink = window.location;
 
     $symposium.find('.event-share .fb-share-button-container').html('<div class="fb-share-button" data-href="' + permalink + '" data-layout="button" data-size="large" data-mobile-iframe="true"></div>');
-
-    FB.XFBML.parse();
-
-    //$symposium.find(".event-share .twitter-share-button-container").html('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=' + permalink + '&text=' + title + '" data-size="large"><img src="https://spokenweb.ca/_/img/tweet.png" height="28"></a>');
-
-    //$symposium.find(".event-share .fb-share-button-container").html('<div class="fb-share-button" data-href="'+permalink+'" data-layout="button" data-size="large" data-mobile-iframe="true" style="position:relative; display:inline; padding-left:5px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u='+permalink+'" class="fb-xfbml-parse-ignore"><img src="https://spokenweb.ca/_/img/fb-share.png" height="28"></a></div>');
-
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();
+    }
 
     if (init == 1) {
       $nav = $("#symposiaNav");
@@ -579,7 +573,9 @@ if ($("body").hasClass('single-events')) {
 
     modal.find('.modal-body .event-share .fb-share-button-container').html('<div class="fb-share-button" data-href="' + permalink + '" data-layout="button" data-size="large" data-mobile-iframe="true" style="position:relative; display:inline; padding-left:5px;"></div>');
 
-    FB.XFBML.parse();
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();
+    }
 
   });
 }
@@ -745,7 +741,9 @@ if (page == "events" || page == "past-events" || $("body").hasClass('single-even
 
     modal.find('.modal-body .event-share .fb-share-button-container').html('<div class="fb-share-button" data-href="' + permalink + '" data-layout="button" data-size="large" data-mobile-iframe="true" style="position:relative; display:inline; padding-left:5px;"></div>');
 
-    FB.XFBML.parse();
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();
+    }
 
     $.each(tags, function(index, tag) {
       $tag_links.push('<a href="https://spokenweb.ca/tag/' + tag.slug + '">' + tag.name + '</a>');
