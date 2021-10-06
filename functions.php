@@ -520,3 +520,10 @@ function alt_gallery($output, $attr)
 	return $output;
 }
 add_filter("post_gallery", "alt_gallery", 10, 2);
+
+add_filter( 'allowed_http_origins', 'add_allowed_origins' );
+function add_allowed_origins( $origins ) {
+    $origins[] = 'https://staging.spokenweb.ca';
+    // $origins[] = 'https://site2.example.com';
+    return $origins;
+}
