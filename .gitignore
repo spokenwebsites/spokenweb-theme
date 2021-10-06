@@ -22,7 +22,6 @@ wp-settings.php
 wp-signup.php
 wp-trackback.php
 xmlrpc.php
-.htaccess
-.htaccess2
-.git-old/
+.htaccess*
+.git-*
 .DS_Store
