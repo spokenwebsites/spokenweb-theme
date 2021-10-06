@@ -71,7 +71,7 @@
 </head>
 
 <body <?php body_class("$header_class noscroll"); ?>>
-  <p>STAGING!</p>
+  <p>STAGING</p>
   <header id="header">
 
     <nav class="navbar navbar-expand-lg navbar-main">
