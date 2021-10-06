@@ -22,7 +22,7 @@
 
 <?php
 // TR Day Post
-include('post-tr-day.php');
+// include('post-tr-day.php');
 ?>
 
 <?php
