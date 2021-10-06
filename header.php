@@ -73,7 +73,6 @@
 
 <body <?php body_class("$header_class noscroll"); ?>>
   <?php $subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));?>
-  <?php echo $subdomain;?>
   <?php if($subdomain == 'staging'):?><p>STAGING</p><?php endif;?>
   <header id="header">
 
