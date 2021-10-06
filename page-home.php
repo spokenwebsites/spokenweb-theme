@@ -21,8 +21,8 @@
 ?>
 
 <?php
-// BLM Post
-include('post-tr-day.php');
+// TR Day Post
+// include('post-tr-day.php');
 ?>
 
 <?php
