@@ -75,7 +75,6 @@
   <?php $subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));?>
   <?php if($subdomain == 'staging'):?><p>STAGING</p><?php endif;?>
   <header id="header">
-
     <nav class="navbar navbar-expand-lg navbar-main">
       <a class="navbar-brand" href="<?php echo home_url(); ?>">
         <div id="header_logo"></div>
