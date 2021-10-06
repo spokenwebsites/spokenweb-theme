@@ -74,6 +74,7 @@
 <body <?php body_class("$header_class noscroll"); ?>>
   <?php $subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));?>
   <?php if($subdomain == 'staging'):?><p>STAGING</p><?php endif;?>
+  <p>another staging test</p>
   <header id="header">
 
     <nav class="navbar navbar-expand-lg navbar-main">
