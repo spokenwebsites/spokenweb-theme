@@ -31,28 +31,28 @@
             </div>
           </div>
           <div class="row">
-                <div class="col-md-3  col-sm-12">
-                  <p>HOST</p>
-                  <p style="font-weight: bold;">Hannah McGregor</p>
-                </div>
-                <div class="col-md-3  col-sm-12">
-                  <p>ShortCuts Producer</p>
-                  <p style="font-weight: bold;">Katherine McLeod</p>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                   <p>Transcription</p>
-                  <p style="font-weight: bold;">Kelly Cubbon</p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                  <p>Project Manager & Supervising Producer</p>
-                  <p style="font-weight: bold;">Judith Burr</p>
-                </div>
-              </div>   
-              <div class="row">
-                <div class="col-md-10 offset-md-1 col-sm-12">
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>HOST</p>
+              <p style="font-weight: bold;">Hannah McGregor</p>
+            </div>
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>ShortCuts Producer</p>
+              <p style="font-weight: bold;">Katherine McLeod</p>
+            </div>
+            <div class="col-md-2 col-sm-12 pb-2">
+              <p>Transcription</p>
+              <p style="font-weight: bold;">Kelly Cubbon</p>
+            </div>
+            <div class="col-md-4 col-sm-12 pb-2">
+              <p>Project Manager & Supervising Producer</p>
+              <p style="font-weight: bold;">Judith Burr</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-1 col-sm-12">
               <hr>
             </div>
-          </div>  
+          </div>
         </div>
         <div class="col-md-11 col-sm-12">
           <div class="row entry-content">

@@ -29,42 +29,42 @@
               <hr>
             </div>
           </div>
-         <div class="row">
-                <div class="col-md-3  col-sm-12">
-                  <p>HOST</p>
-                  <p style="font-weight: bold;">Hannah McGregor</p>
-                </div>
-                <div class="col-md-3  col-sm-12">
-                  <p>ShortCuts Producer</p>
-                  <p style="font-weight: bold;">Katherine McLeod</p>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                   <p>Transcription</p>
-                  <p style="font-weight: bold;">Kelly Cubbon</p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                  <p>Project Manager & Supervising Producer</p>
-                  <p style="font-weight: bold;">Judith Burr</p>
-                </div>
-              </div>   
-              <div class="row">
-                <div class="col-md-10 offset-md-1 col-sm-12">
+          <div class="row">
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>HOST</p>
+              <p style="font-weight: bold;">Hannah McGregor</p>
+            </div>
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>ShortCuts Producer</p>
+              <p style="font-weight: bold;">Katherine McLeod</p>
+            </div>
+            <div class="col-md-2 col-sm-12 pb-2">
+              <p>Transcription</p>
+              <p style="font-weight: bold;">Kelly Cubbon</p>
+            </div>
+            <div class="col-md-4 col-sm-12 pb-2">
+              <p>Project Manager & Supervising Producer</p>
+              <p style="font-weight: bold;">Judith Burr</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-1 col-sm-12">
               <hr>
-            </div>
-          </div>      
-            </div>
-        </div>
-       
-        <div class="col-md-11 col-sm-12">
-          <div class="row entry-content">
-            <div class="col-md-5 offset-md-1 col-sm-6">
-              <?php echo wpautop($left_column); ?>
-            </div>
-            <div class="col-md-5 offset-md-1 col-sm-6">
-              <?php echo wpautop($right_column); ?>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="col-md-11 col-sm-12">
+        <div class="row entry-content">
+          <div class="col-md-5 offset-md-1 col-sm-6">
+            <?php echo wpautop($left_column); ?>
+          </div>
+          <div class="col-md-5 offset-md-1 col-sm-6">
+            <?php echo wpautop($right_column); ?>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 <?php endwhile;
@@ -165,9 +165,9 @@ endif; ?>
       <div class="desc row">
         <?php
         $args = array(
-          'posts_per_page'=>-1,
-    			'post_type'=>'podcast',
-    			'post_status' => array('publish', 'private'),
+          'posts_per_page' => -1,
+          'post_type' => 'podcast',
+          'post_status' => array('publish', 'private'),
           // 'post_status' => 'publish',
           'order' => 'DESC',
           'orderby' => 'date',
@@ -229,9 +229,9 @@ endif; ?>
       <div class="asc row" style="display:none;">
         <?php
         $args = array(
-          'posts_per_page'=>-1,
-    			'post_type'=>'podcast',
-    			'post_status' => array('publish', 'private'),
+          'posts_per_page' => -1,
+          'post_type' => 'podcast',
+          'post_status' => array('publish', 'private'),
           // 'post_status' => 'publish',
           'order' => 'ASC',
           'orderby' => 'date',
