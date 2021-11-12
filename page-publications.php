@@ -1,3 +1,44 @@
+<style>
+.col-sm-12 jumbotron{
+  background:#F0F0F0 ;
+}
+
+.publications_text{
+  transform: rotate(-1deg);
+   background-color: #EC8E43;
+    display:inline-block
+}
+.col-sm-12 p{
+  font-family: Futura; 
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 27px;
+  color: #312E2D; 
+  
+}
+
+.col-sm-12 ul {
+  border: 1px solid #000000; 
+  width:180px 
+}
+
+.col-sm-6 img{
+  width:586px; 
+  height: 513px;
+  margin-left: 150px
+}
+
+.col-sm-3 filterby {
+
+  width: 313.23px;
+  height: 380.77px;
+  background: #DF7F28
+}
+
+</style>
+
+
 <?php get_header(); ?>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -11,28 +52,19 @@
       <?php $query = new WP_Query($args); ?>
       <?php if ($query->have_posts()) : $i = 0;
         while ($query->have_posts()) : $query->the_post(); ?>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-sm-3">
               <h5 class="title"><?php the_title(); ?></h5>
             </div>
-          </div>
+          </div> -->
       <?php endwhile;
       endif; ?>
 
     <?php else : ?>
-      <div class="row">
-        <div class="col-sm-3">
-          <h4 class="title"><?php the_title(); ?></h4>
-        </div>
-      </div>
     <?php endif; ?>
-
-    <hr>
-
-
     <div class="row inner-content">
 
-      <aside class="col-sm-3">
+      <!-- <aside class="col-sm-3">
         <?php if (has_children()) : ?>
           <?php $children = new WP_Query(array('post_type' => 'page', 'post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order')); ?>
           <?php if ($children->have_posts()) : while ($children->have_posts()) : $children->the_post(); ?>
@@ -43,32 +75,48 @@
         <?php endif; ?>
 
 
-      </aside>
+      </aside> -->
 
-      <div class="col-sm-9">
-        <?php the_content(); ?>
-      </div>
+      <div class="col-sm-12 jumbotron">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="publications_text">
+							<h1>Publications</h1>
+						</div>
+						<p>
+						<b>	<?php the_content(); ?></b>
+						<ul></ul>
+						
+						</p>
+						
+					</div>
+					<div class="col-sm-6">
+						<img src="<?php bloginfo('template_directory'); ?>/_/img/publications_ellipse.png" />
+            
+					</div>
+				</div>
+			</div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-3 filterby">
         <hr>
-        <h5>Filter by</h5>
+        <b><h5>Filter by</h5></b>
 
-        <div class="form-group">
-          <label for="selectYear" class="small"><strong>Year</strong></label>
+        <div class="form-group" >
+         <b> <label for="selectYear" class="small"><strong>Year</strong></label></b>
           <select class="form-control" id="selectYear">
             <option selected>All</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="selectTeamMember" class="small"><strong>Team Member</strong></label>
+        <b>  <label for="selectTeamMember" class="small"><strong>Team Member</strong></label></b>
           <select class="form-control" id="selectTeamMember">
             <option selected>All</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="selectType" class="small"><strong>Type</strong></label>
+         <b> <label for="selectType" class="small"><strong>Type</strong></label></b>
           <select class="form-control" id="selectType">
             <option selected>All</option>
           </select>
