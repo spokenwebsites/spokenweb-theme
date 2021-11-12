@@ -29,7 +29,7 @@
   margin-left: 150px
 }
 
-.col-sm-3 filterby {
+.filterby {
 
   width: 313.23px;
   height: 380.77px;
