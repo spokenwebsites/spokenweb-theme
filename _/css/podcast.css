@@ -1,4 +1,5 @@
 body.podcast_bg { background:#202727; color:#fff; }
+.podcast_bg #content { overflow-x: hidden; }
 .podcast_bg a { color:#fff; }
 .podcast_bg aside .active span { border-bottom:1px solid #fff; }
 
