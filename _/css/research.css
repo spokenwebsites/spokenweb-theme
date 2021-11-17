@@ -1,3 +1,7 @@
+body.research_bg, .research_bg #content {
+  overflow-x: initial!important;
+}
+
 .research_bg #content .header {
   background: #f0f0f0;
 }
