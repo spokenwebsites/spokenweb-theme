@@ -11,13 +11,13 @@ body {
   font-family: 'futura-pt', 'Helvetica', 'Arial', sans-serif;
   background: #fff;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /*padding-top:80px;*/
   font-size: 20px;
 }
 
 body.noscroll {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 #loader {
@@ -160,7 +160,7 @@ aside h4.active {
 #content {
   padding-top: 0px;
   min-height: 75vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   transition: all 0.3s;
 }
 
