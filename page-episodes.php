@@ -1,14 +1,13 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php
-    $post_custom_fields = get_post_custom();
-    $top_header = $post_custom_fields['top_header'][0];
-    $left_column = $post_custom_fields['left_column'][0];
-    $right_column = $post_custom_fields['right_column'][0];
-    $bottom_section = $post_custom_fields['bottom_section'][0];
-    $bottom_section_title = $post_custom_fields['bottom_title'][0];
-    $bottom_section_left = $post_custom_fields['bottom_section_left'][0];
-    $bottom_section_right = $post_custom_fields['bottom_section_right'][0];
+    $top_header = get_field('top_header');
+    $left_column = get_field('left_column');
+    $right_column = get_field('right_column');
+    $bottom_section = get_field('bottom_section');
+    $bottom_section_title = get_field('bottom_title');
+    $bottom_section_left = get_field('bottom_section_left');
+    $bottom_section_right = get_field('bottom_section_right');
     ?>
     <section class="container episodes-container">
       <div class="row">
@@ -90,8 +89,8 @@ endif; ?>
         while ($featured_podcast_query->have_posts()) : $featured_podcast_query->the_post(); ?>
           <?php
           $post_custom_fields = get_post_custom();
-          $subtitle = $post_custom_fields['subtitle'][0];
-          $producer = $post_custom_fields['producer'][0];
+          $subtitle = get_field('subtitle');
+          $producer = get_field('producer');
           ?>
 
           <?php if (has_post_thumbnail()) {
@@ -151,14 +150,14 @@ endif; ?>
     </div>
 
     <!-- <div class="col-sm-12 col-md-10 offset-md-1 text-center category-select-container">
-      <div class="category-select sort mb-5">
-        <div class="d-inline">
-          <strong class="mr-3">SORT EPISODES BY:</strong>
-          <a href="#desc"><button class="btn btn-sw active">DATE (DESC)</button></a>
-          <a href="#asc"><button class="btn btn-sw">DATE (ASC)</button></a>
-        </div>
-      </div>
-    </div> -->
+<div class="category-select sort mb-5">
+<div class="d-inline">
+<strong class="mr-3">SORT EPISODES BY:</strong>
+<a href="#desc"><button class="btn btn-sw active">DATE (DESC)</button></a>
+<a href="#asc"><button class="btn btn-sw">DATE (ASC)</button></a>
+</div>
+</div>
+</div> -->
 
     <div class="col-sm-12 col-md-10 offset-md-1">
 
@@ -182,9 +181,9 @@ endif; ?>
           while ($podcast_query->have_posts()) : $podcast_query->the_post(); ?>
             <?php
             $post_custom_fields = get_post_custom();
-            $subtitle = $post_custom_fields['subtitle'][0];
-            $producer = $post_custom_fields['producer'][0];
-            $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0]));
+            $subtitle = get_field('subtitle');
+            $producer = get_field('producer');
+            $type = strtolower(str_replace(" ", "_", get_field('type')));
             ?>
 
             <?php if (has_post_thumbnail()) {
@@ -246,9 +245,9 @@ endif; ?>
           while ($podcast_query->have_posts()) : $podcast_query->the_post(); ?>
             <?php
             $post_custom_fields = get_post_custom();
-            $subtitle = $post_custom_fields['subtitle'][0];
-            $producer = $post_custom_fields['producer'][0];
-            $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0]));
+            $subtitle = get_field('subtitle');
+            $producer = get_field('producer');
+            $type = strtolower(str_replace(" ", "_", get_field('type')));
             ?>
 
             <?php if (has_post_thumbnail()) {
