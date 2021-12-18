@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <section class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -13,18 +12,14 @@
     </div>
   </div>
 </section>
-
-
 <?php
 // BLM Post
 // include('post-blm.php');
 ?>
-
 <?php
 // TR Day Post
 // include('post-tr-day.php');
 ?>
-
 <?php
 query_posts(
   array(
@@ -35,17 +30,13 @@ query_posts(
     'category_name' => 'shortcuts'
   )
 );
-
 ?>
-
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php
-    $post_custom_fields = get_post_custom();
-    $audio = $post_custom_fields['audio'][0];
-    $subtitle = $post_custom_fields['subtitle'][0];
+    $audio = get_field('audio');
+    $subtitle = get_field('subtitle');
     $audio_url = wp_get_attachment_url($audio);
     ?>
-
     <section id="audio" class="alt container-fluid" data-audio="<?php echo $audio_url; ?>">
       <div class="row">
         <div class="col-sm-12">
@@ -56,8 +47,6 @@ query_posts(
             <?php the_title(); ?><br />
             <?php echo $subtitle; ?>
           </h3>
-
-
           <div style="margin-top:30px; margin-bottom:30px;">
             <div class="container-audio">
               <div class="audio-play"><span class="oi oi-media-play"></span></div>
@@ -68,52 +57,35 @@ query_posts(
             </div>
           </div>
         </div>
-
         <div class="col-sm-3 offset-sm-1 col-6 offset-3 mobile audiocontainer">
           <div id="audio-img-container1" style="background: #E98E4A; display: inline-block; width:100%; position:absolute; transform: rotate(45deg); transform-origin: 50% 100%;"></div>
-
           <?php if (has_post_thumbnail()) : ?>
             <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
             $img_lg = $img_lg[0]; ?>
-
             <a href="<?php the_permalink(); ?>" target="_blank">
               <div style="position:relative;"><img id="audio-img1" src="<?php echo $img_lg; ?>" width="100%" style="border-radius:50%;"></div>
             </a>
           <?php endif; ?>
         </div>
-
         <div class="col-sm-7">
-
           <?php the_excerpt(); ?>
-
           <h4><a href="<?php the_permalink(); ?>">Read more...</a></h4>
-
-
         </div>
         <?php if (has_post_thumbnail()) : ?>
           <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
           $img_lg = $img_lg[0]; ?>
-
           <div class="col-sm-3 offset-sm-1 col-6 offset-3 desktop">
-
             <div id="audio-img-container2" style="background: #E98E4A; display: inline-block; width:100%; position:absolute; transform: rotate(45deg); transform-origin: 50% 100%;"></div>
-
             <a href="<?php the_permalink(); ?>" target="_blank">
               <div style="position:relative;"><img id="audio-img2" src="<?php echo $img_lg; ?>" width="100%" style="border-radius:50%;"></div>
             </a>
-
-
           </div>
         <?php endif; ?>
-
       </div>
-
     </section>
 <?php endwhile;
 endif; ?>
-
 <section class="container-fluid" style="background:#fff;">
-
   <div class="row">
     <div class="col-sm-12">
       <h1 class="title">Upcoming Events</h1>
@@ -136,70 +108,58 @@ endif; ?>
             'meta_key' => 'event_start'
           )
         );
-
         ?>
+        <?php if (have_posts()) : $events_num = 0; ?>
+          <?php while (have_posts()) : the_post(); ?>
+            <?php
+            $post_custom_fields = get_post_custom();
+            $event_start_orig = get_field('event_start');
+            $event_end_orig = get_field('event_end');
+            $event_time = get_field('event_time');
+            $event_start = date_create_from_format("Y/m/d", $event_start_orig);
+            $event_start_mini = date_format($event_start, "M j");
+            $event_start = date_format($event_start, "M d, Y");
+            $event_end = date_create_from_format("Y/m/d", $event_end_orig);
+            $event_end_mini = date_format($event_end, "j, Y");
+            $event_end = date_format($event_end, "M d, Y");
+            if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
+            else $event_date = $event_start;
+            ?>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <a class="event-link" href="<?php the_permalink(); ?>">
+                <?php if (has_post_thumbnail()) : ?>
+                  <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+                  $img_lg = $img_lg[0]; ?>
+                  <div class="event-container">
+                    <div class="event-img filter" style="background:url('<?php echo $img_lg; ?>') center center;"></div>
+                    <div class="event-gradient"></div>
+                    <div class="event-gradient2"></div>
+                    <div class="event-text">
+                      <h5><?php the_title() ?></h5>
+                      <p><?php echo $event_date; ?></p>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              </a>
+            </div>
 
-
-        <?php if (have_posts()) : $events_num = 0; ?><?php while (have_posts()) : the_post(); ?>
-
-        <?php
-          $post_custom_fields = get_post_custom();
-          $event_start_orig = $post_custom_fields['event_start'][0];
-          $event_end_orig = $post_custom_fields['event_end'][0];
-          $event_time = $post_custom_fields['event_time'][0];
-
-          $event_start = date_create_from_format("Y/m/d", $event_start_orig);
-          $event_start_mini = date_format($event_start, "M j");
-          $event_start = date_format($event_start, "M d, Y");
-          $event_end = date_create_from_format("Y/m/d", $event_end_orig);
-          $event_end_mini = date_format($event_end, "j, Y");
-          $event_end = date_format($event_end, "M d, Y");
-
-          if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-          else $event_date = $event_start;
-        ?>
-
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a class="event-link" href="<?php the_permalink(); ?>">
-            <?php if (has_post_thumbnail()) : ?>
-              <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
-                                                          $img_lg = $img_lg[0]; ?>
-              <div class="event-container">
-                <div class="event-img filter" style="background:url('<?php echo $img_lg; ?>') center center;"></div>
-                <div class="event-gradient"></div>
-                <div class="event-gradient2"></div>
-                <div class="event-text">
-                  <h5><?php the_title() ?></h5>
-                  <p><?php echo $event_date; ?></p>
-                </div>
-              </div>
-            <?php endif; ?>
-          </a>
-        </div>
-
-      <?php $events_num++;
-                                                      endwhile; ?>
-    <?php else : ?>
-      <p>There are currently no upcoming events.</p>
-    <?php endif;
+          <?php $events_num++;
+          endwhile; ?>
+        <?php else : ?>
+          <p>There are currently no upcoming events.</p>
+        <?php endif;
         wp_reset_query(); ?>
       </div>
     </div>
   </div>
   </div>
   </div>
-
-
-
   <?php get_footer(); ?>
-
   <script>
     var bg = document.getElementById("bg");
-
     window.addEventListener("scroll", function() {
       bg.style.transform = "rotate(" + window.pageYOffset / 10 + "deg)";
     });
-
     $(document).ready(function() {
       var width = $("#audio-img1").width() + 30;
       var height = width / 2;
@@ -224,8 +184,6 @@ endif; ?>
         "left": left + "px"
       });
     });
-
-
     $(window).on("resize", function(e) {
       var width = $("#audio-img1").width() + 30;
       var height = width / 2;

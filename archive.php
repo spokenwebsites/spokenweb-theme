@@ -1,37 +1,21 @@
 <?php $paged = $wp_query->get('paged');
 $num_pages = $wp_query->max_num_pages; ?>
-
 <?php get_header(); ?>
 <?php $slug = get_queried_object()->slug; ?>
-
 <?php if (is_category() && ($slug == "audio-of-the-week")) : ?>
-
 	<?php get_template_part('archive', 'audio-of-the-week'); ?>
-
 <?php elseif (is_category() && ($slug == "shortcuts")) : ?>
-
 	<?php get_template_part('archive', 'shortcuts'); ?>
-
 <?php elseif (is_category() && ($slug == "spokenweblog")) : ?>
-
 	<?php get_template_part('archive', 'spokenweblog'); ?>
-
 <?php elseif (is_category() && ($slug == "institutes")) : ?>
-
 	<?php get_template_part('archive', 'institutes'); ?>
-
 <?php elseif (is_category() && ($slug == "symposia")) : ?>
-
 	<?php get_template_part('archive', 'symposia'); ?>
-
 <?php elseif (is_category() && ($slug == "opportunities")) : ?>
-
 	<?php get_template_part('archive', 'opportunities'); ?>
-
 <?php else : ?>
-
 	<?php if (have_posts()) : ?>
-
 		<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. 
 		?>
 		<div class="row">
@@ -48,9 +32,7 @@ $num_pages = $wp_query->max_num_pages; ?>
 				</h5>
 			</div>
 		</div>
-
 		<hr>
-
 		<div class="row inner-content">
 			<aside class="col-sm-3">
 				<?php if (is_category()) : ?><h4>Category: <?php single_cat_title(); ?></h4>
@@ -61,20 +43,15 @@ $num_pages = $wp_query->max_num_pages; ?>
 				<?php endif; ?>
 			</aside>
 			<div class="col-sm-9">
-
 				<?php if ($paged && $paged >= 2) include(TEMPLATEPATH . '/_/inc/nav-posts.php'); ?>
 				<?php while (have_posts()) : the_post(); ?>
 					<article <?php post_class('post-excerpt') ?> id="post-<?php the_ID(); ?>">
 						<?php $post_type = get_post_type(); ?>
-
 						<?php if ($post_type == "events") : ?>
-
 							<?php
-							$post_custom_fields = get_post_custom();
-							$event_start_orig = $post_custom_fields['event_start'][0];
-							$event_end_orig = $post_custom_fields['event_end'][0];
-							$event_time = $post_custom_fields['event_time'][0];
-
+							$event_start_orig = get_field('event_start');
+							$event_end_orig = get_field('event_end');
+							$event_time = get_field('event_time');
 							$event_start = date_create_from_format("Y/m/d", $event_start_orig);
 							$event_start_mini = date_format($event_start, "M j");
 							$event_start = date_format($event_start, "M d, Y");
@@ -83,24 +60,18 @@ $num_pages = $wp_query->max_num_pages; ?>
 							$event_end = date_format($event_end, "M d, Y");
 							if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
 							else $event_date = $event_start;
-
-							$city = $post_custom_fields['city'][0];
-							$venue = $post_custom_fields['venue'][0];
-							$institution = $post_custom_fields['institution'][0];
-
+							$city = get_field('city');
+							$venue = get_field('venue');
+							$institution = get_field('institution');
 							$event_meta = array();
-
 							if (isset($city) && $city != "") $event_meta[] = $city;
 							if (isset($institution) && $institution != "") $event_meta[] = $institution;
 							if (isset($venue) && $venue != "") $event_meta[] = $venue;
-
 							?>
-
 							<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?> — <?php echo $event_date; ?></a> <small>(<?php echo ucfirst($post_type); ?>)</small></h4>
 							<div class="meta">
 								<p><?php echo implode(" - ", $event_meta); ?></p>
 							</div>
-
 						<?php else : ?>
 							<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <small>(<?php echo ucfirst($post_type); ?>)</small></h4>
 							<?php include(TEMPLATEPATH . '/_/inc/meta-post.php'); ?>
@@ -108,16 +79,11 @@ $num_pages = $wp_query->max_num_pages; ?>
 						<div class="entry">
 							<?php the_excerpt(); ?>
 						</div>
-
 						<p class="category"><?php if (has_category() != 0) : ?><?php the_category(', '); ?><?php endif; ?><?php if (has_tag() != 0) : ?><?php if (has_category() != 0) : ?> | <?php endif; ?><?php the_tags('', ', '); ?><?php endif; ?></p>
 					</article>
 				<?php endwhile; ?>
-
-
 			</div>
 		</div>
-
-
 	<?php else : ?>
 		<h1>
 			No posts found
@@ -129,12 +95,8 @@ $num_pages = $wp_query->max_num_pages; ?>
 		<?php endif; ?>
 		</h1>
 	<?php endif; ?>
-
 	<?php if ($num_pages > 1) {
 		include(TEMPLATEPATH . '/_/inc/nav-posts.php');
 	} ?>
-
 <?php endif; ?>
-
-
 <?php get_footer(); ?>

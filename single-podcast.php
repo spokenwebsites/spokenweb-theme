@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <?php $post_custom_fields = get_post_custom();
-    $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0])); ?>
+    <?php $type = strtolower(str_replace(" ", "_", get_field('type'))); ?>
     <section class="container episode-container">
       <div class="row">
         <?php if ($type == "spokenweb_podcast") : ?>
@@ -27,21 +26,18 @@
             </div>
           </div>
         <?php endif; ?>
-
         <?php
-
         $obj_id = get_queried_object_id();
         $current_url = get_permalink($obj_id);
-        $subtitle = $post_custom_fields['subtitle'][0];
-        $producer = $post_custom_fields['producer'][0];
-        $audio_embed = $post_custom_fields['audio_embed'][0];
-        $audio_download_url = $post_custom_fields['audio_download_url'][0];
-        $transcript = $post_custom_fields['transcript'][0];
-        $producer_photo = $post_custom_fields['producer_photo'][0];
-        $producer_bio = $post_custom_fields['producer_bio'][0];
-        $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0]));
+        $subtitle = get_field('subtitle');
+        $producer = get_field('producer');
+        $audio_embed = get_field('audio_embed');
+        $audio_download_url = get_field('audio_download_url');
+        $transcript = get_field('transcript');
+        $producer_photo = get_field('producer_photo');
+        $producer_bio = get_field('producer_bio');
+        $type = strtolower(str_replace(" ", "_", get_field('type')));
         ?>
-
         <?php if (has_post_thumbnail()) {
           $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
           $img_lg_url = $img_lg[0];
@@ -55,7 +51,6 @@
           $img_lg_height = "";
           $img_thumb = "";
         } ?>
-
         <div class="col-md-10 offset-md-1 col-sm-12 episode">
           <h5><?php echo $subtitle; ?></h5>
           <h2><?php the_title(); ?></h2>
@@ -78,7 +73,6 @@
             <div class="col-4 text-right">
               <h4>Share <div class="social-icons"><a href="https://twitter.com/intent/tweet?text=Have%20you%20listened%20to%20The%20SpokenWeb%20Podcast%20yet%3F%20Check%20it%20out%20here%3A%20<?php echo $current_url; ?>" target="_blank"><i class="circle fab fa-twitter"></i></a> <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url; ?>" target="_blank"><i class="circle fab fa-facebook-f"></i></a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $current_url; ?>&title=The%20SpokenWeb%20Podcast%20-<?php echo get_the_title(); ?>&summary=Have%20you%20checked%20out%20The%20SpokenWeb%20Podcast%20yet%3F%20Listen%20here%3A%20<?php echo $current_url; ?>" target="_blank"><i class="circle fab fa-linkedin-in"></i></div></a></h4>
             </div>
-
             <div class="col-sm-12">
               <div class="featured-episode" style="padding-right:0px; position:relative; padding-left:0px; left:0px;">
                 <div class="event-img filter" style="width:100%; height:241px; background:url('<?php echo $img_lg_url; ?>'); background-size:cover; background-repeat: no-repeat;"></div>
@@ -88,22 +82,16 @@
                   <section class="event-orange"></section>
                 <?php endif; ?>
               </div>
-
               <div class="audio-embed">
                 <?php echo $audio_embed; ?>
               </div>
-
-
               <div class="category-select" style="display:inline-block;">
                 <a href="#summary"><button class="btn btn-sw active">SUMMARY</button></a>
                 <a href="#transcript"><button class="btn btn-sw">TRANSCRIPT</button></a>
               </div>
-
-
               <div id="summary" class="text-content">
                 <?php the_content(); ?>
               </div>
-
               <div id="transcript" class="text-content" style="display:none;">
                 <?php if (isset($transcript) && $transcript != "") : ?>
                   <?php echo wpautop($transcript); ?>
@@ -111,7 +99,6 @@
                   <p>Coming soon</p>
                 <?php endif; ?>
               </div>
-
               <hr>
               <div class="row producer">
                 <?php $img_lg = wp_get_attachment_image_src($producer_photo, 'large');
@@ -127,12 +114,9 @@
                   <?php echo wpautop($producer_bio); ?>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
 <?php endwhile;
