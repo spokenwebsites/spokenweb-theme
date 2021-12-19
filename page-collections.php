@@ -26,12 +26,12 @@
 				<div id="teamContainer" class="col-sm-9">
 					<?php
 					$args = array('post_type' => 'collections', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title');
-					$team_query = new WP_Query($args);
-					$count = $team_query->post_count;
+					$research_query = new WP_Query($args);
+					$count = $research_query->post_count;
 					?>
 					<div class="row" style="margin-bottom:40px;">
-						<?php if ($team_query->have_posts()) : $i = 0;
-							while ($team_query->have_posts()) : $team_query->the_post(); ?>
+						<?php if ($research_query->have_posts()) : $i = 0;
+							while ($research_query->have_posts()) : $research_query->the_post(); ?>
 								<?php
 								$institution = get_field('institution');
 								$type = get_field('type');
