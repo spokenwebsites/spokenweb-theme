@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) :
+  while (have_posts()) : the_post(); ?>
     <div class="p-md-5 header d-lg-flex py-4 align-content-center">
       <div class="w-100 w-sm-50 px-4 px-md-0  mt-3">
         <h1><span>Publications</span></h1>
@@ -70,10 +70,8 @@
                   <?php $i++;
                     endwhile;
                   endif; ?>
-
                 </div>
               <?php endforeach; ?>
-
             </div>
           </div>
         </div>
@@ -81,5 +79,4 @@
 
   <?php endwhile;
 endif; ?>
-
   <?php get_footer(); ?>

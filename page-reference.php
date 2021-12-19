@@ -106,21 +106,12 @@ Template Name: Reference
 </style>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-
 		<article <?php post_class('post-full') ?> id="post-<?php the_ID(); ?>">
-
 			<div class="entry">
 				<?php the_content(); ?>
 			</div>
-
 			<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
-
 		</article>
-
 <?php endwhile;
 endif; ?>
-
-
-
 <?php get_footer(); ?>

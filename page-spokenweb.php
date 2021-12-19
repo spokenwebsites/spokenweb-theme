@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <?php $title = get_the_title(); ?>
 <?php $orig = $post; ?>
 <?php $parent_id = wp_get_post_parent_id($post->ID); ?>
@@ -10,7 +9,6 @@
 <?php $query = new WP_Query($args); ?>
 <?php if ($query->have_posts()) : $i = 0;
 	while ($query->have_posts()) : $query->the_post(); ?>
-
 		<div class="content-header pt-5">
 			<div class="container">
 				<div class="row">
@@ -39,27 +37,17 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="container mt-4 pt-5">
-
 			<div class="row inner-content">
-
 				<div class="col-lg-9 offset-lg-3">
-
 					<article class="page" id="post-<?php the_ID(); ?>">
-
 						<div class="entry">
 							<?php the_content(); ?>
 						</div>
-
 					</article>
-
 				</div>
-
 			</div>
-
 		</div>
 <?php endwhile;
 endif; ?>
-
 <?php get_footer(); ?>
