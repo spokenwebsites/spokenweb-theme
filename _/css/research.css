@@ -8,22 +8,37 @@ body.research_bg, .research_bg #content {
 
 .research_bg #content h1 {
   font-size: 3rem;
+  display: inline-block;
+}
+
+.research_bg #content .header h1 {
   padding: 0 1.5rem;
   transform: rotate(-1.97deg);
   background-color: #DF7F28;
   color: #212727;
-  display: inline-block;
 }
 
-.research_bg #content h1 span {
+.research_bg #content .header h1 span {
   display: block;
   transform: rotate(1.97deg);
+}
+
+.research_bg #content #research-content h1 {
+  border-bottom: 4px solid #DF7F28;
 }
 
 .research_bg #content h2, .research_bg #content .h2 {
   font-weight: 600;
   font-size: 1.5rem;
   color: #312E2D;
+}
+
+.research_bg #content h2 a {
+  text-decoration: underline;
+}
+
+.research_bg #content h2 a:hover {
+  text-decoration: none;
 }
 
 .research_bg #content h3, .research_bg #content .h3 {
@@ -39,12 +54,23 @@ body.research_bg, .research_bg #content {
   color: #000;
 }
 
+.research_bg .description-container {
+  background: #f0f0f0;
+  border-radius: 7px;
+  font-size: 1.5rem;
+}
+
 .research_bg #content h3 span {
   border-bottom: 3px solid #000;
 }
 
 .research_bg .img-thumbnail {
   padding: 0px;
+}
+
+.research_bg a .img-thumbnail:hover {
+  opacity: 0.7;
+  transition: opacity 1s;
 }
 
 @media (max-width: 575px) {
@@ -66,4 +92,34 @@ body.research_bg, .research_bg #content {
 
 .research_bg #content .filters select {
   border-radius: 12px;
+}
+
+/* Measure is limited to ~66 characters */
+.measure {
+  max-width: 30em;
+}
+
+/* Measure is limited to ~80 characters */
+.measure-wide {
+  max-width: 34em;
+}
+
+/* Measure is limited to ~45 characters */
+.measure-narrow {
+  max-width: 20em;
+}
+
+.research_bg button.btn-sw {
+  font-size: 20px;
+  background: #DF7F28;
+  color: #000;
+  padding: 5px 25px;
+  font-weight: 500;
+  transition: all 0.23s;
+  font-weight: 700;
+}
+
+.research_bg button.btn-sw:hover {
+  background: #000;
+  color: #DF7F28;
 }
