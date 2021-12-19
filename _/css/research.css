@@ -43,6 +43,10 @@ body.research_bg, .research_bg #content {
   border-bottom: 3px solid #000;
 }
 
+.research_bg .img-thumbnail {
+  padding: 0px;
+}
+
 @media (max-width: 575px) {
   .research_bg #content h1 {
     font-size: 2.5rem;
