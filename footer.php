@@ -14,7 +14,7 @@
 <?php
 if (is_page('about-us') || get_post($post->post_parent)->post_name == 'about-us') :
   $footer_class = 'about_bg'; ?>
-<?php elseif (is_page('research') || get_post_type() == "collections" || get_post($post->post_parent)->post_name == 'research') :
+<?php elseif (is_page('research') || get_post_type() == "collections" || $header_class === 'research_bg') :
   $footer_class = 'research_bg'; ?>
 <?php elseif (is_page('events') ||  is_page('past-events') || is_singular('events')) :
   $footer_class = 'events_bg'; ?>
