@@ -1,4 +1,4 @@
-<?php global $events_num;?>
+<?php global $events_num; ?>
 <?php get_header(); ?>
 <div class="row">
   <div id="upcoming" class="col-sm-12">
@@ -80,20 +80,29 @@
                   $participant_info_accommodations = "";
                   $notable_events = "";
                 }
-                $event_start = date_create_from_format("Y/m/d", $event_start_orig);
-                $event_end = date_create_from_format("Y/m/d", $event_end_orig);
-                $start_month = date_format($event_start, "F");
-                $start_day = date_format($event_start, "j");
-                $start_year = date_format($event_start, "Y");
-                $end_month = date_format($event_end, "F");
-                $end_day = date_format($event_end, "j");
-                $end_year = date_format($event_end, "Y");
-                $event_start_mini = date_format($event_start, "M j");
-                $event_start = date_format($event_start, "M d, Y");
-                $event_end_mini = date_format($event_end, "j, Y");
-                $event_end = date_format($event_end, "M d, Y");
-                if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-                else $event_date = $event_start;
+                $event_start_string = date_create_from_format("Y/m/d", $event_start_orig);
+                $event_end_string = date_create_from_format("Y/m/d", $event_end_orig);
+                $description = get_field('description');
+                $start_month = date_format($event_start_string, "F");
+                $start_day = date_format($event_start_string, "j");
+                $start_year = date_format($event_start_string, "Y");
+                $end_month = date_format($event_end_string, "F");
+                $end_day = date_format($event_end_string, "j");
+                $end_year = date_format($event_end_string, "Y");
+                $event_start = date_format($event_start_string, "M d, Y");
+                $event_end = date_format($event_end_string, "M d, Y");
+                if ($event_start != $event_end) {
+                  if ($start_month === $end_month) {
+                    $event_start_mini = date_format($event_start_string, "M j");
+                    $event_end_mini = date_format($event_end_string, "j, Y");
+                  } else {
+                    $event_start_mini = date_format($event_start_string, "M j");
+                    $event_end_mini = date_format($event_end_string, "M j, Y");
+                  }
+                  $event_date = $event_start_mini . " - " . $event_end_mini;
+                } else {
+                  $event_date = $event_start;
+                }
                 $time = get_field('time');
                 $city = get_field('city');
                 $venue = get_field('venue');
@@ -187,20 +196,29 @@
             $participant_info_accommodations = "";
             $notable_events = "";
           }
-          $event_start = date_create_from_format("Y/m/d", $event_start_orig);
-          $event_end = date_create_from_format("Y/m/d", $event_end_orig);
-          $start_month = date_format($event_start, "F");
-          $start_day = date_format($event_start, "j");
-          $start_year = date_format($event_start, "Y");
-          $end_month = date_format($event_end, "F");
-          $end_day = date_format($event_end, "j");
-          $end_year = date_format($event_end, "Y");
-          $event_start_mini = date_format($event_start, "M j");
-          $event_start = date_format($event_start, "M d, Y");
-          $event_end_mini = date_format($event_end, "j, Y");
-          $event_end = date_format($event_end, "M d, Y");
-          if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-          else $event_date = $event_start;
+          $event_start_string = date_create_from_format("Y/m/d", $event_start_orig);
+          $event_end_string = date_create_from_format("Y/m/d", $event_end_orig);
+          $description = get_field('description');
+          $start_month = date_format($event_start_string, "F");
+          $start_day = date_format($event_start_string, "j");
+          $start_year = date_format($event_start_string, "Y");
+          $end_month = date_format($event_end_string, "F");
+          $end_day = date_format($event_end_string, "j");
+          $end_year = date_format($event_end_string, "Y");
+          $event_start = date_format($event_start_string, "M d, Y");
+          $event_end = date_format($event_end_string, "M d, Y");
+          if ($event_start != $event_end) {
+            if ($start_month === $end_month) {
+              $event_start_mini = date_format($event_start_string, "M j");
+              $event_end_mini = date_format($event_end_string, "j, Y");
+            } else {
+              $event_start_mini = date_format($event_start_string, "M j");
+              $event_end_mini = date_format($event_end_string, "M j, Y");
+            }
+            $event_date = $event_start_mini . " - " . $event_end_mini;
+          } else {
+            $event_date = $event_start;
+          }
           $time = get_field('time');
           $city = get_field('city');
           $venue = get_field('venue');
@@ -208,8 +226,6 @@
           if (isset($city) && $city != "") $event_meta[] = $city;
           if (isset($institution) && $institution != "") $event_meta[] = $institution;
           if (isset($venue) && $venue != "") $event_meta[] = $venue;
-          if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-          else $event_date = $event_start;
           $title = get_the_title();
           $cats = wp_get_post_categories(get_the_ID());
           $cat_list = [];
@@ -240,19 +256,19 @@
             }
             $tags = json_encode($tag_array);
           } else {
-            $tags = [];
+            $tags = '';
           }
           $cats = get_the_category(get_the_ID());
           $cat_array = array();
           if (isset($cats) && !empty($cats)) {
             foreach ($cats as $cat) {
-              $data['slug'] = $tag->slug;
-              $data['name'] = $tag->name;
+              $data['slug'] = $cat->slug;
+              $data['name'] = $cat->name;
               $cat_array[] = $data;
             }
             $cats = json_encode($cat_array);
           } else {
-            $cats = [];
+            $cats = '';
           }
         ?>
         <?php if (has_post_thumbnail()) {
@@ -440,20 +456,29 @@
             $participant_info_accommodations = "";
             $notable_events = "";
           }
-          $event_start = date_create_from_format("Y/m/d", $event_start_orig);
-          $event_end = date_create_from_format("Y/m/d", $event_end_orig);
-          $start_month = date_format($event_start, "F");
-          $start_day = date_format($event_start, "j");
-          $start_year = date_format($event_start, "Y");
-          $end_month = date_format($event_end, "F");
-          $end_day = date_format($event_end, "j");
-          $end_year = date_format($event_end, "Y");
-          $event_start_mini = date_format($event_start, "M j");
-          $event_start = date_format($event_start, "M d, Y");
-          $event_end_mini = date_format($event_end, "j, Y");
-          $event_end = date_format($event_end, "M d, Y");
-          if ($event_start != $event_end) $event_date = $event_start_mini . "-" . $event_end_mini;
-          else $event_date = $event_start;
+          $event_start_string = date_create_from_format("Y/m/d", $event_start_orig);
+          $event_end_string = date_create_from_format("Y/m/d", $event_end_orig);
+          $description = get_field('description');
+          $start_month = date_format($event_start_string, "F");
+          $start_day = date_format($event_start_string, "j");
+          $start_year = date_format($event_start_string, "Y");
+          $end_month = date_format($event_end_string, "F");
+          $end_day = date_format($event_end_string, "j");
+          $end_year = date_format($event_end_string, "Y");
+          $event_start = date_format($event_start_string, "M d, Y");
+          $event_end = date_format($event_end_string, "M d, Y");
+          if ($event_start != $event_end) {
+            if ($start_month === $end_month) {
+              $event_start_mini = date_format($event_start_string, "M j");
+              $event_end_mini = date_format($event_end_string, "j, Y");
+            } else {
+              $event_start_mini = date_format($event_start_string, "M j");
+              $event_end_mini = date_format($event_end_string, "M j, Y");
+            }
+            $event_date = $event_start_mini . " - " . $event_end_mini;
+          } else {
+            $event_date = $event_start;
+          }
           $time = get_field('time');
           $city = get_field('city');
           $venue = get_field('venue');
@@ -488,19 +513,19 @@
             }
             $tags = json_encode($tag_array);
           } else {
-            $tags = [];
+            $tags = '';
           }
           $cats = get_the_category(get_the_ID());
           $cat_array = array();
           if (isset($cats) && !empty($cats)) {
             foreach ($cats as $cat) {
-              $data['slug'] = $tag->slug;
-              $data['name'] = $tag->name;
+              $data['slug'] = $cat->slug;
+              $data['name'] = $cat->name;
               $cat_array[] = $data;
             }
             $cats = json_encode($cat_array);
           } else {
-            $cats = [];
+            $cats = '';
           }
           ?>
           <?php if (has_post_thumbnail()) {
