@@ -1,4 +1,4 @@
-<?php global $footer_class; ?>
+<?php global $footer_class, $header_class; ?>
 <?php if (is_front_page()) : ?>
 <?php elseif ($pagename == "events" || $pagename == "past-events" ||  is_singular('events') ||  is_singular('post') || is_page('podcast') || get_post_type() == 'podcast' || get_post($post->post_parent)->post_name == 'podcast') : ?>
 <?php elseif (is_category() && (get_queried_object()->slug == "audio-of-the-week" || get_queried_object()->slug == "spokenweblog" || get_queried_object()->slug == "symposia" || get_queried_object()->slug == "institutes")) : ?>
