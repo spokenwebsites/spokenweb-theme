@@ -504,5 +504,7 @@ function add_allowed_origins($origins)
 add_filter( 'template_directory_uri', function( $template_dir_uri ){
 	if (strpos($_SERVER['HTTP_HOST'], 'staging') !== false) {
 		return str_replace( 'https://spokenweb.ca', 'https://staging.spokenweb.ca', $template_dir_uri );
+	} else {
+		return $template_dir_uri;
 	}
 });
