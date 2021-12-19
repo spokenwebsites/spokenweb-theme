@@ -34,8 +34,8 @@ query_posts(
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php
     $audio = get_field('audio');
+    $audio_url = $audio['url'];
     $subtitle = get_field('subtitle');
-    $audio_url = wp_get_attachment_url($audio);
     ?>
     <section id="audio" class="alt container-fluid" data-audio="<?php echo $audio_url; ?>">
       <div class="row">
