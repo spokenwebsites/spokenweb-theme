@@ -1,15 +1,8 @@
 <?php
-
-//include_once( TEMPLATEPATH . '/functions/post-types.php');
-
-
 // Add post thumbnails if possible
 if (function_exists('add_theme_support')) {
 	add_theme_support('post-thumbnails');
 }
-
-// add_image_size( 'bio-square', 500, 500, array( 'center', 'center' ) );
-
 // Clean up the <head>
 function removeHeadLinks()
 {
@@ -66,7 +59,6 @@ class Bootstrap_Walker_Menu_Nav extends Walker_Nav_Menu
 
 		if ($item->is_dropdown && $depth === 0) {
 			$item_html = str_replace('<a', '<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"', $item_html);
-			//$item_html = str_replace( '</a>', ' <b class="caret"></b></a>', $item_html );
 		}
 
 		$output .= $item_html;
@@ -275,7 +267,6 @@ function my_post_count_queries($query)
 }
 add_action('pre_get_posts', 'my_post_count_queries');
 
-
 function fix_blog_menu_css_class($classes, $item)
 {
 	if (is_singular('events') || is_archive()) {
@@ -290,8 +281,6 @@ function fix_blog_menu_css_class($classes, $item)
 }
 add_filter('nav_menu_css_class', 'fix_blog_menu_css_class', 10, 2);
 
-
-
 function namespace_add_custom_types($query)
 {
 	if ((is_category() || is_tag()) && $query->is_archive() && empty($query->query_vars['suppress_filters'])) {
@@ -304,7 +293,6 @@ function namespace_add_custom_types($query)
 add_filter('pre_get_posts', 'namespace_add_custom_types');
 
 //Remove JQuery migrate
-
 function remove_jquery_migrate($scripts)
 {
 	if (!is_admin() && isset($scripts->registered['jquery'])) {
@@ -317,10 +305,8 @@ function remove_jquery_migrate($scripts)
 }
 add_action('wp_default_scripts', 'remove_jquery_migrate');
 
-
 function events_all($data)
 {
-
 	if (isset($_GET['offset'])) $offset = $_GET['offset'];
 	else $offset = 0;
 	$args = array('post_type' => 'events', 'posts_per_page' => 1000, 'offset' => $offset);
@@ -334,14 +320,12 @@ function events_all($data)
 		while ($post_query->have_posts()) {
 			$post_query->the_post();
 			global $post;
-			$post_custom_fields = get_post_custom($post->ID);
-
 			$title = $post->post_title;
-			$date_start = str_replace("/", "-", $post_custom_fields['event_start'][0]);
-			$date_end = str_replace("/", "-", $post_custom_fields['event_end'][0]);
-			$city = $post_custom_fields['city'][0];
-			$institution = $post_custom_fields['institution'][0];
-			$venue = $post_custom_fields['venue'][0];
+			$date_start = str_replace("/", "-", get_field('event_start'));
+			$date_end = str_replace("/", "-", get_field('event_end'));
+			$city = get_field('city');
+			$institution = get_field('institution');
+			$venue = get_field('venue');
 			$categories = get_the_category();
 			$tags = get_the_tags();
 			$tag_names = array();
@@ -395,10 +379,6 @@ function remove_protected_text()
 	return '%s';
 }
 
-// add_action('init', function () {
-// 	remove_post_type_support('events', 'editor');
-// }, 99);
-
 function get_the_symposia_password_form($output)
 {
 	// If is in the symposia category, replace the text.
@@ -426,7 +406,6 @@ function generate_excerpt($content, $length = 40, $more = '...')
 	}
 	return $excerpt;
 }
-
 
 function alt_gallery($output, $attr)
 {
@@ -493,37 +472,39 @@ function alt_gallery($output, $attr)
 
 	$gallery_style = $gallery_div = '';
 	if (apply_filters('use_default_gallery_style', true))
-
 		$size_class = sanitize_html_class($size);
 	$gallery_div = "<div id='$selector' class='my-5 row'>";
 	$output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
-
 	$i = 0;
 	foreach ($attachments as $id => $attachment) {
-
 		$thumb = wp_get_attachment_image_src($id, $size);
 		$img_full = wp_get_attachment_image_src($id, 'full');
 		$caption = wp_get_attachment_caption($id);
-
 		$output .= "<{$itemtag} class='col-lg-4 col-6 gallery-item mb-4'>";
 		$output .= "
-			<a href='{$img_full[0]}' data-caption='{$caption}'><{$icontag} class=''>
-						<img src='{$thumb[0]}' width='{$width}' />
-					</{$icontag}></a>";
+<a href='{$img_full[0]}' data-caption='{$caption}'><{$icontag} class=''>
+<img src='{$thumb[0]}' width='{$width}' />
+</{$icontag}></a>";
 		$output .= "</{$itemtag}>";
 		if ($columns > 0 && ++$i % $columns == 0)
 			$output .= '<br style="clear: both" />';
 	}
-
-
 	$output .= "</div>\n";
 	return $output;
 }
 add_filter("post_gallery", "alt_gallery", 10, 2);
 
-add_filter( 'allowed_http_origins', 'add_allowed_origins' );
-function add_allowed_origins( $origins ) {
-    $origins[] = 'https://staging.spokenweb.ca';
-    // $origins[] = 'https://site2.example.com';
-    return $origins;
+add_filter('allowed_http_origins', 'add_allowed_origins');
+function add_allowed_origins($origins)
+{
+	$origins[] = 'https://staging.spokenweb.ca';
+	return $origins;
 }
+
+add_filter( 'template_directory_uri', function( $template_dir_uri ){
+	if (strpos($_SERVER['HTTP_HOST'], 'staging') !== false) {
+		return str_replace( 'https://spokenweb.ca', 'https://staging.spokenweb.ca', $template_dir_uri );
+	} else {
+		return $template_dir_uri;
+	}
+});

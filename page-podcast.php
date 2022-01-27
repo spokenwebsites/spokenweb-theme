@@ -1,9 +1,9 @@
 <?php if (is_page('podcast')) : ?>
   <?php wp_redirect(get_permalink(get_page_by_title('Episodes'))); ?>
 <?php endif; ?>
-
 <?php get_header(); ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) :
+  while (have_posts()) : the_post(); ?>
     <?php
     $post_custom_fields = get_post_custom();
     ?>
@@ -17,14 +17,10 @@
           </div>
           <h1><?php the_title(); ?></h1>
         </div>
-
         <div class="col-md-10 offset-md-1 col-sm-12 entry-content">
-
           <?php the_content(); ?>
-
         </div>
     </section>
 <?php endwhile;
 endif; ?>
-
 <?php get_footer(); ?>

@@ -1,14 +1,13 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php
-    $post_custom_fields = get_post_custom();
-    $top_header = $post_custom_fields['top_header'][0];
-    $left_column = $post_custom_fields['left_column'][0];
-    $right_column = $post_custom_fields['right_column'][0];
-    $bottom_section = $post_custom_fields['bottom_section'][0];
-    $bottom_section_title = $post_custom_fields['bottom_title'][0];
-    $bottom_section_left = $post_custom_fields['bottom_section_left'][0];
-    $bottom_section_right = $post_custom_fields['bottom_section_right'][0];
+    $top_header = get_field('top_header');
+    $left_column = get_field('left_column');
+    $right_column = get_field('right_column');
+    $bottom_section = get_field('bottom_section');
+    $bottom_section_title = get_field('bottom_title');
+    $bottom_section_left = get_field('bottom_section_left');
+    $bottom_section_right = get_field('bottom_section_right');
     ?>
     <section class="container episodes-container">
       <div class="row">
@@ -29,17 +28,42 @@
               <hr>
             </div>
           </div>
-        </div>
-        <div class="col-md-11 col-sm-12">
-          <div class="row entry-content">
-            <div class="col-md-5 offset-md-1 col-sm-6">
-              <?php echo wpautop($left_column); ?>
+          <div class="row">
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>HOST</p>
+              <p style="font-weight: bold;">Hannah McGregor</p>
             </div>
-            <div class="col-md-5 offset-md-1 col-sm-6">
-              <?php echo wpautop($right_column); ?>
+            <div class="col-md-3  col-sm-12 pb-2">
+              <p>ShortCuts Producer</p>
+              <p style="font-weight: bold;">Katherine McLeod</p>
+            </div>
+            <div class="col-md-2 col-sm-12 pb-2">
+              <p>Transcription</p>
+              <p style="font-weight: bold;">Kelly Cubbon</p>
+            </div>
+            <div class="col-md-4 col-sm-12 pb-2">
+              <p>Project Manager & Supervising Producer</p>
+              <p style="font-weight: bold;">Judith Burr</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-1 col-sm-12">
+              <hr>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="col-md-11 col-sm-12">
+        <div class="row entry-content">
+          <div class="col-md-5 offset-md-1 col-sm-6">
+            <?php echo wpautop($left_column); ?>
+          </div>
+          <div class="col-md-5 offset-md-1 col-sm-6">
+            <?php echo wpautop($right_column); ?>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 <?php endwhile;
@@ -65,8 +89,8 @@ endif; ?>
         while ($featured_podcast_query->have_posts()) : $featured_podcast_query->the_post(); ?>
           <?php
           $post_custom_fields = get_post_custom();
-          $subtitle = $post_custom_fields['subtitle'][0];
-          $producer = $post_custom_fields['producer'][0];
+          $subtitle = get_field('subtitle');
+          $producer = get_field('producer');
           ?>
 
           <?php if (has_post_thumbnail()) {
@@ -126,23 +150,23 @@ endif; ?>
     </div>
 
     <!-- <div class="col-sm-12 col-md-10 offset-md-1 text-center category-select-container">
-      <div class="category-select sort mb-5">
-        <div class="d-inline">
-          <strong class="mr-3">SORT EPISODES BY:</strong>
-          <a href="#desc"><button class="btn btn-sw active">DATE (DESC)</button></a>
-          <a href="#asc"><button class="btn btn-sw">DATE (ASC)</button></a>
-        </div>
-      </div>
-    </div> -->
+<div class="category-select sort mb-5">
+<div class="d-inline">
+<strong class="mr-3">SORT EPISODES BY:</strong>
+<a href="#desc"><button class="btn btn-sw active">DATE (DESC)</button></a>
+<a href="#asc"><button class="btn btn-sw">DATE (ASC)</button></a>
+</div>
+</div>
+</div> -->
 
     <div class="col-sm-12 col-md-10 offset-md-1">
 
       <div class="desc row">
         <?php
         $args = array(
-          'posts_per_page'=>-1,
-    			'post_type'=>'podcast',
-    			'post_status' => array('publish', 'private'),
+          'posts_per_page' => -1,
+          'post_type' => 'podcast',
+          'post_status' => array('publish', 'private'),
           // 'post_status' => 'publish',
           'order' => 'DESC',
           'orderby' => 'date',
@@ -157,9 +181,9 @@ endif; ?>
           while ($podcast_query->have_posts()) : $podcast_query->the_post(); ?>
             <?php
             $post_custom_fields = get_post_custom();
-            $subtitle = $post_custom_fields['subtitle'][0];
-            $producer = $post_custom_fields['producer'][0];
-            $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0]));
+            $subtitle = get_field('subtitle');
+            $producer = get_field('producer');
+            $type = strtolower(str_replace(" ", "_", get_field('type')));
             ?>
 
             <?php if (has_post_thumbnail()) {
@@ -204,9 +228,9 @@ endif; ?>
       <div class="asc row" style="display:none;">
         <?php
         $args = array(
-          'posts_per_page'=>-1,
-    			'post_type'=>'podcast',
-    			'post_status' => array('publish', 'private'),
+          'posts_per_page' => -1,
+          'post_type' => 'podcast',
+          'post_status' => array('publish', 'private'),
           // 'post_status' => 'publish',
           'order' => 'ASC',
           'orderby' => 'date',
@@ -221,9 +245,9 @@ endif; ?>
           while ($podcast_query->have_posts()) : $podcast_query->the_post(); ?>
             <?php
             $post_custom_fields = get_post_custom();
-            $subtitle = $post_custom_fields['subtitle'][0];
-            $producer = $post_custom_fields['producer'][0];
-            $type = strtolower(str_replace(" ", "_", $post_custom_fields['type'][0]));
+            $subtitle = get_field('subtitle');
+            $producer = get_field('producer');
+            $type = strtolower(str_replace(" ", "_", get_field('type')));
             ?>
 
             <?php if (has_post_thumbnail()) {

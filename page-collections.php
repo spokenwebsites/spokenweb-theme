@@ -1,135 +1,77 @@
 <?php get_header(); ?>
-
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-
-		<?php $orig = $post; ?>
-		<?php if (has_parent()) : ?>
-
-			<?php $parent_id = wp_get_post_parent_id($post->ID); ?>
-			<?php $args = array('p' => $parent_id, 'post_type' => 'page'); ?>
-			<?php $query = new WP_Query($args); ?>
-			<?php if ($query->have_posts()) : $i = 0;
-				while ($query->have_posts()) : $query->the_post(); ?>
-					<div class="row">
-						<div class="col-sm-3">
-							<h5 class="title"><?php the_title(); ?></h5>
-						</div>
-					</div>
-			<?php endwhile;
-			endif; ?>
-
-		<?php else : ?>
-			<div class="row">
-				<div class="col-sm-3">
-					<h4 class="title"><?php the_title(); ?></h4>
-				</div>
+<?php if (have_posts()) :
+	while (have_posts()) : the_post(); ?>
+		<div class="p-md-5 header d-lg-flex py-4 align-content-center">
+			<div class="w-100 w-sm-50 px-4 px-md-0  mt-3">
+				<h1><span>Collections</span></h1>
+				<h2 class="my-md-5 my-sm-4 my-3"><?php the_content(); ?></h2>
 			</div>
-		<?php endif; ?>
-
-		<hr>
-
-
-		<div class="row inner-content">
-
-			<aside class="col-sm-3">
-				<?php if (has_children()) : ?>
-					<?php $children = new WP_Query(array('post_type' => 'page', 'post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order')); ?>
-					<?php if ($children->have_posts()) : while ($children->have_posts()) : $children->the_post(); ?>
-							<h4 class="<?php if ($post->ID == $orig->ID) echo 'active'; ?>"><a href="<?php the_permalink(); ?>"><span><?php the_title(); ?></span></a></h4>
-					<?php endwhile;
-					endif; ?>
-					<?php wp_reset_query(); ?>
-				<?php endif; ?>
-
-
-			</aside>
-
-			<div class="col-sm-9">
-
-				<?php the_content(); ?>
-			</div>
-
-			<div class="col-sm-3">
-				<hr>
-
-				<h5>Filter by</h5>
-
-				<div class="form-group">
-					<label for="selectInstitution" class="small"><strong>Institution</strong></label>
-					<select class="form-control" id="selectInstitution">
-						<option selected>All</option>
-					</select>
-				</div>
-			</div>
-
-			<div id="teamContainer" class="col-sm-9">
-
-				<hr>
-				<h5>Collections</h5>
-				<br>
-
-				<?php
-				$args = array('post_type' => 'collections', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title');
-				$team_query = new WP_Query($args);
-				$count = $team_query->post_count;
-				?>
-
-
-				<div class="row" style="margin-bottom:40px;">
-
-					<?php if ($team_query->have_posts()) : $i = 0;
-						while ($team_query->have_posts()) : $team_query->the_post(); ?>
-							<?php
-							$post_custom_fields = get_post_custom();
-							$institution = $post_custom_fields['institution'][0];
-							$type = $post_custom_fields['type'][0];
-							$subtype = $post_custom_fields['subtype'][0];
-							$collection_url = $post_custom_fields['url'][0];
-							?>
-							<?php// if(get_the_content()!=""):?>
-							<div class="col-3 people-container<?php if ($i % 4 == 0) echo " first"; ?>" data-i="<?php echo $i; ?>" data-institution="<?php echo $institution; ?>">
-								<div>
-									<a href="#<?php echo $post->post_name; ?>">
-										<?php if (has_post_thumbnail()) : ?>
-											<?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-											$img_lg = $img_lg[0]; ?>
-											<img src="<?php echo $img_lg; ?>" width="100%" class="img-thumbnail">
-										<?php else : ?>
-											<img src="<?php bloginfo('template_directory'); ?>/_/img/blank.gif" width="100%" class="img-thumbnail">
-										<?php endif; ?>
-										<h6><strong><?php the_title(); ?></strong></h6>
-									</a>
-									<div class="bio-content" style="display:none;">
-										<?php if (get_the_content() != "") : ?>
-											<?php the_content(); ?>
-										<?php else : ?>
-											<p>More info coming soon.</p>
-										<?php endif; ?>
-										<?php if (isset($collection_url) && $collection_url != "") : ?>
-											<p><a href="<?php echo $collection_url; ?>" class="external" target="_blank"><?php echo $collection_url; ?></a></p>
-										<?php endif; ?>
-									</div>
-									<h6 class="subtitle"><?php echo $institution; ?></h6>
-								</div>
-							</div>
-							<?php //endif;
-							?>
-					<?php $i++;
-						endwhile;
-					endif; ?>
-
-					<div id="bioContainer" class="col-sm-12" style="display:none;"></div>
-				</div>
-
-
-
-
-
+			<div class="w-100 mr-lg-5 px-5 py-4 py-lg-2 mt-3">
+				<img class="w-lg-100 w-sm-75 w-100 mx-auto" src="<?php bloginfo('template_directory'); ?>/_/img/research/collections.svg" />
 			</div>
 		</div>
-
-<?php endwhile;
+		<section id="research-content" class="container-fluid pt-5 mt-4">
+			<div class="row">
+				<div class="col-xl-3 col-lg-4 col-md-5">
+					<div class="filters sticky p-4 mb-5 w-100 w-sm-75 w-md-100">
+						<h2>FILTER BY</h2>
+						<div class="form-group mt-4">
+							<label for="selectInstitution" class="h2 mb-0">Institution</label>
+							<select class="form-control" id="selectInstitution">
+								<option selected>All</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div id="teamContainer" class="col-sm-9">
+					<?php
+					$args = array('post_type' => 'collections', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title');
+					$research_query = new WP_Query($args);
+					$count = $research_query->post_count;
+					?>
+					<div class="row" style="margin-bottom:40px;">
+						<?php if ($research_query->have_posts()) : $i = 0;
+							while ($research_query->have_posts()) : $research_query->the_post(); ?>
+								<?php
+								$institution = get_field('institution');
+								$type = get_field('type');
+								$subtype = get_field('subtype');
+								$collection_url = get_field('url');
+								?>
+								<div class="col-3 people-container<?php if ($i % 4 == 0) echo " first"; ?>" data-i="<?php echo $i; ?>" data-institution="<?php echo $institution; ?>">
+									<div>
+										<a href="#<?php echo $post->post_name; ?>">
+											<?php if (has_post_thumbnail()) : ?>
+												<?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+												$img_lg = $img_lg[0]; ?>
+												<img src="<?php echo $img_lg; ?>" width="100%" class="img-thumbnail">
+											<?php else : ?>
+												<img src="<?php bloginfo('template_directory'); ?>/_/img/blank.gif" width="100%" class="img-thumbnail">
+											<?php endif; ?>
+											<h6><strong><?php the_title(); ?></strong></h6>
+										</a>
+										<div class="bio-content" style="display:none;">
+											<?php if (get_the_content() != "") : ?>
+												<?php the_content(); ?>
+											<?php else : ?>
+												<p>More info coming soon.</p>
+											<?php endif; ?>
+											<?php if (isset($collection_url) && $collection_url != "") : ?>
+												<p><a href="<?php echo $collection_url; ?>" class="external" target="_blank"><?php echo $collection_url; ?></a></p>
+											<?php endif; ?>
+										</div>
+										<h6 class="subtitle"><?php echo $institution; ?></h6>
+									</div>
+								</div>
+								<?php //endif;
+								?>
+						<?php $i++;
+							endwhile;
+						endif; ?>
+						<div id="bioContainer" class="col-sm-12" style="display:none;"></div>
+					</div>
+				</div>
+			</div>
+	<?php endwhile;
 endif; ?>
-
-<?php get_footer(); ?>
+	<?php get_footer(); ?>
