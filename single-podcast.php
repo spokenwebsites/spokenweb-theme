@@ -101,14 +101,14 @@
               </div>
               <hr>
               <div class="row producer">
-                <?php $img_lg = wp_get_attachment_image_src($producer_photo, 'large');
-                $img_lg_url = $img_lg[0]; ?>
-                <div class="col-md-3 col-sm-4 col-6">
-                  <div style="position:relative;">
-                    <img class="event-img filter" style="width:100%; border-radius:100%;" src="<?php echo $img_lg_url; ?>">
-                    <section class="event-orange" style="width:100%; height:100%; border-radius:100%;"></section>
+                <?php if (!empty($producer_photo)) : ?>
+                  <div class="col-md-3 col-sm-4 col-6">
+                    <div style="position:relative;">
+                      <img src="<?php echo esc_url($producer_photo['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($producer_photo['alt']); ?>" class="event-img filter" style="width:100%; border-radius:100%;">
+                      <section class="event-orange" style="width:100%; height:100%; border-radius:100%;"></section>
+                    </div>
                   </div>
-                </div>
+                <?php endif; ?>
                 <div class="col-md-9 col-sm-8">
                   <h4><?php echo $producer; ?></h4>
                   <?php echo wpautop($producer_bio); ?>
