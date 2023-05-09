@@ -18,9 +18,11 @@ $slug = $cat->slug;
   while ($archive_query->have_posts()) : $archive_query->the_post();
     $date_end_orig = get_field('date_end');
     $event_time = get_field('event_time');
-    $date_end = date_create_from_format("Ymd", $date_end_orig);
-    $date_end_mini = date_format($date_end, "j, Y");
-    $date_end = date_format($date_end, "M d, Y");
+    if ($date_end_orig) {
+      $date_end = date_create_from_format("Ymd", $date_end_orig);
+      $date_end_mini = date_format($date_end, "j, Y");
+      $date_end = date_format($date_end, "M d, Y");
+    }
     $author = get_field('author');
     $title = get_the_title();
     $audio = get_field('audio');
@@ -82,9 +84,11 @@ $slug = $cat->slug;
       while ($archive_query->have_posts()) : $archive_query->the_post();
         $date_end_orig = get_field('date_end');
         $event_time = get_field('event_time');
-        $date_end = date_create_from_format("Ymd", $date_end_orig);
-        $date_end_mini = date_format($date_end, "j, Y");
-        $date_end = date_format($date_end, "M d, Y");
+        if ($date_end_orig) {
+          $date_end = date_create_from_format("Ymd", $date_end_orig);
+          $date_end_mini = date_format($date_end, "j, Y");
+          $date_end = date_format($date_end, "M d, Y");
+	}
         $author = get_field('author');
         $title = get_the_title();
         $audio = get_field('audio');
@@ -141,10 +145,12 @@ $slug = $cat->slug;
       while ($archive_query->have_posts()) : $archive_query->the_post();
         $post_custom_fields = get_post_custom();
         $date_end_orig = get_field('date_end');
-        $event_time = get_field('event_time');
-        $date_end = date_create_from_format("Ymd", $date_end_orig);
-        $date_end_mini = date_format($date_end, "j, Y");
-        $date_end = date_format($date_end, "M d, Y");
+	$event_time = get_field('event_time');
+	if ($date_end_orig) {
+          $date_end = date_create_from_format("Ymd", $date_end_orig);
+          $date_end_mini = date_format($date_end, "j, Y");
+          $date_end = date_format($date_end, "M d, Y");
+	}
         $author = get_field('author');
         $title = get_the_title();
         $audio = get_field('audio');
