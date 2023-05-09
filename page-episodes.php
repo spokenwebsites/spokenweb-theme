@@ -42,8 +42,8 @@
               <p style="font-weight: bold;">Miranda Eastwood</p>
             </div>
             <div class="col-md-4 col-sm-12 pb-2">
-              <p>Production Manager & Transcription</p>
-              <p style="font-weight: bold;">Kelly Cubbon</p>
+              <p>Transcription</p>
+              <p style="font-weight: bold;">Zoe Mix</p>
             </div>
           </div>
           <div class="row">
@@ -319,5 +319,5 @@ endif; ?>
     </div>
   </section>
 <?php endif; ?>
-
 <?php get_footer(); ?>
+
