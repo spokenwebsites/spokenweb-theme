@@ -48,7 +48,7 @@
 											<div class="description-container px-4 pt-4 pb-2">
 												<div class="measure">
 													<?php the_content(); ?>
-													<button class="btn btn-sw mt-2 mb-4">Learn more</button>
+													<!--button class="btn btn-sw mt-2 mb-4">Learn more</button-->
 												</div>
 											</div>
 										<?php endif; ?>
@@ -63,3 +63,4 @@
 	<?php endwhile;
 endif; ?>
 	<?php get_footer(); ?>
+
