@@ -4003,3 +4003,11 @@ article h3 {
     height: 25% !important;
   }
 }
+
+/* add 5-col grid for podast masthead */
+@media screen and (min-width: 768px) {
+  .row-md-5-col > div {
+    flex-basis: 20%;
+    max-width: 20%;
+  }
+}

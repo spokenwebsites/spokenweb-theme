@@ -28,20 +28,24 @@
               <hr>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-3  col-sm-12 pb-2">
-              <p>Host & ShortCuts Producer</p>
+          <div class="row row-md-5-col">
+            <div class="col-md-2 col-sm-12 pb-2">
+              <p>Co-Host</p>
+              <p style="font-weight: bold;">Hannah McGregor</p>
+            </div>
+            <div class="col-md-2 col-sm-12 pb-2">
+              <p>Co-Host & ShortCuts Producer</p>
               <p style="font-weight: bold;">Katherine McLeod</p>
             </div>
-            <div class="col-md-3  col-sm-12 pb-2">
+            <div class="col-md-2 col-sm-12 pb-2">
               <p>Supervising Producer</p>
-              <p style="font-weight: bold;">Kate Moffatt</p>
+              <p style="font-weight: bold;">Maia Harris</p>
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
               <p>Sound Designer</p>
-              <p style="font-weight: bold;">Miranda Eastwood</p>
+              <p style="font-weight: bold;">James Healey</p>
             </div>
-            <div class="col-md-4 col-sm-12 pb-2">
+            <div class="col-md-2 col-sm-12 pb-2">
               <p>Transcription</p>
               <p style="font-weight: bold;">Zoe Mix</p>
             </div>
