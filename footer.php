@@ -105,7 +105,7 @@ $call_for_proposals_template = get_field('call_for_proposals_template')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="https://unpkg.com/wavesurfer.js@6"></script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/_/js/moment.min.js"></script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/_/js/moment-duration-format.js"></script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/_/js/jquery.scrollTo.min.js"></script>
@@ -176,3 +176,4 @@ $call_for_proposals_template = get_field('call_for_proposals_template')
 </script>
 </body>
 </html>
+
