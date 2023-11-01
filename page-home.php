@@ -46,7 +46,8 @@ query_posts(
           <h3 class="subtitle">
             <?php the_title(); ?><br />
             <?php echo $subtitle; ?>
-          </h3>
+	  </h3>
+          <?php if ($audio_url) : ?>
           <div style="margin-top:30px; margin-bottom:30px;">
             <div class="container-audio">
               <div class="audio-play"><span class="oi oi-media-play"></span></div>
@@ -55,7 +56,8 @@ query_posts(
                 <div class="time-container"><span class="currentTime">00:00</span> <span class="timeslash">/</span> <span class="duration">00:00</span></div>
               </div>
             </div>
-          </div>
+	  </div>
+          <?php endif; ?>
         </div>
         <div class="col-sm-3 offset-sm-1 col-6 offset-3 mobile audiocontainer">
           <div id="audio-img-container1" style="background: #E98E4A; display: inline-block; width:100%; position:absolute; transform: rotate(45deg); transform-origin: 50% 100%;"></div>
