@@ -3,11 +3,11 @@
 	while (have_posts()) : the_post(); ?>
 		<div class="p-md-5 header d-lg-flex py-4 align-content-center">
 			<div class="w-100 w-sm-50 px-4 px-md-0  mt-3">
-				<h1><span>Tookits</span></h1>
+				<h1><span><?php the_title(); ?></span></h1>
 				<h2 class="my-md-5 my-sm-4 my-3"><?php the_content(); ?></h2>
 			</div>
 			<div class="w-100 mr-lg-5 px-5 py-4 py-lg-2 mt-3">
-				<img class="w-lg-100 w-sm-75 w-100 mx-auto" src="<?php bloginfo('template_directory'); ?>/_/img/research/toolkits.svg" />
+				<img class="w-lg-100 w-sm-75 w-100 mx-auto" src="<?php bloginfo('template_directory'); ?>/_/img/research/platforms.svg" />
 			</div>
 		</div>
 		<section id="research-content" class="container-fluid pt-5 mt-4">
@@ -23,7 +23,7 @@
 						<div class="type-container pb-4">
 							<h1 class="mb-5"><?php echo $type; ?></h1>
 							<?php
-							$args = array('post_type' => 'toolkits', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title', 'meta_key' => 'type', 'meta_value' => $type);
+							$args = array('post_type' => 'platforms', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title', 'meta_key' => 'type', 'meta_value' => $type);
 							$research_query = new WP_Query($args);
 							$count = $research_query->post_count;
 							if ($research_query->have_posts()) :
@@ -48,7 +48,9 @@
 											<div class="description-container px-4 pt-4 pb-2">
 												<div class="measure">
 													<?php the_content(); ?>
-													<!--button class="btn btn-sw mt-2 mb-4">Learn more</button-->
+													<?php if (isset($url) && $url !== "") : ?>
+														<a href="<?php echo $url; ?>" rel="nofollow" class="btn btn-sw red mt-2 mb-4">Learn more</a>
+													<?php endif; ?>
 												</div>
 											</div>
 										<?php endif; ?>

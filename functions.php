@@ -238,6 +238,24 @@ function create_toolkits_post_type()
 }
 add_action('init', 'create_toolkits_post_type', 0);
 
+function create_platforms_post_type()
+{
+        // Custom post: Platforms
+        register_post_type('platforms', array(
+                'label' => __('Platforms'),
+                'singular_name' => __('Platform'),
+                'public' => false, // allows it to be publicly queryable
+                'exclude_from_search' => true,
+                'show_ui' => true, // displays the post time in the Admin Interface
+                'menu_position' => 25,
+                'capability_type' => 'post',
+                'hierarchical' => false,
+                'rewrite' => array("slug" => "platforms", "with_front" => false), // the slug for permalinks
+                'supports' => array('title', 'revisions', 'thumbnail', 'editor') // What can this post type do
+        ));
+}
+add_action('init', 'create_platforms_post_type', 0);
+
 function create_podcast_post_type()
 {
 	// Custom post: Podcast
