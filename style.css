@@ -2060,6 +2060,7 @@ article.wire .blogthumb img {
   border-radius: 0 !important;
 }
 
+a.btn-sw,
 button.btn-sw {
   color: #e07d21;
   background-color: transparent;
@@ -2070,12 +2071,14 @@ button.btn-sw {
   margin-right: 10px;
 }
 
+a.btn-sw.active,
 button.btn-sw.active {
   background: #e07d21;
   color: #fff;
   border-color: #fff;
 }
 
+a.btn-sw.white,
 button.btn-sw.white {
   color: #fff;
   border-color: #fff;
@@ -2085,17 +2088,20 @@ button.btn-sw.white {
   border: 1px solid #707070;
 }
 
+a.btn-sw.white.active,
 button.btn-sw.white.active {
   color: #893025;
   border-color: #893025;
   background: #fff;
 }
 
+a.btn-sw.red,
 button.btn-sw.red {
   color: #893025;
   border-color: #893025;
 }
 
+a.btn-sw.red.active,
 button.btn-sw.red.active {
   background: #893025;
   color: #fff;
