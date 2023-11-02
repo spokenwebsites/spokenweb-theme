@@ -16,14 +16,24 @@
 				</div>
 				<div class="col-sm-9 research-content-container">
 					<?php
-					$field = get_field_object('field_5c134d174bc83');
+					$field = get_field_object('field_6542dca28880a');
 					$types = $field['choices'];
 					foreach ($types as $type) :
 					?>
 						<div class="type-container pb-4">
 							<h1 class="mb-5"><?php echo $type; ?></h1>
 							<?php
-							$args = array('post_type' => 'platforms', 'posts_per_page' => -1, 'post_status' => array('publish'), 'order' => 'ASC', 'orderby' => 'title', 'meta_key' => 'type', 'meta_value' => $type);
+							$args = array(
+								'post_type' => 'platforms',
+								'posts_per_page' => -1,
+								'post_status' => array(
+									'publish'
+								),
+								'order' => 'ASC',
+								'orderby' => 'title',
+								'meta_key' => 'type',
+								'meta_value' => $type,
+							);
 							$research_query = new WP_Query($args);
 							$count = $research_query->post_count;
 							if ($research_query->have_posts()) :
