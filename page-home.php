@@ -21,6 +21,9 @@
 // include('post-tr-day.php');
 ?>
 <?php
+//include('post-in-memory.php');
+?>
+<?php
 query_posts(
   array(
     'posts_per_page' => 1,
