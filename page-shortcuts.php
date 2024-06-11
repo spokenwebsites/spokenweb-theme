@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-4 col-sm-12 pb-2">
               <p>Transcription</p>
-              <p style="font-weight: bold;">Zoe Mix</p>
+              <p style="font-weight: bold;">Yara Ajeeb</p>
             </div>
           </div>
           <div class="row">
