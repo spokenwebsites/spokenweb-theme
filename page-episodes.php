@@ -34,7 +34,7 @@
               <p style="font-weight: bold;">Hannah McGregor</p>
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
-              <p>Co-Host & ShortCuts Producer</p>
+              <p>Co-Host &amp; ShortCuts Producer</p>
               <p style="font-weight: bold;">Katherine McLeod</p>
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
@@ -43,7 +43,8 @@
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
               <p>Sound Designer</p>
-              <p style="font-weight: bold;">James Healey</p>
+              <p class="mb-1" style="font-weight: bold;">James Healey</p>
+              <p style="font-weight: bold;">TJ MacPherson</p>
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
               <p>Transcription</p>

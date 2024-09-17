@@ -31,7 +31,7 @@
           </div>
           <div class="row">
             <div class="col-md-3  col-sm-12 pb-2">
-              <p>Host & Producer</p>
+              <p>Host &amp; Producer</p>
               <p style="font-weight: bold;">Katherine McLeod</p>
             </div>
             <div class="col-md-3  col-sm-12 pb-2">
@@ -40,7 +40,8 @@
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
               <p>Sound Designer</p>
-              <p style="font-weight: bold;">James Healey</p>
+              <p class="mb-1" style="font-weight: bold;">James Healey</p>
+              <p style="font-weight: bold;">TJ MacPherson</p>
             </div>
             <div class="col-md-4 col-sm-12 pb-2">
               <p>Transcription</p>
