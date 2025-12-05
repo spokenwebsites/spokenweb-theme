@@ -9,7 +9,7 @@ $slug = $cat->slug;
       <h1>The</h1>
     </em>
     <h1>SPOKENWEBLOG</h1>
-    <a href="<?php echo get_permalink(get_page_by_path('spokenweblog/about-swb')); ?>"><button class="btn btn-sw mt-4">About SWB →</button></a>
+    <a href="<?php echo get_permalink(get_page_by_path('spokenweblog/about-swb')); ?>" class="btn btn-sw mt-4">About SWB →</a>
   </div>
 </div>
 <div class="px-3">

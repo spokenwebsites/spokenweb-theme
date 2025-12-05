@@ -46,9 +46,9 @@ if (is_page('about-us') || get_post($post->post_parent)->post_name == 'about-us'
     <div class="row">
       <div class="col-sm-2">
         <h2><a href="<?php echo get_permalink(get_page_by_path('about-us/spokenweb')); ?>">About Us</a></h2>
-        <h2><a href="<?php echo get_permalink(get_page_by_path('contact-us')); ?>">Contact Us</a></h2>
+        <h2><a href="https://search.spokenweb.ca">Search Engine</a></h2-->
         <h2><a href="<?php echo get_permalink(get_page_by_title('Get Involved')); ?>">Get Involved</a></h2>
-        <h2><a href="<?php echo get_permalink(get_page_by_title('Downloads')); ?>">Downloads</a></h2>
+        <!--h2><a href="<?php //echo get_permalink(get_page_by_title('Downloads')); ?>">Downloads</a></h2-->
       </div>
       <div class="col-sm-2">
         <h2><a href="<?php echo get_permalink(get_page_by_title('News')); ?>">News</a></h2>
