@@ -140,6 +140,10 @@ aside h4.active {
   color: #7a7a7a;
 }
 
+.entry blockquote p {
+  color: inherit;
+}
+
 .inner-content {
   margin-top: 30px;
   margin-bottom: 100px;
@@ -2069,6 +2073,7 @@ button.btn-sw {
   font-size: 14px;
   padding: 0.625rem 1.25rem;
   margin-right: 10px;
+  text-decoration: none;
 }
 
 a.btn-sw.active,

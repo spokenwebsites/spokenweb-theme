@@ -20,6 +20,33 @@
 // TR Day Post
 // include('post-tr-day.php');
 ?>
+<section class="container-fluid" style="background:#fff;">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="title">
+        <a href="https://search.spokenweb.ca" style="color:inherit; text-decoration:none;">
+          The SpokenWeb Search Engine
+        </a>
+      </h1>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-sm-7">
+      <p>The SpokenWeb Search Engine allows users to search collections of literary sound recordings held at organizations and institutions across Canada. Metadata about the recordings are held in the SpokenWeb Swallow Database. The contents of this database are made available through this SpokenWeb Search Engine which works as a directory to information about the recordings, and in some cases to the audiovisual materials themselves. This version of the SpokenWeb Search Engine is currently in development. The first official version of the SWSE will launched at the SpokenWeb Institute in May 2025.</p>
+      <a href="https://search.spokenweb.ca" class="btn btn-sw">GO TO THE SEARCH ENGINE &nbsp; <span class="oi oi-arrow-right"></span></a>
+    </div>
+    <div class="col-sm-3 offset-sm-1 col-6 offset-3 desktop">
+      <!-- Yellow half-circle background -->
+      <div id="image-background" style="background: rgb(233, 142, 74); display: inline-block; width: 300px; position: absolute; transform: rotate(45deg); transform-origin: 50% 100% 0px; height: 150px; border-radius: 300px 300px 0px 0px; top: -15px; left: 0px;"></div>
+      <!-- Image container -->
+      <a href="https://search.spokenweb.ca">
+        <div style="position:relative;">
+          <img src="https://spokenweb.ca/wp-content/uploads/2025/03/spokenweb-search-engine-page1024x839.png" alt="SpokenWeb Search Engine" style="width:256px; height:256px; border-radius:50%;position: relative;">
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 <?php
 query_posts(
   array(
@@ -27,51 +54,60 @@ query_posts(
     'post_status' => 'publish',
     'order' => 'DESC',
     'orderby' => 'date',
-    'category_name' => 'shortcuts'
+    'post_type' => 'podcast'
   )
 );
 ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <?php
-    $audio = get_field('audio');
-    $audio_url = $audio['url'];
+  <?php
+    $audio_url = get_field('audio_download_url');
     $subtitle = get_field('subtitle');
-    ?>
-    <section id="audio" class="alt container-fluid" data-audio="<?php echo $audio_url; ?>">
+  ?>
+    <section id="audio" class="alt container-fluid" data-audio="<?php echo $audio_url; ?>" style="background: #202727; color: #fff;">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="title">New Audio from <em>ShortCuts</em></h1>
+          <h1 class="title">
+            New Audio from 
+            <span style="position: relative; display: inline-block;">
+              <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-1deg); background-color: #EC8E43; display: inline-block; z-index: 0;"></span>
+              <span style="position: relative; z-index: 1; color: rgb(58, 70, 70);">SpokenWeb Podcast</span>
+            </span>
+          </h1>
         </div>
+      </div>
+      <div class="row">
         <div class="col-sm-7">
           <h3 class="subtitle">
             <?php the_title(); ?><br />
             <?php echo $subtitle; ?>
-	  </h3>
+	        </h3>
           <?php if ($audio_url) : ?>
-          <div style="margin-top:30px; margin-bottom:30px;">
-            <div class="container-audio">
-              <div class="audio-play"><span class="oi oi-media-play"></span></div>
-              <div class="container-waveform">
-                <div id="waveform" class="waveform"></div>
-                <div class="time-container"><span class="currentTime">00:00</span> <span class="timeslash">/</span> <span class="duration">00:00</span></div>
+            <div style="margin-top:30px; margin-bottom:30px;">
+              <div class="container-audio">
+                <div class="audio-play"><span class="oi oi-media-play"></span></div>
+                <div class="container-waveform">
+                  <div id="waveform" class="waveform"></div>
+                  <div class="time-container"><span class="currentTime">00:00</span> <span class="timeslash">/</span> <span class="duration">00:00</span></div>
+                </div>
               </div>
-            </div>
-	  </div>
+	          </div>
           <?php endif; ?>
         </div>
-        <div class="col-sm-3 offset-sm-1 col-6 offset-3 mobile audiocontainer">
+      </div>
+      <div class="row align-items-center">
+        <!--div class="col-sm-3 offset-sm-1 col-6 offset-3 mobile audiocontainer">
           <div id="audio-img-container1" style="background: #E98E4A; display: inline-block; width:100%; position:absolute; transform: rotate(45deg); transform-origin: 50% 100%;"></div>
-          <?php if (has_post_thumbnail()) : ?>
-            <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+          php if (has_post_thumbnail()) : ?>
+            php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
             $img_lg = $img_lg[0]; ?>
-            <a href="<?php the_permalink(); ?>" target="_blank">
-              <div style="position:relative;"><img id="audio-img1" src="<?php echo $img_lg; ?>" width="100%" style="border-radius:50%;"></div>
+            <a href="php the_permalink(); ?>" target="_blank">
+              <div style="position:relative;"><img id="audio-img1" src="php echo $img_lg; ?>" width="100%" style="border-radius:50%;"></div>
             </a>
-          <?php endif; ?>
-        </div>
+          php endif; ?>
+        </div-->
         <div class="col-sm-7">
           <?php the_excerpt(); ?>
-          <h4><a href="<?php the_permalink(); ?>">Read more...</a></h4>
+          <h4><a href="<?php the_permalink(); ?>" style="color:white;">Read more...</a></h4>
         </div>
         <?php if (has_post_thumbnail()) : ?>
           <?php $img_lg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
@@ -79,7 +115,7 @@ query_posts(
           <div class="col-sm-3 offset-sm-1 col-6 offset-3 desktop">
             <div id="audio-img-container2" style="background: #E98E4A; display: inline-block; width:100%; position:absolute; transform: rotate(45deg); transform-origin: 50% 100%;"></div>
             <a href="<?php the_permalink(); ?>" target="_blank">
-              <div style="position:relative;"><img id="audio-img2" src="<?php echo $img_lg; ?>" width="100%" style="border-radius:50%;"></div>
+              <div style="position:relative;">          <img id="podcast-img2" src="https://staging.spokenweb.ca/wp-content/themes/spokenweb-theme/_/img/podcast_logo.png" width="100%" style="max-width: 256px; height: auto; border-radius:50%;"></div>
             </a>
           </div>
         <?php endif; ?>
@@ -87,6 +123,7 @@ query_posts(
     </section>
 <?php endwhile;
 endif; ?>
+
 <section class="container-fluid" style="background:#fff;">
   <div class="row">
     <div class="col-sm-12">
