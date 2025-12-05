@@ -242,15 +242,15 @@ function create_platforms_post_type()
 {
         // Custom post: Platforms
         register_post_type('platforms', array(
-                'label' => __('Platforms'),
-                'singular_name' => __('Platform'),
+                'label' => __('Labs and Centres'),
+                'singular_name' => __('Labs and Centres'),
                 'public' => false, // allows it to be publicly queryable
                 'exclude_from_search' => true,
                 'show_ui' => true, // displays the post time in the Admin Interface
                 'menu_position' => 25,
                 'capability_type' => 'post',
                 'hierarchical' => false,
-                'rewrite' => array("slug" => "platforms", "with_front" => false), // the slug for permalinks
+                'rewrite' => array("slug" => "labs-centres", "with_front" => false), // the slug for permalinks
                 'supports' => array('title', 'revisions', 'thumbnail', 'editor') // What can this post type do
         ));
 }

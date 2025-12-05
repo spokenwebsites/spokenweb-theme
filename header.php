@@ -80,7 +80,7 @@
   <div id="content" style="opacity:0;">
     <?php if (is_front_page()) : ?>
       <div id="bg"></div>
-    <?php elseif ($pagename == "events" || is_page('spokenweb') || is_page('about-swb') || $pagename == "past-events" ||  is_singular('events') ||  is_singular('post') || is_page('podcast') || get_post_type() == 'podcast' || get_post($post->post_parent)->post_name == 'podcast' || is_page('publications') || is_page('collections') || is_page('toolkits') || is_page('platforms')) : ?>
+    <?php elseif ($pagename == "events" || is_page('spokenweb') || is_page('about-swb') || $pagename == "past-events" ||  is_singular('events') ||  is_singular('post') || is_page('podcast') || get_post_type() == 'podcast' || get_post($post->post_parent)->post_name == 'podcast' || is_page('publications') || is_page('collections') || is_page('toolkits') || is_page('labs-centres')) : ?>
     <?php elseif (is_category() && (get_queried_object()->slug == "audio-of-the-week" || get_queried_object()->slug == "shortcuts" || get_queried_object()->slug == "spokenweblog" || get_queried_object()->slug == "institutes" || get_queried_object()->slug == "symposia")) : ?>
     <?php else : ?>
       <section class="container-fluid">
