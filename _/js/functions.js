@@ -409,7 +409,7 @@ if (page == 'episodes') {
   })
 }
 
-if (page == 'spokenweb-podcast' || page == 'shortcuts') {
+if (page == 'spokenweb-podcast' || page == 'shortcuts' || page == 'literary-listening') {
   $('.category-select.sort a').click(function (e) {
     e.preventDefault()
     const cat = $(this).attr('href').replace('#', '')
