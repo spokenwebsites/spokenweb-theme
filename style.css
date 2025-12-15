@@ -266,7 +266,8 @@ header.hide {
 }
 
 .podcast_bg header,
-.shortcuts_bg header {
+.shortcuts_bg header,
+.listening_bg header {
   background: #3a4646;
 }
 
@@ -321,7 +322,8 @@ header #header_logo {
 }
 
 .podcast_bg header #header_logo,
-.shortcuts_bg header #header_logo {
+.shortcuts_bg header #header_logo,
+.listening_bg header #header_logo {
   background: url('_/img/logo_long_grey.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1604,7 +1606,8 @@ footer.hide {
 }
 
 .podcast_bg footer,
-.shortcuts_bg footer {
+.shortcuts_bg footer,
+.listening_bg footer {
   background-color: #3a4646;
 }
 
@@ -1685,6 +1688,13 @@ footer ul {
 .shortcuts_bg footer ul,
 .shortcuts_bg footer h2,
 .shortcuts_bg footer a {
+  color: #f4f4f4;
+}
+
+.listening_bg footer p,
+.listening_bg footer ul,
+.listening_bg footer h2,
+.listening_bg footer a {
   color: #f4f4f4;
 }
 
@@ -2731,7 +2741,8 @@ nav.navbar {
 }
 
 .podcast_bg .navbar-main .navbar-toggler-icon,
-.shortcuts_bg .navbar-main .navbar-toggler-icon {
+.shortcuts_bg .navbar-main .navbar-toggler-icon,
+.listening_bg .navbar-main .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(244, 244, 244, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
@@ -2841,36 +2852,48 @@ nav.navbar {
   background: #3a4646;
 }
 
-.shortcuts_bg .navbar-main {
+.shortcuts_bg .navbar-main,
+.listening_bg .navbar-main {
   background: #3a4646;
 }
 
-.shortcuts_bg .navbar-main .nav-link {
+.shortcuts_bg .navbar-main .nav-link,
+.listening_bg .navbar-main .nav-link {
   color: #f4f6f7;
 }
 
-.shortcuts_bg .dropdown-menu .nav-link:hover {
+.shortcuts_bg .dropdown-menu .nav-link:hover,
+.listening_bg .dropdown-menu .nav-link:hover {
   color: #303030 !important;
 }
 
 .shortcuts_bg .navbar-main .current_page_item span,
 .shortcuts_bg .dropdown-menu .active a span,
 .shortcuts_bg .navbar-main .current_page_parent > a span,
-.shortcuts_bg .navbar-main .current-menu-item > a span {
+.shortcuts_bg .navbar-main .current-menu-item > a span,
+.listening_bg .navbar-main .current_page_item span,
+.listening_bg .dropdown-menu .active a span,
+.listening_bg .navbar-main .current_page_parent > a span,
+.listening_bg .navbar-main .current-menu-item > a span {
+
   padding-bottom: 1px;
   border-bottom: 1px solid #f4f6f7;
 }
 
 .shortcuts_bg .navbar-collapse.show,
-.shortcuts_bg .navbar-collapse.collapsing {
+.listening_bg .navbar-collapse.show,
+.shortcuts_bg .navbar-collapse.collapsing,
+.listening_bg .navbar-collapse.collapsing {
   background: #3a4646;
 }
 
-.shortcuts_bg .dropdown-menu .active a span {
+.shortcuts_bg .dropdown-menu .active a span,
+.listening_bg .dropdown-menu .active a span {
   border-bottom: 1px solid #3a4646;
 }
 
-.shortcuts_bg .dropdown-menu .active a:hover span {
+.shortcuts_bg .dropdown-menu .active a:hover span,
+.listening_bg .dropdown-menu .active a:hover span {
   border-bottom: 1px solid #f4f6f7;
 }
 
@@ -3042,7 +3065,10 @@ nav.navbar {
 
 .shortcuts_bg .navbar-main .nav-link:hover,
 .shortcuts_bg .navbar-main .nav-link:active,
-.shortcuts_bg .navbar-main .nav-link:focus {
+.shortcuts_bg .navbar-main .nav-link:focus,
+.listening_bg .navbar-main .nav-link:hover,
+.listening_bg .navbar-main .nav-link:active,
+.listening_bg .navbar-main .nav-link:focus {
   background: #303030;
   color: #f4f4f4 !important;
 }
@@ -3052,7 +3078,13 @@ nav.navbar {
 .shortcuts_bg .navbar-main .current_page_parent .nav-link:focus,
 .shortcuts_bg .dropdown-menu .active .nav-link:hover,
 .shortcuts_bg .dropdown-menu .active .nav-link:active,
-.shortcuts_bg .dropdown-menu .active .nav-link:focus {
+.shortcuts_bg .dropdown-menu .active .nav-link:focus,
+.listening_bg .navbar-main .current_page_parent .nav-link:hover,
+.listening_bg .navbar-main .current_page_parent .nav-link:active,
+.listening_bg .navbar-main .current_page_parent .nav-link:focus,
+.listening_bg .dropdown-menu .active .nav-link:hover,
+.listening_bg .dropdown-menu .active .nav-link:active,
+.listening_bg .dropdown-menu .active .nav-link:focus {
   background: #303030 !important;
   color: #f4f4f4 !important;
 }
