@@ -13,11 +13,11 @@
       <div class="row">
         <div class="col-sm-12">
           <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('Episodes')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Podcast Home Page</span></a></p>
-          <h1>SpokenWeb</h1>
+          <!--h1>SpokenWeb</h1-->
           <div class="accent">
-            <h1>Shortcuts</h1>
+            <h1>Literary Listening</h1>
           </div>
-          <div class="text-center logo-container mt-2"><img src="<?php bloginfo('template_directory'); ?>/_/img/shortcuts_logo.png" width="300" /></div>
+          <div class="text-center logo-container mt-2"><img src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo-TJmockup2.png" width="300" /></div>
         </div>
         <div class="col-sm-12 text-center">
           <div class="subscribe-link-container"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>
@@ -31,17 +31,18 @@
           </div>
           <div class="row">
             <div class="col-md-3  col-sm-12 pb-2">
-              <p>Host &amp; Producer</p>
+              <p>Hosts &amp; Producers</p>
+              <p class="mb-1" style="font-weight: bold;">Jason Camlot</p>
               <p style="font-weight: bold;">Katherine McLeod</p>
             </div>
             <div class="col-md-3  col-sm-12 pb-2">
               <p>Supervising Producer</p>
-              <p style="font-weight: bold;">Maia Harris</p>
+              <p style="font-weight: bold;">Emily Stuchbery</p>
             </div>
             <div class="col-md-2 col-sm-12 pb-2">
-              <p>Sound Designer</p>
-              <p class="mb-1" style="font-weight: bold;">James Healey</p>
-              <p style="font-weight: bold;">TJ MacPherson</p>
+              <p>Sound Designers</p>
+              <p class="mb-1" style="font-weight: bold;">TJ MacPherson</p>
+              <p style="font-weight: bold;">Lou Raskin</p>
             </div>
             <div class="col-md-4 col-sm-12 pb-2">
               <p>Transcription</p>
@@ -89,7 +90,7 @@ endif; ?>
           'order' => 'DESC',
           'orderby' => 'date',
           'meta_key' => 'type',
-          'meta_value' => array('ShortCuts')
+          'meta_value' => array('Literary Listening')
         );
         $podcast_query = new WP_Query($args);
         ?>
