@@ -119,7 +119,7 @@ endif; ?>
                 <h4 style="position:absolute; z-index:1000; bottom:37px; left:15px; font-size:16px; color: #fff;"><?php echo $subtitle; ?></h4>
                 <a href="<?php the_permalink(); ?>">
                   <img class="event-img filter" src="<?php echo $img_thumb; ?>" width="100%">
-                  <section class="event-orange"></section>
+                  <section class="event-red event-literarylistening"></section>
                   <span class="listen-now"><span class="oi oi-media-play"></span>Listen Now</span>
                 </a>
               </div>
@@ -139,7 +139,7 @@ endif; ?>
           'order' => 'ASC',
           'orderby' => 'date',
           'meta_key' => 'type',
-          'meta_value' => array('ShortCuts')
+          'meta_value' => array('Literary Listening')
         );
         $podcast_query = new WP_Query($args);
         ?>
@@ -169,7 +169,7 @@ endif; ?>
                 <h4 style="position:absolute; z-index:1000; top:15px; left:15px; font-size:16px; color: #fff;"><?php echo $subtitle; ?></h4>
                 <a href="<?php the_permalink(); ?>">
                   <img class="event-img filter" src="<?php echo $img_thumb; ?>" width="100%">
-                  <section class="event-orange"></section>
+                  <section class="event-red event-literarylistening"></section>
                   <span class="listen-now"><span class="oi oi-media-play"></span>Listen Now</span>
                 </a>
               </div>

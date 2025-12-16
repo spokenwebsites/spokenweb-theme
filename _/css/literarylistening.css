@@ -1,30 +1,46 @@
 /* Literary listening page and posts */
 
-/* text styling */
-.listening_bg {
-	color: #303030;
+:root {
+  --primary: #893025;
+  --secondary: #e07d21;
+  --tertiary: #fcd788;
+  --body-color: #303030;
+  --bg-color: #f4f4f4;
 }
 
+/* base */
+.listening_bg {
+	color: var(--body-color);
+  background-color: var(--bg-color);
+}
+
+.listening_bg hr {
+  border-color: var(--primary);
+}
+
+/* text styling */
 .listening_bg p,
 .listening_bg ul li,
 .listening_bg ol li {
   font-size: 16px;
   font-weight: 500;
-  line-height; 21px;
+  line-height: 21px;
 }
 
 .listening_bg a {
+  color: var(--primary);
 }
 
 .listening_bg .episodes-container h1 {
 	font-size: 3rem;
+  font-weight: 600;
 	line-height: 3rem;
 	font-weight: 500;
-	color: #303030;
+	color: var(--primary);
 	margin: 0px;
 	display: block;
 	padding: 0px 10px;
-	font-family: 'futura-medium';
+	/*font-family: 'futura-medium';*/
 	letter-spacing: 0px;
 	font-style: italic;
 	text-align: center;
@@ -32,11 +48,11 @@
 
 .listening_bg .episodes-container .accent h1 {
 	padding: 5px 10px;
-	color: #E07D21;
-	font-weight: 200;
+	color: var(--primary);;
+	font-weight: 600;
 	text-transform: uppercase;
 	font-style: normal;
-	font-size: 1.65rem;
+	font-size: 2rem;
 	letter-spacing: 6px;
 }
 
@@ -51,6 +67,14 @@
 	font-size: 20px;
 	line-height: 24px;
 	margin: 30px 0px 20px 0px;
+}
+
+.episode h4 {
+	font-size: 14px;
+	font-weight: normal;
+	text-transform: none;
+	line-height: 21px;
+	margin-top: 0px;
 }
 
 .episodes h4 {
@@ -71,7 +95,7 @@
 .episodes h5 {
 	font-size: 13px;
 	font-weight: bold;
-	color: #EC8E43;
+	color: var(--primary);
 	font-family: 'futura-pt-bold';
 	text-transform: none;
 	margin-top: 15px;
@@ -90,8 +114,12 @@ p.return-link {
 	text-decoration: none;
 }
 
-p.return-link a:hover {
+p.return-link a {
 	text-decoration: none;
+}
+
+p.return-link a:hover {
+	text-decoration: underline;
 }
 
 p.return-link .return-arrow {
@@ -107,7 +135,9 @@ p.return-link .return-arrow {
 		font-size: 3rem;
 		line-height: 3rem;
 	}
-
+  .episode h4 {
+    font-size: 18px;
+  }
 	.episodes p {
 		font-size: 13px;
 		line-height: 16px;
@@ -116,6 +146,9 @@ p.return-link .return-arrow {
 	p.return-link {
 		font-size: 14px;
 		line-height: 41px;
+	}
+	.episode button.btn-sw {
+		font-size: 20px;
 	}
 }
 
@@ -137,6 +170,29 @@ p.return-link .return-arrow {
 	background: #fff;
 	color: #202727;
 	border-color: #fff;
+}
+
+.episode button.btn-sw.active {
+	background: #fff;
+	color: #202727;
+	border-color: #fff;
+}
+
+/*
+ * Navbar
+ */
+
+.listening_bg #s {
+	border-color: #fff;
+	color: #fff;
+}
+
+.listening_bg .navbar .form-control::placeholder {
+  color: #fff;
+}
+
+.listening_bg #searchContainer .input-group-text {
+	color: #fff;
 }
 
 /*
@@ -173,23 +229,20 @@ p.return-link .return-arrow {
 	top: -45px;
 }
 
-.listening_bg a {
-	color: #E07D21;
-}
-
 .listening_bg a#subscribe-link button.btn-sw {
-	background: #E07D21;
-	color: #202727;
-	border-color: #202727;
+	background: var(--primary);
+	color: #fff;
+	border-color: var(--primary);
 	padding: 5px 25px;
 	font-weight: 500;
 	transition: all 0.23s;
 }
 
-.listening_bg a#subscribe-link:hover button.btn-sw {
-	background: #303030;
-	border-color: #E07D21;
-	color: #E07D21;
+.listening_bg a#subscribe-link:hover button.btn-sw,
+.listening_bg a#subscribe-link:active button.btn-sw {
+	background: #fff;
+	border-color: var(--primary);
+  color: var(--primary);
 }
 
 @media screen and (min-width: 575px) {
@@ -211,6 +264,31 @@ p.return-link .return-arrow {
 	transition: filter 1s;
 	background-blend-mode: darken;
 	height: auto;
+}
+
+.episodes .event-red {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	background: rgba(252, 215, 136, 0.5);
+	margin: 0px;
+	opacity: 1;
+	transition: 1s;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.episodes .event-literarylistening {
+  background: rgba(137, 48, 37, 0.5);
+}
+
+.episodes a:hover .event-orange,
+.featured-episode a:hover .event-orange,
+.episodes a:hover .event-red,
+.featured-episode a:hover .event-red {
+	opacity: 0;
 }
 
 a span.listen-now {
@@ -244,14 +322,201 @@ a span.listen-now {
 /*
  * Page - Bottom section
  */
-.shortcuts_bg .header-container {
+.listening_bg .header-container {
 	margin-top: 25px;
 }
 
 @media screen and (min-width: 575px) {
-	.shortcuts_bg .header-container {
+	.llisteningbg .header-container {
 		margin-top: 46px;
 	}
 }
 
+/*
+ * Single
+ */
 
+.episode h2 {
+	font-family: 'futura-pt-bold';
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+
+.episode h5 {
+	font-size: 14px;
+	color: var(--primary);
+	font-weight: normal;
+	text-transform: uppercase;
+	line-height: 15px;
+	margin-top: 25px;
+}
+
+.episode .audio-play {
+	width: 36px;
+	position: relative;
+	height: 36px;
+	margin-bottom: -36px;
+	top: -5px;
+	text-align: center;
+	color: var(--primary);
+	border: 2px solid var(--primary);
+	border-radius: 36px;
+	display: inline-block;
+	margin-right: 10px;
+	transition: all 0.23s;
+}
+
+.episode .oi-media-play {
+	display: block;
+	top: 10px;
+	left: 2px;
+	font-size: 15px;
+	position: relative;
+}
+
+.episode a.audio-button:hover .download-arrow,
+.episode a.audio-button:hover .audio-play {
+	color: #fff;
+	background: var(--primary);
+}
+
+.episode .download-arrow {
+	width: 36px;
+	position: relative;
+	height: 36px;
+	margin-bottom: -36px;
+	top: -5px;
+	text-align: center;
+	color: var(--primary);
+	border: 2px solid var(--primary);
+	border-radius: 36px;
+	display: inline-block;
+	margin-right: 10px;
+	transition: all 0.23s;
+}
+
+.episode .audio-button:hover .audio-play,
+.episode .audio-button:hover .download-arrow {
+	color: #fff;
+}
+
+.episode .oi-data-transfer-download {
+	display: block;
+	top: 8px;
+	left: 0px;
+	font-size: 15px;
+	position: relative;
+}
+
+.episode .audio-embed {
+	padding-top: 30px;
+	display: none;
+}
+
+.listening_bg .social-icons {
+	display: inline-block;
+  font-size: 12px;
+	margin-left: 5px;
+}
+
+.listening_bg .fab.circle {
+	background: transparent;
+	color: var(--body-color);
+	border-radius: 12px;
+	padding: 6px;
+	border: 1px solid var(--body-color);
+	height: 24px;
+	width: 24px;
+	text-align: center;
+	margin-top: -14px;
+	margin-left: 2px;
+	transition: all 0.23s;
+}
+
+.listening_bg .social-icons a:hover .fab.circle {
+	color: #fff;
+	background-color: var(--primary);
+	border-color: var(--primary);
+}
+
+.episode .category-select {
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+.episode button.btn-sw.active {
+	background: #fff;
+	color: #202727;
+	border-color: #fff;
+}
+
+.producer {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.producer-bio h4 {
+  color: var(--primary);
+  font-family: 'futura-pt-bold'; 
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 575px) {
+	.episode h2 {
+		font-size: 34px;
+		line-height: 42px;
+	}
+	.episode h5 {
+		margin-top: 25px;
+	}
+	.episode-container .return-link + .d-sm-flex {
+		flex-direction: column;
+	}
+	.episode-container .return-link + .d-sm-flex > .text-center:first-child {
+		width: 100%;
+		flex-basis: 100%;
+	}
+	.episode .audio-play {
+		width: 46px;
+		height: 46px;
+		margin-bottom: -46px;
+		top: -10px;
+		border-radius: 46px;
+		margin-right: 20px;
+	}
+	.episode .oi-media-play {
+		top: 13px;
+		font-size: 18px;
+	}
+	.episode .download-arrow {
+		width: 46px;
+		height: 46px;
+		margin-bottom: -46px;
+		top: -10px;
+		border-radius: 46px;
+		margin-right: 20px;
+	}
+	.episode .oi-data-transfer-download {
+		top: 13px;
+		font-size: 18px;
+	}
+  .listening_bg .social-icons {
+    font-size: 18px;
+  }
+	.listening_bg .fab.circle {
+		border-radius: 18px;
+		padding: 7px;
+		height: 34px;
+		width: 34px;
+		margin-left: 5px;
+	}
+	.episode .category-select {
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
+}
