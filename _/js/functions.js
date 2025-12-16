@@ -395,17 +395,26 @@ if (page == 'episodes') {
     if (cat == 'all') {
       $(".episodes [data-type='spokenweb_podcast']").fadeIn()
       $(".episodes [data-type='shortcuts']").fadeIn()
+      $(".episodes [data-type='literary_listening']").fadeIn()
     }
 
     if (cat == 'spokenweb-podcast') {
       $(".episodes [data-type='spokenweb_podcast']").fadeIn()
       $(".episodes [data-type='shortcuts']").hide()
+      $(".episodes [data-type='literary_listening']").hide()
     }
 
     if (cat == 'shortcuts') {
       $(".episodes [data-type='shortcuts']").fadeIn()
       $(".episodes [data-type='spokenweb_podcast']").hide()
+      $(".episodes [data-type='literary_listening']").hide()
     }
+    if (cat == 'literary_listening') {
+      $(".episodes [data-type='literary_listening']").fadeIn()
+      $(".episodes [data-type='spokenweb_podcast']").hide()
+      $(".episodes [data-type='shortcuts']").hide()
+    }
+
   })
 }
 
