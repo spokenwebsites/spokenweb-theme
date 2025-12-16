@@ -80,6 +80,10 @@ section.featured-episode { transform: rotate(-2deg); position:relative; max-widt
 
 .episodes .event-red { position:absolute; left:0px; top:0px; height:100%; width:100%; background:rgba(252, 215, 136, 0.5); margin:0px; opacity:1; transition:1s; padding-top: 0px; padding-bottom: 0px; }
 
+.episodes .event-literarylistening { 
+  background: rgba(137, 48, 37, 0.5);
+}
+
 .episodes .event-img.filter { filter: sepia(100%) contrast(100%) brightness(50%); transition: filter 1s; background-blend-mode: darken; height:auto; }
 
 .episodes span.listen-now { position:absolute; bottom:0px; left:0px; margin-bottom:0px; background:rgba(43,52,52,0.2); text-transform:uppercase; width:100%; padding:10px; font-size:13px; font-weight:normal; }
