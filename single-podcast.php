@@ -3,7 +3,9 @@
     <?php $type = strtolower(str_replace(" ", "_", get_field('type'))); ?>
     <section class="container episode-container">
       <div class="row">
-        <?php if ($type == "spokenweb_podcast") : ?>
+        <?php 
+        // Spokenweb Podcast header
+        if ($type == "spokenweb_podcast") : ?>
           <div class="col-sm-12">
             <div class="text-center logo-container"><img src="<?php bloginfo('template_directory'); ?>/_/img/podcast_logo.png" width="108" /></div>
             <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('SpokenWeb Podcast')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Episodes Page</span></a></p>
@@ -11,7 +13,9 @@
               <h1>SpokenWeb Podcast</h1>
             </div>
           </div>
-        <?php else : ?>
+        <?php 
+        // Shortcuts podcsat header
+        elseif ($type == "shortcuts") : ?>
           <div class="col-sm-12">
             <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('ShortCuts')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Episodes Page</span></a></p>
             <div class="d-sm-flex justify-content-md-between align-items-center justify-content-start flex-wrap mt-4 mt-sm-0">
@@ -22,6 +26,21 @@
                 </div>
               </div>
               <div class="text-sm-left text-center logo-container pl-sm-3 pr-sm-5"><img src="<?php bloginfo('template_directory'); ?>/_/img/shortcuts_logo.png" width="150" /></div>
+              <div class="subscribe-link-container text-right ml-auto"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>
+            </div>
+          </div>
+        <?php 
+        // Literary Listening podcast header
+          elseif ($type == "literary_listening") : ?>
+          <div class="col-sm-12">
+            <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('Literary Listening')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Episodes Page</span></a></p>
+            <div class="d-sm-flex justify-content-md-between align-items-center justify-content-start flex-wrap mt-4 mt-sm-0">
+              <div class="text-center text-sm-left">
+                <div class="accent">
+                  <h1 class="py-2 mb-2">Literary Listening</h1>
+                </div>
+              </div>
+              <div class="text-sm-left text-center logo-container"><img src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo-TJmockup2.png" width="200" /></div>
               <div class="subscribe-link-container text-right ml-auto"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>
             </div>
           </div>
@@ -104,12 +123,12 @@
                 <?php if (!empty($producer_photo)) : ?>
                   <div class="col-md-3 col-sm-4 col-6">
                     <div style="position:relative;">
-                      <img src="<?php echo esc_url($producer_photo['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($producer_photo['alt']); ?>" class="event-img filter" style="width:100%; border-radius:100%;">
+                      <img src="<?php echo esc_url($producer_photo['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($producer_photo['alt']); ?>" class="event-img filter" style="width:100%; height: auto; border-radius:100%;">
                       <section class="event-orange" style="width:100%; height:100%; border-radius:100%;"></section>
                     </div>
                   </div>
                 <?php endif; ?>
-                <div class="col-md-9 col-sm-8">
+                <div class="col-md-9 col-sm-8 producer-bio">
                   <h4><?php echo $producer; ?></h4>
                   <?php echo wpautop($producer_bio); ?>
                 </div>
