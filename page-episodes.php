@@ -146,6 +146,7 @@ endif; ?>
         <a href="#all"><button class="btn btn-sw active">ALL</button></a>
         <a href="#spokenweb-podcast"><button class="btn btn-sw">SPOKENWEB PODCAST</button></a>
         <a href="#shortcuts"><button class="btn btn-sw">SHORTCUTS</button></a>
+        <a href="#literary_listening"><button class="btn btn-sw">LITERARY LISTENING</button></a>
       </div>
       <div class="category-select sort float-md-right mb-5">
         <a href="#desc"><button class="btn btn-sw active">DATE (DESC)</button></a>
@@ -176,7 +177,7 @@ endif; ?>
           'order' => 'DESC',
           'orderby' => 'date',
           'meta_key' => 'type',
-          'meta_value' => array('SpokenWeb Podcast', 'ShortCuts')
+          'meta_value' => array('SpokenWeb Podcast', 'ShortCuts', 'Literary Listening')
         );
 
         $podcast_query = new WP_Query($args);
@@ -213,6 +214,8 @@ endif; ?>
                   <img class="event-img filter" src="<?php echo $img_thumb; ?>" width="100%">
                   <?php if ($type == 'shortcuts') : ?>
                     <section class="event-red"></section>
+                  <?php elseif ($type == 'literary_listening') : ?>
+                    <section class="event-red event-literarylistening"></section>
                   <?php else : ?>
                     <section class="event-orange"></section>
                   <?php endif; ?>
@@ -240,7 +243,7 @@ endif; ?>
           'order' => 'ASC',
           'orderby' => 'date',
           'meta_key' => 'type',
-          'meta_value' => array('SpokenWeb Podcast', 'ShortCuts')
+          'meta_value' => array('SpokenWeb Podcast', 'ShortCuts', 'Literary Listening')
         );
 
         $podcast_query = new WP_Query($args);
@@ -276,6 +279,8 @@ endif; ?>
                   <img class="event-img filter" src="<?php echo $img_thumb; ?>" width="100%">
                   <?php if ($type == 'shortcuts') : ?>
                     <section class="event-red"></section>
+                  <?php elseif ($type == 'literary_listening') : ?>
+                    <section class="event-red event-literarylistening"></section>
                   <?php else : ?>
                     <section class="event-orange"></section>
                   <?php endif; ?>
