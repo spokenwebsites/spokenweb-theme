@@ -48,7 +48,7 @@
 
 .listening_bg .episodes-container .accent h1 {
 	padding: 5px 10px;
-	color: var(--primary);;
+	color: var(--primary);
 	font-weight: 600;
 	text-transform: uppercase;
 	font-style: normal;
@@ -60,6 +60,10 @@
 .episode h2 {
 	font-size: 20px;
 	line-height: 25px;
+}
+
+.listening_bg h3 {
+  color: var(--primary);
 }
 
 .listening_bg h4 {
@@ -215,18 +219,10 @@ p.return-link .return-arrow {
  */
 
 /* subscribe button */
-.listening_bg .episodes-container .subscribe-link-container {
-	position: absolute;
-	top: -30px;
-	right: 30px;
-	left: auto;
-}
-
 
 .listening_bg .episodes-container .subscribe-link-container {
 	position: absolute;
-	right: 30px;
-	top: -45px;
+	right: 0px;
 }
 
 .listening_bg a#subscribe-link button.btn-sw {
@@ -474,9 +470,14 @@ a span.listen-now {
 	.episode h5 {
 		margin-top: 25px;
 	}
-	.episode-container .return-link + .d-sm-flex {
-		flex-direction: column;
-	}
+  .episode-container .episode-title-wrapper {
+    position: relative;
+  }
+  .episode-container .episode-title-wrapper .subscribe-link-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
 	.episode-container .return-link + .d-sm-flex > .text-center:first-child {
 		width: 100%;
 		flex-basis: 100%;

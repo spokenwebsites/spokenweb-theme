@@ -15,9 +15,9 @@
           <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('Episodes')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Podcast Home Page</span></a></p>
           <!--h1>SpokenWeb</h1-->
           <div class="accent">
-            <h1>Literary Listening</h1>
+            <h1 class="sr-only">Literary Listening</h1>
           </div>
-          <div class="text-center logo-container mt-2"><img src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo-TJmockup2.png" width="300" /></div>
+          <div class="text-left logo-container mt-2"><img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo.jpg" width="400" /></div>
         </div>
         <div class="col-sm-12 text-center">
           <div class="subscribe-link-container"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>

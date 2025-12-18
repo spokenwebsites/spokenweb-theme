@@ -34,13 +34,13 @@
           elseif ($type == "literary_listening") : ?>
           <div class="col-sm-12">
             <p class="return-link"><a href="<?php echo  get_permalink(get_page_by_title('Literary Listening')); ?>"><span class="return-arrow">‹</span><span class="return-text">Return to the Episodes Page</span></a></p>
-            <div class="d-sm-flex justify-content-md-between align-items-center justify-content-start flex-wrap mt-4 mt-sm-0">
+            <div class="d-sm-flex justify-content-md-between align-items-start justify-content-start flex-wrap flex-column mt-4 mt-sm-0 episode-title-wrapper">
               <div class="text-center text-sm-left">
                 <div class="accent">
-                  <h1 class="py-2 mb-2">Literary Listening</h1>
+                  <h1 class="py-2 mb-2 sr-only">Literary Listening</h1>
                 </div>
               </div>
-              <div class="text-sm-left text-center logo-container"><img src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo-TJmockup2.png" width="200" /></div>
+              <div class="text-sm-left text-left logo-container"><img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/_/img/literary-listening-logo.jpg" width="350" /></div>
               <div class="subscribe-link-container text-right ml-auto"><a id="subscribe-link" href="https://the-spokenweb-podcast.simplecast.com/" target="_blank"><button class="btn btn-sw"><span class="oi oi-rss-alt"></span>SUBSCRIBE</button></a></div>
             </div>
           </div>
